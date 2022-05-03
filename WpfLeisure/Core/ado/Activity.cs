@@ -22,6 +22,7 @@ namespace Core.ado
         public Nullable<System.DateTime> Start_Date { get; set; }
         public Nullable<System.DateTime> End_Date { get; set; }
         public Nullable<int> ID_Type { get; set; }
+        public byte[] Photo { get; set; }
     
         public virtual Activity_Type Activity_Type { get; set; }
         public virtual Place Place { get; set; }
