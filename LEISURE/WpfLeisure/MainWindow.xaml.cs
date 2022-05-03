@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Core.Classes_Core;
+using WpfLeisure.Pages;
 
 namespace WpfLeisure
 {
@@ -24,7 +25,7 @@ namespace WpfLeisure
         public MainWindow()
         {
             InitializeComponent();
-            TB.Text = DataAccess.GetRoles().Where(r => r.Id ==1).FirstOrDefault().Name.ToString();
+            Autho.NavigationService.Navigate(new AuthoPage());
         }
     }
 }

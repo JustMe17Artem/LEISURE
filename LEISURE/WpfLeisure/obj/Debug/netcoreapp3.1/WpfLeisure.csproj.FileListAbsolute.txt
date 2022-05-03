@@ -64,3 +64,5 @@ C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\net
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\WpfLeisure.dll
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\WpfLeisure.pdb
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\WpfLeisure.genruntimeconfig.cache
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\AuthoPage.g.cs
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\AuthoPage.baml

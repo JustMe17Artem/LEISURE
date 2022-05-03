@@ -44,6 +44,8 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="ID_User" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -246,6 +248,8 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_User" Type="Int32" />
           <NavigationProperty Name="User" Relationship="Self.FK_Owner_User" FromRole="Owner" ToRole="User" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -450,6 +454,8 @@
           <EntitySetMapping Name="Owner">
             <EntityTypeMapping TypeName="LEISURE_KursachModel.Owner">
               <MappingFragment StoreEntitySet="Owner">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

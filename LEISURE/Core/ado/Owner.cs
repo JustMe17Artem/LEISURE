@@ -18,6 +18,8 @@ namespace Core.ado
         public string Name { get; set; }
         public string LastName { get; set; }
         public Nullable<int> ID_User { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
     
         public virtual User User { get; set; }
     }
