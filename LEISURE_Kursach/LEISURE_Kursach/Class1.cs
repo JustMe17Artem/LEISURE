@@ -9,5 +9,6 @@ namespace LEISURE_Kursach
     public class Class1
     {
 
+
     }
 }
