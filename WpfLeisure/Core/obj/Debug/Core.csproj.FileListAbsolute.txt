@@ -1,0 +1,12 @@
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\bin\Debug\Core.dll.config
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\bin\Debug\Core.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\bin\Debug\Core.pdb
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\bin\Debug\EntityFramework.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\bin\Debug\EntityFramework.xml
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\obj\Debug\Core.csproj.AssemblyReference.cache
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\obj\Debug\Core.csproj.CopyComplete
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\obj\Debug\Core.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\WpfLeisure\Core\obj\Debug\Core.pdb
