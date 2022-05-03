@@ -7,7 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Pages\ActivitiesPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\AuthoPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\PlacePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\RegPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -15,7 +24,16 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Pages\ActivitiesPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\AuthoPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\PlacePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\RegPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

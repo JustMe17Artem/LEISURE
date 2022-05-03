@@ -28,6 +28,7 @@ namespace Core.ado
         public Nullable<int> Capacity { get; set; }
         public Nullable<bool> IsOpen { get; set; }
         public Nullable<int> Visits { get; set; }
+        public byte[] Photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }

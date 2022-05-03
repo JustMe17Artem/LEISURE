@@ -39,6 +39,8 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" />
     <Property Name="ID_User" Type="int" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Place">
     <Key>
@@ -52,6 +54,7 @@
     <Property Name="Capacity" Type="int" />
     <Property Name="IsOpen" Type="bit" />
     <Property Name="Visits" Type="int" />
+    <Property Name="Photo" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Place_Type">
     <Key>

@@ -1,0 +1,125 @@
+﻿<Page x:Class="WpfLeisure.Pages.PlacePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfLeisure.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PlacePage">
+
+    <Grid Background="Bisque">
+        <StackPanel Width="250"
+                    Height="350"
+                    HorizontalAlignment="Left"
+                    Margin="10,0,0,0"
+                    Background="Gray">
+
+           
+
+            <TextBlock Text="Название:"
+                       FontSize="20"
+                       Margin="0,10,0,10"
+                       Width="100"
+                       HorizontalAlignment="Left"/>
+
+            <TextBox x:Name="TBName"
+                     Width="200"
+                     Height="30"
+                     FontSize="20"
+                     Margin="0,0,0,10"
+                     HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Адрес:"
+                       FontSize="20"
+                       Margin="0,0,0,10"
+                       Width="100"
+                       HorizontalAlignment="Left"/>
+
+            <TextBox x:Name="TBAdress"
+                     Width="200"
+                     Height="30"
+                     Margin="0,0,0,10"
+                     FontSize="20"
+                     HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Вместительность:"
+                       FontSize="20"
+                       Margin="0,0,0,10"
+                       Width="100"
+                       HorizontalAlignment="Left"/>
+
+            <TextBox x:Name="TBCapacity"
+                     Width="200"
+                     Height="30"
+                     Margin="0,0,0,10"
+                     FontSize="20"
+                     HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Тип:"
+                       FontSize="20"
+                       Margin="0,0,0,10"
+                       Width="100"
+                       HorizontalAlignment="Left"/>
+
+            <ComboBox SelectedItem="{Binding Type}" 
+                      DisplayMemberPath="Name" 
+                      x:Name="CBType"
+                      Height="25"
+                      Width="200"
+                  HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                  Grid.Column="1"
+                  Grid.Row="3"/>
+
+
+
+
+        </StackPanel>
+        
+        <Image Source="{Binding Place.Photo}" 
+                   Width="300"
+               HorizontalAlignment="Center"
+                   Height="200"
+               Margin="80,0,0,0"
+               x:Name="PlacePhoto"/>
+        
+        <Button x:Name="BtnAddPhoto" 
+                Click="BtnAddPhoto_Click"
+                Width="90"
+                Height="30"
+                Content="Добавить фото"
+                VerticalAlignment="Bottom"
+                Margin="120,0,0,50"/>
+
+        <StackPanel
+            Width="150"
+            Height="400"
+            HorizontalAlignment="Right"
+            Background="Beige">
+
+            <Button x:Name="BtnAddPlace"
+                    Click="BtnAddPlace_Click"
+                    Width="100"
+                    Height="30"
+                    Content="Создать"
+                    Margin="0,0,0,10"/>
+
+            <Button x:Name="BtnSavePlace"
+                    Click="BtnSavePlace_Click"
+                    Width="100"
+                    Height="30"
+                    Content="Сохранить"
+                    Margin="0,0,0,10"/>
+
+            <Button x:Name="BtnClosePlace"
+                    Click="BtnClosePlace_Click"
+                    Width="100"
+                    Height="30"
+                    Content="Закрыть"
+                    Margin="0,0,0,10"/>
+
+
+        </StackPanel>
+    </Grid>
+</Page>

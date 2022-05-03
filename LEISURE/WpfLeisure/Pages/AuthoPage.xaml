@@ -9,6 +9,12 @@
       Title="AuthoPage">
 
     <Grid>
+        <TextBlock Text="Вход в систему"
+                   HorizontalAlignment="Center"
+                   FontSize="30"
+                   Width="250"
+                   Height="40"
+                   VerticalAlignment="Top"/>
         <StackPanel Width="300" 
                     Height="250"
                     Margin="10,0,0,30"
@@ -39,7 +45,8 @@
             <CheckBox x:Name="CBRememberMe"
                       Content="Запомнить меня"
                       Width="120"
-                      Margin="0,0,0,30"/>
+                      Margin="0,0,0,30"
+                      IsChecked="True"/>
 
             <Button x:Name="BtnAuthorize"
                     Width="100"
@@ -63,7 +70,7 @@
                     Click="BtnReg_Click"
                     Width="120"
                     Height="30"
-                    Content="Зарегестрироваться"/>
+                    Content="Регистрация"/>
 
         </StackPanel>
     </Grid>

@@ -59,6 +59,7 @@
           <Property Name="Capacity" Type="int" />
           <Property Name="IsOpen" Type="bit" />
           <Property Name="Visits" Type="int" />
+          <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Place_Type">
           <Key>
@@ -265,6 +266,7 @@
           <Property Name="Visits" Type="Int32" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Place" FromRole="Place" ToRole="Activity" />
           <NavigationProperty Name="Place_Type" Relationship="Self.FK_Place_Place_Type" FromRole="Place" ToRole="Place_Type" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Place_Type">
           <Key>
@@ -466,6 +468,7 @@
           <EntitySetMapping Name="Place">
             <EntityTypeMapping TypeName="LEISURE_KursachModel.Place">
               <MappingFragment StoreEntitySet="Place">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />

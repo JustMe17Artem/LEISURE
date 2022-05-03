@@ -66,3 +66,9 @@ C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\net
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\WpfLeisure.genruntimeconfig.cache
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\AuthoPage.g.cs
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\AuthoPage.baml
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\ActivitiesPage.g.cs
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\PlacePage.g.cs
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\RegPage.g.cs
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\ActivitiesPage.baml
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\PlacePage.baml
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\RegPage.baml

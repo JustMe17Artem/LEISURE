@@ -24,6 +24,7 @@ namespace WpfLeisure.Pages
         public AuthoPage()
         {
             InitializeComponent();
+            TBLogin.Text = Properties.Settings.Default.login;
         }
 
         private void BtnAuthorize_Click(object sender, RoutedEventArgs e)
@@ -36,24 +37,18 @@ namespace WpfLeisure.Pages
                 else
                     Properties.Settings.Default.login = null;
                 Properties.Settings.Default.Save();
-                if(currentUser.ID_Role == 1)
-                {
-                    MessageBox.Show("Добро пожаловать");
-                    // навигация на страницу мероприятий
-                }
+                MessageBox.Show("Добро пожаловать");
+                if (currentUser.ID_Role == 1)
+                    NavigationService.Navigate(new ActivitiesPage());
                 else
-                {
-                    MessageBox.Show("Добро пожаловать");
-                    // навигация на СВОИ объекты
+                    NavigationService.Navigate(new PlacePage(currentUser, new Place()));
 
-                }
-              
             }
         }
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new RegPage());
         }
     }
 }

@@ -44,6 +44,8 @@
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ID_User" Type="Int32" />
     <NavigationProperty Name="User" Relationship="Self.FK_Owner_User" FromRole="Owner" ToRole="User" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Place">
     <Key>
@@ -59,6 +61,7 @@
     <Property Name="Visits" Type="Int32" />
     <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Place" FromRole="Place" ToRole="Activity" />
     <NavigationProperty Name="Place_Type" Relationship="Self.FK_Place_Place_Type" FromRole="Place" ToRole="Place_Type" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Place_Type">
     <Key>

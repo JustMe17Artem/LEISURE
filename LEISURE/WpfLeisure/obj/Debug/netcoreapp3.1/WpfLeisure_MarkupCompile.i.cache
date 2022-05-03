@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\App.xaml
-2-213108114
+5544447976
 
-7-863069697
+10434954681
 196-1435713245
-MainWindow.xaml;Pages\AuthoPage.xaml;
+MainWindow.xaml;Pages\ActivitiesPage.xaml;Pages\AuthoPage.xaml;Pages\PlacePage.xaml;Pages\RegPage.xaml;
 
-False
+True
 
