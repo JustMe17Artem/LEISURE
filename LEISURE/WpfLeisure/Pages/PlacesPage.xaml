@@ -39,12 +39,12 @@
                       Background="White"
                   ItemsSource="{Binding Places}" 
                       Height="700"
-                      Width="1000"
+                      Width="1400"
                       BorderBrush="White"
                   SelectionChanged="LVPlaces_SelectionChanged">
                 <ListView.ItemsPanel >
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="3"/>
+                        <UniformGrid Columns="4"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>

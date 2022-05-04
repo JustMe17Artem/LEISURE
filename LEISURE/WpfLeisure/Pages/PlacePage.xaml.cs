@@ -26,10 +26,11 @@ namespace WpfLeisure.Pages
     {
         private static Owner currentOwner;
         private static Place currentPlace;
+        private static User currentUser;
         public PlacePage(User user, Place place)
         {
             InitializeComponent();
-            currentOwner = DataAccess.GetCurrentOwner(user);
+            currentUser = user;
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
             DataContext = this;
             TBName.IsReadOnly = true;
@@ -47,7 +48,9 @@ namespace WpfLeisure.Pages
             BtnAddPlace.Visibility = Visibility.Hidden;
             BtnSavePlace.Visibility = Visibility.Hidden;
             BtnClosePlace.Visibility = Visibility.Hidden;
+            LVReviews.ItemsSource = DataAccess.GetReviews(currentPlace.Id);
             DataContext = currentPlace;
+
             
         }
         public PlacePage(Place place, Owner owner)
@@ -67,6 +70,8 @@ namespace WpfLeisure.Pages
             BtnSavePlace.Visibility = Visibility.Visible;
             BtnClosePlace.Visibility = Visibility.Visible;
             BtnVisit.Visibility = Visibility.Hidden;
+            BtnAddReview.Visibility = Visibility.Visible;
+            TBReview.Visibility = Visibility.Visible;
             DataContext = currentPlace;
 
         }
@@ -124,6 +129,11 @@ namespace WpfLeisure.Pages
         private void BtnVisit_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.AddVisitToPlace(currentPlace);
+        }
+
+        private void BtnAddReview_Click(object sender, RoutedEventArgs e)
+        {
+            DataAccess.AddNewReview(DataAccess.GetCurrentClient(currentUser).Id, currentPlace.Id, TBReview.Text);
         }
     }
 }

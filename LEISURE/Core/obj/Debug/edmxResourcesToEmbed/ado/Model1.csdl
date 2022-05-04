@@ -12,9 +12,9 @@
     <Property Name="Start_Date" Type="DateTime" Precision="3" />
     <Property Name="End_Date" Type="DateTime" Precision="3" />
     <Property Name="ID_Type" Type="Int32" />
+    <Property Name="Photo" Type="Binary" MaxLength="100" FixedLength="false" />
     <NavigationProperty Name="Activity_Type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_Type" />
     <NavigationProperty Name="Place" Relationship="Self.FK_Activity_Place" FromRole="Activity" ToRole="Place" />
-    <Property Name="Photo" Type="Binary" MaxLength="100" FixedLength="false" />
   </EntityType>
   <EntityType Name="Activity_Type">
     <Key>
@@ -34,6 +34,7 @@
     <Property Name="RegDate" Type="DateTime" Precision="0" />
     <Property Name="ID_User" Type="Int32" />
     <NavigationProperty Name="User" Relationship="Self.FK_Client_User" FromRole="Client" ToRole="User" />
+    <NavigationProperty Name="Review" Relationship="Self.FK_Review_Client" FromRole="Client" ToRole="Review" />
   </EntityType>
   <EntityType Name="Owner">
     <Key>
@@ -43,9 +44,9 @@
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ID_User" Type="Int32" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Owner_User" FromRole="Owner" ToRole="User" />
     <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Owner_User" FromRole="Owner" ToRole="User" />
   </EntityType>
   <EntityType Name="Place">
     <Key>
@@ -59,9 +60,10 @@
     <Property Name="Capacity" Type="Int32" />
     <Property Name="IsOpen" Type="Boolean" />
     <Property Name="Visits" Type="Int32" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Place" FromRole="Place" ToRole="Activity" />
     <NavigationProperty Name="Place_Type" Relationship="Self.FK_Place_Place_Type" FromRole="Place" ToRole="Place_Type" />
-    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Review" Relationship="Self.FK_Review_Place" FromRole="Place" ToRole="Review" />
   </EntityType>
   <EntityType Name="Place_Type">
     <Key>
@@ -70,6 +72,18 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Place" Relationship="Self.FK_Place_Place_Type" FromRole="Place_Type" ToRole="Place" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Client" Type="Int32" />
+    <Property Name="ID_Place" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Review_Client" FromRole="Review" ToRole="Client" />
+    <NavigationProperty Name="Place" Relationship="Self.FK_Review_Place" FromRole="Review" ToRole="Place" />
+    <Property Name="Review_Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -137,6 +151,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Review_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="ID_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Owner_User">
     <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="Owner" Type="Self.Owner" Multiplicity="*" />
@@ -161,6 +187,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Review_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="ID_Place" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_User_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -173,13 +211,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="LEISURE_KursachEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="LEISURE_KursachEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Activity" EntityType="Self.Activity" />
     <EntitySet Name="Activity_Type" EntityType="Self.Activity_Type" />
     <EntitySet Name="Client" EntityType="Self.Client" />
     <EntitySet Name="Owner" EntityType="Self.Owner" />
     <EntitySet Name="Place" EntityType="Self.Place" />
     <EntitySet Name="Place_Type" EntityType="Self.Place_Type" />
+    <EntitySet Name="Review" EntityType="Self.Review" />
     <EntitySet Name="Role" EntityType="Self.Role" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="User" EntityType="Self.User" />
@@ -195,6 +234,10 @@
       <End Role="User" EntitySet="User" />
       <End Role="Client" EntitySet="Client" />
     </AssociationSet>
+    <AssociationSet Name="FK_Review_Client" Association="Self.FK_Review_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
     <AssociationSet Name="FK_Owner_User" Association="Self.FK_Owner_User">
       <End Role="User" EntitySet="User" />
       <End Role="Owner" EntitySet="Owner" />
@@ -202,6 +245,10 @@
     <AssociationSet Name="FK_Place_Place_Type" Association="Self.FK_Place_Place_Type">
       <End Role="Place_Type" EntitySet="Place_Type" />
       <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Place" Association="Self.FK_Review_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="Review" EntitySet="Review" />
     </AssociationSet>
     <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
       <End Role="Role" EntitySet="Role" />

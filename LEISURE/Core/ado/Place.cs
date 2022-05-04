@@ -18,6 +18,7 @@ namespace Core.ado
         public Place()
         {
             this.Activity = new HashSet<Activity>();
+            this.Review = new HashSet<Review>();
         }
     
         public int Id { get; set; }
@@ -33,5 +34,7 @@ namespace Core.ado
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }
         public virtual Place_Type Place_Type { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Review { get; set; }
     }
 }

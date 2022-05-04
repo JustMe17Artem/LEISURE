@@ -10,9 +10,9 @@
 
     <Grid Background="White">
         <StackPanel Width="300"
-                    Height="800"
+                    Height="500"
                     HorizontalAlignment="Left"
-                    Margin="10,0,0,0"
+                    Margin="10,0,0,270"
                     Background="Gray">
 
 
@@ -71,7 +71,7 @@
                       VerticalAlignment="Center"
                   Grid.Column="1"
                   Grid.Row="3"/>
-            
+
             <TextBox x:Name="TBType"
                      Width="300"
                      Height="30"
@@ -84,14 +84,14 @@
                        Margin="0,0,0,10"
                        Width="130"
                        HorizontalAlignment="Left"/>
-            
+
             <TextBox x:Name="TBVisits"
                      Width="300"
                      Height="30"
                      Margin="0,0,0,10"
                      FontSize="20"
                      HorizontalAlignment="Left"/>
-            
+
             <Button x:Name="BtnAddPlace"
                     Click="BtnAddPlace_Click"
                     Content="Создать"
@@ -109,19 +109,40 @@
                     Content="Закрыть объект"
                     HorizontalAlignment="Right"
                     Margin="0,-40,10,10"/>
-
-
-
-
-
         </StackPanel>
+        <ListView x:Name="LVReviews"  
+                      Background="White"
+                      BorderBrush="Black" Margin="355,350,86,167"
+                  Height="100">
+            <ListView.ItemsPanel >
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="1"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <StackPanel Width="300" Height="50" Margin="10,0,0,10" Background="Gray" >
+                        
+                        <TextBlock Text="{Binding Client.Name}" 
+                                       FontSize="15"  
+                                       Foreground="Black"
+                                       TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Review_Message}" 
+                                       FontSize="15"  
+                                       Foreground="Black"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
 
         <Image Source="{Binding Photo}" 
-                   Width="800"
+                   Width="500"
                HorizontalAlignment="Left"
-                   Height="500"
-               Margin="430,85,0,325"
+                   Height="300"
+               Margin="355,27,0,483"
                x:Name="PlacePhoto"/>
 
         <Button x:Name="BtnAddPhoto" 
@@ -129,8 +150,9 @@
                 Content="Добавить фото"
                 Width="200"
                 Height="100"
+                FontSize="20"
                 VerticalAlignment="Bottom"
-                Margin="120,0,0,50"/>
+                Margin="28,0,1212,57"/>
 
         <Button x:Name="BtnVisit" 
                 Click="BtnVisit_Click"
@@ -139,8 +161,25 @@
                 FontSize="20"
                 Height="100"
                 VerticalAlignment="Bottom"
-                Margin="120,0,0,50"/>
+                Margin="28,0,1212,57"/>
 
+        <TextBox x:Name="TBReview" 
+                 Width="600"
+                 Height="90"
+                 TextWrapping="Wrap"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Bottom"
+                 Margin="0,0,255,50"/>
+
+        <Button x:Name="BtnAddReview" 
+                Click="BtnAddReview_Click"
+                Content="Оставить отзыв"
+                Width="200"
+                FontSize="20"
+                Height="50"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0,10,75"/>
 
 
     </Grid>

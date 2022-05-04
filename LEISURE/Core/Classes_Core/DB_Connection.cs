@@ -9,6 +9,6 @@ namespace Core.Classes_Core
 {
     public class DB_Connection
     {
-        public static LEISURE_KursachEntities connection = new LEISURE_KursachEntities();
+        public static LEISURE_KursachEntities1 connection = new LEISURE_KursachEntities1();
     }
 }

@@ -167,6 +167,28 @@ namespace Core.Classes_Core
             }
         }
 
+        public static bool AddNewReview(int idClient, int idPlace, string message)
+        {
+            try
+            {
+                Review review = new Review();
+                review.ID_Client = idClient;
+                review.ID_Place = idPlace;
+                review.Date = DateTime.Now.Date;
+                review.Review_Message = message;
+                DB_Connection.connection.Review.Add(review);
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+
         public static bool ClosePlace(Place place)
         {
             try
@@ -184,6 +206,10 @@ namespace Core.Classes_Core
         public static ObservableCollection<Place> GetPlacesByType(int id)
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Type == id || p.ID_Type == -1));
+        }
+        public static ObservableCollection<Review> GetReviews(int idPlace)
+        {
+            return new ObservableCollection<Review>(DB_Connection.connection.Review.Where(r => r.ID_Place == idPlace));
         }
 
         public static bool AddVisitToPlace(Place place)

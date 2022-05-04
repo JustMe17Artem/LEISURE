@@ -13,10 +13,10 @@ namespace Core.ado
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LEISURE_KursachEntities : DbContext
+    public partial class LEISURE_KursachEntities1 : DbContext
     {
-        public LEISURE_KursachEntities()
-            : base("name=LEISURE_KursachEntities")
+        public LEISURE_KursachEntities1()
+            : base("name=LEISURE_KursachEntities1")
         {
         }
     
@@ -31,6 +31,7 @@ namespace Core.ado
         public virtual DbSet<Owner> Owner { get; set; }
         public virtual DbSet<Place> Place { get; set; }
         public virtual DbSet<Place_Type> Place_Type { get; set; }
+        public virtual DbSet<Review> Review { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
