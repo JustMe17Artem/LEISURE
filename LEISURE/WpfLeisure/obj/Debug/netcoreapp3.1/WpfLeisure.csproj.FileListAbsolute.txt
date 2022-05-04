@@ -75,3 +75,5 @@ C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\net
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\PlacesPage.g.cs
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\PlacesPage.baml
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\netcoreapp3.1\MaterialDesignColors.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\netcoreapp3.1\MaterialDesignThemes.Wpf.dll

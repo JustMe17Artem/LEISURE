@@ -8,7 +8,7 @@
       d:DesignHeight="810" d:DesignWidth="1440"
       Title="PlacesPage">
 
-    <Grid Background="Black">
+    <Grid Background="White">
         <StackPanel x:Name="SearchPanel"
                     Margin="-280,10,0,0"
                     Width="450"
@@ -31,16 +31,16 @@
                       VerticalAlignment="Top" SelectionChanged="CBType_SelectionChanged"/>
         </StackPanel>
 
-        <StackPanel Width="1000"
+        <StackPanel Width="1400"
                     Height="700"
-                    Margin="0,50,0,0"
+                    Margin="20,50,0,0"
                     HorizontalAlignment="Left">
             <ListView x:Name="LVPlaces"  
-                      Background="Black"
+                      Background="White"
                   ItemsSource="{Binding Places}" 
                       Height="700"
                       Width="1000"
-                      BorderBrush="Black"
+                      BorderBrush="White"
                   SelectionChanged="LVPlaces_SelectionChanged">
                 <ListView.ItemsPanel >
                     <ItemsPanelTemplate>
@@ -49,10 +49,11 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate >
-                        <StackPanel Width="200" Height="200" Margin="10,0,0,10" Background="White">
+                        <StackPanel Width="200" Height="200" Margin="10,0,0,10" Background="Black" >
                             <Image Source="{Binding Photo}" Height="150" Width="255"/>
                             <TextBlock Text="{Binding Name}" 
                                        FontSize="15"  
+                                       Foreground="White"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
@@ -60,7 +61,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <StackPanel Width="400"
+        <!--<StackPanel Width="400"
                     x:Name="PlaceData"
                     HorizontalAlignment="Right"
                     Height="800"
@@ -93,10 +94,6 @@
                      Height="30"
                      IsReadOnly="True"/>
 
-            <TextBox x:Name="TBOpen"
-                     Margin="0,0,0,10"
-                     Height="30"
-                     IsReadOnly="True"/>
 
             <TextBox x:Name="TBVisits"
                      Margin="0,0,0,10"
@@ -104,13 +101,13 @@
                      IsReadOnly="True"/>
 
 
-        </StackPanel>
+        </StackPanel>-->
         <Button x:Name="BtnNewPlace"
                     Click="BtnNewPlace_Click"
                     Content="Новый объект" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Margin="0,0,354,719" RenderTransformOrigin="-1.905,-11.067"/>
+                Margin="0,0,392,770" RenderTransformOrigin="-1.905,-11.067"/>
 
     </Grid>
 </Page>

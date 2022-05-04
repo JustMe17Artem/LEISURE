@@ -43,7 +43,7 @@ namespace WpfLeisure.Pages
             }
             else
             {
-                PlaceData.Visibility = Visibility.Hidden;
+                //PlaceData.Visibility = Visibility.Hidden;
                 SearchPanel.Visibility = Visibility.Hidden;
                 LVPlaces.ItemsSource = DataAccess.GetPlacesByOwner(currentOwner);
             }
@@ -55,16 +55,7 @@ namespace WpfLeisure.Pages
             DataContext = selectedPlace;
             if (DataAccess.CurrentUserIsClient(currentUser))
             {
-               
-                TBName.Text = selectedPlace.Name;
-                TBType.Text = selectedPlace.Place_Type.Name;
-                TBAdress.Text = selectedPlace.Adress;
-                TBCapacity.Text = selectedPlace.Capacity.ToString();
-                if (selectedPlace.IsOpen == true)
-                    TBOpen.Text = "Открыто";
-                else
-                    TBOpen.Text = "Закрыто";
-                TBVisits.Text = selectedPlace.Visits.ToString();
+                NavigationService.Navigate(new PlacePage(currentClient.User, selectedPlace));
             }
             else
             {
@@ -74,7 +65,7 @@ namespace WpfLeisure.Pages
 
         private void BtnNewPlace_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PlacePage(currentOwner.User, new Place()));
+            NavigationService.Navigate(new PlacePage(new Place(), currentOwner));
         }
 
         private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -104,6 +95,7 @@ namespace WpfLeisure.Pages
 
         private void CBType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            LVPlaces.SelectedItem = null;
             Filter();
         }
     }

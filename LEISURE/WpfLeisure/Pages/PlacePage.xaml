@@ -5,17 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfLeisure.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="810" d:DesignWidth="1440"
       Title="PlacePage">
 
-    <Grid Background="Bisque">
-        <StackPanel Width="250"
-                    Height="350"
+    <Grid Background="White">
+        <StackPanel Width="300"
+                    Height="800"
                     HorizontalAlignment="Left"
                     Margin="10,0,0,0"
                     Background="Gray">
 
-           
+
 
             <TextBlock Text="Название:"
                        FontSize="20"
@@ -24,7 +24,7 @@
                        HorizontalAlignment="Left"/>
 
             <TextBox x:Name="TBName"
-                     Width="200"
+                     Width="300"
                      Height="30"
                      FontSize="20"
                      Margin="0,0,0,10"
@@ -37,7 +37,7 @@
                        HorizontalAlignment="Left"/>
 
             <TextBox x:Name="TBAdress"
-                     Width="200"
+                     Width="300"
                      Height="30"
                      Margin="0,0,0,10"
                      FontSize="20"
@@ -50,7 +50,7 @@
                        HorizontalAlignment="Left"/>
 
             <TextBox x:Name="TBCapacity"
-                     Width="200"
+                     Width="300"
                      Height="30"
                      Margin="0,0,0,10"
                      FontSize="20"
@@ -71,48 +71,77 @@
                       VerticalAlignment="Center"
                   Grid.Column="1"
                   Grid.Row="3"/>
-           
+            
+            <TextBox x:Name="TBType"
+                     Width="300"
+                     Height="30"
+                     Margin="0,-25,0,10"
+                     FontSize="20"
+                     HorizontalAlignment="Left"/>
 
-
-
-
-        </StackPanel>
-        
-        <Image Source="{Binding Photo}" 
-                   Width="300"
-               HorizontalAlignment="Center"
-                   Height="200"
-               Margin="80,0,0,0"
-               x:Name="PlacePhoto"/>
-        
-        <Button x:Name="BtnAddPhoto" 
-                Click="BtnAddPhoto_Click"
-                Content="Добавить фото"
-                VerticalAlignment="Bottom"
-                Margin="120,0,0,50"/>
-
-        <StackPanel
-            Width="150"
-            Height="400"
-            HorizontalAlignment="Right"
-            Background="Beige">
-
+            <TextBlock Text="Посещений:"
+                       FontSize="20"
+                       Margin="0,0,0,10"
+                       Width="130"
+                       HorizontalAlignment="Left"/>
+            
+            <TextBox x:Name="TBVisits"
+                     Width="300"
+                     Height="30"
+                     Margin="0,0,0,10"
+                     FontSize="20"
+                     HorizontalAlignment="Left"/>
+            
             <Button x:Name="BtnAddPlace"
                     Click="BtnAddPlace_Click"
                     Content="Создать"
-                    Margin="0,0,0,10"/>
+                    Margin="10,10,0,10"
+                    HorizontalAlignment="Center"/>
 
             <Button x:Name="BtnSavePlace"
                     Click="BtnSavePlace_Click"
                     Content="Сохранить"
-                    Margin="0,0,0,10"/>
+                    HorizontalAlignment="Left"
+                    Margin="10,0,0,10"/>
 
             <Button x:Name="BtnClosePlace"
                     Click="BtnClosePlace_Click"
-                    Content="Закрыть"
-                    Margin="0,0,0,10"/>
+                    Content="Закрыть объект"
+                    HorizontalAlignment="Right"
+                    Margin="0,-40,10,10"/>
+
+
+
 
 
         </StackPanel>
+
+
+        <Image Source="{Binding Photo}" 
+                   Width="800"
+               HorizontalAlignment="Left"
+                   Height="500"
+               Margin="430,85,0,325"
+               x:Name="PlacePhoto"/>
+
+        <Button x:Name="BtnAddPhoto" 
+                Click="BtnAddPhoto_Click"
+                Content="Добавить фото"
+                Width="200"
+                Height="100"
+                VerticalAlignment="Bottom"
+                Margin="120,0,0,50"/>
+
+        <Button x:Name="BtnVisit" 
+                Click="BtnVisit_Click"
+                Content="Я пойду!"
+                Width="200"
+                FontSize="20"
+                Height="100"
+                VerticalAlignment="Bottom"
+                Margin="120,0,0,50"/>
+
+
+
     </Grid>
 </Page>

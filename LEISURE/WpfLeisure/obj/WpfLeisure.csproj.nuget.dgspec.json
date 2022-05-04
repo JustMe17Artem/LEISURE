@@ -68,6 +68,10 @@
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.5.0, )"
             }
           },
           "imports": [

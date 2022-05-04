@@ -180,9 +180,24 @@ namespace Core.Classes_Core
                 return false;
             }
         }
+
         public static ObservableCollection<Place> GetPlacesByType(int id)
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Type == id || p.ID_Type == -1));
+        }
+
+        public static bool AddVisitToPlace(Place place)
+        {
+            try
+            {
+                place.Visits += 1;
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
 

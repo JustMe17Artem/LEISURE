@@ -32,9 +32,23 @@ namespace WpfLeisure.Pages
             currentOwner = DataAccess.GetCurrentOwner(user);
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
             DataContext = this;
+            TBName.IsReadOnly = true;
+            TBAdress.IsReadOnly = true;
+            TBCapacity.IsReadOnly = true;
+            TBType.IsReadOnly = true;
+            TBVisits.IsReadOnly = true;
+            currentPlace = place;
+            TBName.Text = place.Name;
+            TBType.Text = place.Place_Type.Name;
+            TBAdress.Text = place.Adress;
+            TBCapacity.Text = place.Capacity.ToString();
+            TBVisits.Text = place.Visits.ToString();
+            BtnAddPhoto.Visibility = Visibility.Hidden;
+            BtnAddPlace.Visibility = Visibility.Hidden;
             BtnSavePlace.Visibility = Visibility.Hidden;
             BtnClosePlace.Visibility = Visibility.Hidden;
-            currentPlace = place;
+            DataContext = currentPlace;
+            
         }
         public PlacePage(Place place, Owner owner)
         {
@@ -47,8 +61,12 @@ namespace WpfLeisure.Pages
             CBType.SelectedItem = place.Place_Type;
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
             BtnAddPlace.Visibility = Visibility.Hidden;
+            TBType.Visibility = Visibility.Hidden;
+            TBVisits.IsReadOnly = true;
+            TBVisits.Text = currentPlace.Visits.ToString();
             BtnSavePlace.Visibility = Visibility.Visible;
             BtnClosePlace.Visibility = Visibility.Visible;
+            BtnVisit.Visibility = Visibility.Hidden;
             DataContext = currentPlace;
 
         }
@@ -101,6 +119,11 @@ namespace WpfLeisure.Pages
                 currentPlace.Photo = File.ReadAllBytes(openFile.FileName);
                 PlacePhoto.Source = new BitmapImage(new Uri(openFile.FileName));
             }
+        }
+
+        private void BtnVisit_Click(object sender, RoutedEventArgs e)
+        {
+            DataAccess.AddVisitToPlace(currentPlace);
         }
     }
 }

@@ -9,13 +9,13 @@
       Title="AuthoPage">
 
     <Grid>
-        <StackPanel Background="Black">
+        <StackPanel Background="White">
             <Image Source="C:\Users\ИМЕННО ОН\Desktop\картинки\entertainment-ideas-for-corporate-events-1.jpg"
                Height="810"
                 Margin="340,0,0,0"/>
         </StackPanel>
         <StackPanel Width="370"
-                    Background="Black"
+                    Background="White"
                     HorizontalAlignment="Left"
                     Margin="0,0,0,10">
             <StackPanel Width="300" 
