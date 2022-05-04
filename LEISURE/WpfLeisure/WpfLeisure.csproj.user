@@ -16,6 +16,9 @@
     <Compile Update="Pages\PlacePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\PlacesPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\RegPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\PlacePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\PlacesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\RegPage.xaml">

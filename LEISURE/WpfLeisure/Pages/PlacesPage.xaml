@@ -1,0 +1,91 @@
+﻿<Page x:Class="WpfLeisure.Pages.PlacesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfLeisure.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PlacesPage">
+
+    <Grid>
+        <StackPanel Width="500"
+                    Height="400"
+                    HorizontalAlignment="Left">
+            <ListView x:Name="LVPlaces"  
+                      Background="Gray"
+                  ItemsSource="{Binding Places}" 
+                      Height="400"
+                  SelectionChanged="LVPlaces_SelectionChanged">
+                <ListView.ItemsPanel >
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="3"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <StackPanel Width="100" Height="150" Margin="10,10,10,10">
+                            <Image Source="{Binding Photo}" Height="70"/>
+                            <TextBlock Text="{Binding Name}" 
+                                       FontSize="15"  
+                                       TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Adress}"
+                                       FontSize="15"  
+                                       TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <StackPanel Width="200"
+                    x:Name="PlaceData"
+                    HorizontalAlignment="Right"
+                    Height="300"
+                    Margin="0,0,10,0">
+            <Image x:Name="ImgPlace"
+                   Source="{Binding Photo}"
+                   Height="100"
+                   Width="150"
+                   Margin="0,0,0,10"/>
+            
+            <TextBox x:Name="TBName"
+                     Margin="0,0,0,10"
+                     Height="30"
+                     IsReadOnly="True"/>
+            
+            <TextBox x:Name="TBType"
+                     Margin="0,0,0,10"
+                     Height="30"
+                     IsReadOnly="True"/>
+
+            <TextBox x:Name="TBAdress"
+                     Margin="0,0,0,10"
+                     Height="30"
+                     IsReadOnly="True"/>
+            
+            <TextBox x:Name="TBCapacity"
+                     Margin="0,0,0,10"
+                     Height="30"
+                     IsReadOnly="True"/>
+
+            <TextBox x:Name="TBOpen"
+                     Margin="0,0,0,10"
+                     Height="30"
+                     IsReadOnly="True"/>
+            
+            <TextBox x:Name="TBVisits"
+                     Margin="0,0,0,10"
+                     Height="30"
+                     IsReadOnly="True"/>
+
+           
+        </StackPanel>
+        <Button x:Name="BtnNewPlace"
+                    Click="BtnNewPlace_Click"
+                    Content="Новый объект" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0,50,30"/>
+
+    </Grid>
+</Page>

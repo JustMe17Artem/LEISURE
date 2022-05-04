@@ -13,6 +13,7 @@ namespace Core.Classes_Core
         private static ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
         private static ObservableCollection<User> users = new ObservableCollection<User>(DB_Connection.connection.User);
         private static ObservableCollection<Owner> managers = new ObservableCollection<Owner>(DB_Connection.connection.Owner);
+        private static ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
         public static ObservableCollection<Role> GetRoles()
         {
             return roles;
@@ -45,6 +46,11 @@ namespace Core.Classes_Core
         {   
             Owner owner = user.Owner.Where(o => o.ID_User == user.Id).FirstOrDefault();
             return owner;
+        }
+        public static Client GetCurrentClient(User user)
+        {
+            Client client = user.Client.Where(o => o.ID_User == user.Id).FirstOrDefault();
+            return client;
         }
 
         public static bool AddNewPlace(string name, int idType, string adress, int idOwner, int capacity, byte[] photo)
@@ -116,6 +122,50 @@ namespace Core.Classes_Core
 
         }
 
+        public static ObservableCollection<Place> GetPlacesByOwner(Owner owner)
+        {
+            return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Owner == owner.Id));
+        }
+
+        public static bool CurrentUserIsClient(User user)
+        {
+            var client = clients.Where(c => c.ID_User == user.Id).ToList();
+            return client.Count == 1;
+        }
+
+        public static bool EditPlace(Place place,  string name, int idType, string adress, int capacity, byte[] photo)
+        {
+            try
+            {
+                place.Name = name;
+                place.ID_Type = idType;
+                place.Adress = adress;
+                place.Capacity = capacity;
+                place.IsOpen = true;
+                place.Visits = 0;
+                place.Photo = photo;
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool ClosePlace(Place place)
+        {
+            try
+            {
+                place.IsOpen = false;
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
     }

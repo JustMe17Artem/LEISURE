@@ -36,9 +36,21 @@ namespace WpfLeisure.Pages
             BtnClosePlace.Visibility = Visibility.Hidden;
             currentPlace = place;
         }
-        public PlacePage(Place place)
+        public PlacePage(Place place, Owner owner)
         {
+            InitializeComponent();
+            currentPlace = place;
+            currentOwner = owner;
+            TBName.Text = place.Name;
+            TBAdress.Text = place.Adress;
+            TBCapacity.Text = place.Capacity.ToString();
+            CBType.SelectedItem = place.Place_Type;
+            CBType.ItemsSource = DataAccess.GetPlaceTypes();
             BtnAddPlace.Visibility = Visibility.Hidden;
+            BtnSavePlace.Visibility = Visibility.Visible;
+            BtnClosePlace.Visibility = Visibility.Visible;
+            DataContext = currentPlace;
+
         }
 
         private void BtnAddPlace_Click(object sender, RoutedEventArgs e)
@@ -52,16 +64,30 @@ namespace WpfLeisure.Pages
             {
                 MessageBox.Show(ex.Message);
             }
+            MessageBox.Show("Новое место добавлено");
+            NavigationService.Navigate(new PlacesPage(currentOwner.User));
         }
 
         private void BtnSavePlace_Click(object sender, RoutedEventArgs e)
         {
-
+            var type = CBType.SelectedItem as Place_Type;
+            try
+            {
+                DataAccess.EditPlace(currentPlace, TBName.Text, type.Id, TBAdress.Text, Int32.Parse(TBCapacity.Text), currentPlace.Photo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            MessageBox.Show("Место изменено");
+            NavigationService.Navigate(new PlacesPage(currentOwner.User));
         }
 
         private void BtnClosePlace_Click(object sender, RoutedEventArgs e)
         {
-
+            DataAccess.ClosePlace(currentPlace);
+            MessageBox.Show("Объект закрыт");
+            NavigationService.Navigate(new PlacesPage(currentOwner.User));
         }
 
         private void BtnAddPhoto_Click(object sender, RoutedEventArgs e)

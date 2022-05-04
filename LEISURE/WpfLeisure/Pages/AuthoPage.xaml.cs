@@ -41,7 +41,7 @@ namespace WpfLeisure.Pages
                 if (currentUser.ID_Role == 1)
                     NavigationService.Navigate(new ActivitiesPage());
                 else
-                    NavigationService.Navigate(new PlacePage(currentUser, new Place()));
+                    NavigationService.Navigate(new PlacesPage(currentUser));
 
             }
         }

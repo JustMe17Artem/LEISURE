@@ -46,7 +46,7 @@
             <TextBlock Text="Вместительность:"
                        FontSize="20"
                        Margin="0,0,0,10"
-                       Width="100"
+                       Width="195"
                        HorizontalAlignment="Left"/>
 
             <TextBox x:Name="TBCapacity"
@@ -62,7 +62,7 @@
                        Width="100"
                        HorizontalAlignment="Left"/>
 
-            <ComboBox SelectedItem="{Binding Type}" 
+            <ComboBox  SelectedItem="{Binding Place_Type}" 
                       DisplayMemberPath="Name" 
                       x:Name="CBType"
                       Height="25"
@@ -71,13 +71,14 @@
                       VerticalAlignment="Center"
                   Grid.Column="1"
                   Grid.Row="3"/>
+           
 
 
 
 
         </StackPanel>
         
-        <Image Source="{Binding Place.Photo}" 
+        <Image Source="{Binding Photo}" 
                    Width="300"
                HorizontalAlignment="Center"
                    Height="200"
@@ -86,8 +87,6 @@
         
         <Button x:Name="BtnAddPhoto" 
                 Click="BtnAddPhoto_Click"
-                Width="90"
-                Height="30"
                 Content="Добавить фото"
                 VerticalAlignment="Bottom"
                 Margin="120,0,0,50"/>
@@ -100,22 +99,16 @@
 
             <Button x:Name="BtnAddPlace"
                     Click="BtnAddPlace_Click"
-                    Width="100"
-                    Height="30"
                     Content="Создать"
                     Margin="0,0,0,10"/>
 
             <Button x:Name="BtnSavePlace"
                     Click="BtnSavePlace_Click"
-                    Width="100"
-                    Height="30"
                     Content="Сохранить"
                     Margin="0,0,0,10"/>
 
             <Button x:Name="BtnClosePlace"
                     Click="BtnClosePlace_Click"
-                    Width="100"
-                    Height="30"
                     Content="Закрыть"
                     Margin="0,0,0,10"/>
 
