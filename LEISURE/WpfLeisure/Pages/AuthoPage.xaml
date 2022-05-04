@@ -16,14 +16,18 @@
         </StackPanel>
         <StackPanel Width="370"
                     Background="Black"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,10">
             <StackPanel Width="300" 
-                    Height="250"
-                    Margin="10,300,0,30"
+                    Height="280"
+                    Margin="10,200,0,30"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    Background="Aqua">
-
+                    Background="AliceBlue">
+                <TextBlock Text="Авторизация"
+                            FontSize="23"
+                           TextAlignment="Center"/>
+                
                 <TextBlock Text="Логин:"
                        Margin="0,0,0,10"
                        FontSize="20"/>
@@ -62,10 +66,11 @@
                     VerticalAlignment="Bottom"
                     Width="300"
                     Height="100"
-                    Margin="10,100,0,0"
+                    Margin="10,100,10,20"
                      Background="AliceBlue">
                 <TextBlock Text="Ещё не зарегестрированы?"
-                       FontSize="20"
+                       FontSize="23"
+                           TextAlignment="Center"
                        Margin="0,0,0,20"/>
 
                 <Button x:Name="BtnReg"

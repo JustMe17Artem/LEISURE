@@ -8,7 +8,7 @@
       d:DesignHeight="810" d:DesignWidth="1440"
       Title="PlacesPage">
 
-    <Grid>
+    <Grid Background="Black">
         <StackPanel x:Name="SearchPanel"
                     Margin="-280,10,0,0"
                     Width="450"
@@ -31,7 +31,7 @@
                       VerticalAlignment="Top" SelectionChanged="CBType_SelectionChanged"/>
         </StackPanel>
 
-        <StackPanel Width="900"
+        <StackPanel Width="1000"
                     Height="700"
                     Margin="0,50,0,0"
                     HorizontalAlignment="Left">
@@ -39,6 +39,8 @@
                       Background="Black"
                   ItemsSource="{Binding Places}" 
                       Height="700"
+                      Width="1000"
+                      BorderBrush="Black"
                   SelectionChanged="LVPlaces_SelectionChanged">
                 <ListView.ItemsPanel >
                     <ItemsPanelTemplate>
