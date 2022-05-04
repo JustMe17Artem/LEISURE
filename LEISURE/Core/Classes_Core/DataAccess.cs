@@ -18,6 +18,10 @@ namespace Core.Classes_Core
         {
             return roles;
         }
+        public static IEnumerable<Place> GetPlacesList()
+        {
+            return (IEnumerable<Place>)DataAccess.GetPlaces().Where(p => p.IsOpen == true).ToList();
+        }
         public static ObservableCollection<Place_Type> GetPlaceTypes()  
         {
             ObservableCollection<Place_Type> placeTypes = new ObservableCollection<Place_Type>(DB_Connection.connection.Place_Type);
@@ -127,6 +131,16 @@ namespace Core.Classes_Core
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Owner == owner.Id));
         }
 
+
+        public static ObservableCollection<Place> GetPlacesByNameOrAdress(string content)
+        {
+            return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(place => (place.Name.Contains(content) || place.Adress.Contains(content)) && place.IsOpen == true));
+        }
+        public static ObservableCollection<Place> GetPlaces()
+        {
+            return new ObservableCollection<Place>(DB_Connection.connection.Place);
+        }
+
         public static bool CurrentUserIsClient(User user)
         {
             var client = clients.Where(c => c.ID_User == user.Id).ToList();
@@ -165,6 +179,10 @@ namespace Core.Classes_Core
             {
                 return false;
             }
+        }
+        public static ObservableCollection<Place> GetPlacesByType(int id)
+        {
+            return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Type == id || p.ID_Type == -1));
         }
 
 

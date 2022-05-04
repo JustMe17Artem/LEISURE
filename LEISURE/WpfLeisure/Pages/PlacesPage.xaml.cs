@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Core.ado;
 using Core.Classes_Core;
+using System.Linq;
 
 namespace WpfLeisure.Pages
 {
@@ -29,14 +30,21 @@ namespace WpfLeisure.Pages
             currentUser = user;
             currentOwner = DataAccess.GetCurrentOwner(user);
             currentClient = DataAccess.GetCurrentClient(user);
-            LVPlaces.ItemsSource = DataAccess.GetPlacesByOwner(currentOwner);
+            
             if(DataAccess.CurrentUserIsClient(currentUser))
             {
                 BtnNewPlace.Visibility = Visibility.Hidden;
+                LVPlaces.ItemsSource = DataAccess.GetPlaces();
+                CBType.ItemsSource = DataAccess.GetPlaceTypes();
+                var alltypes = DataAccess.GetPlaceTypes();
+                alltypes.Insert(0, new Place_Type() { Id = -1, Name = "Все" });
+                CBType.ItemsSource = alltypes;
             }
             else
             {
                 PlaceData.Visibility = Visibility.Hidden;
+                SearchPanel.Visibility = Visibility.Hidden;
+                LVPlaces.ItemsSource = DataAccess.GetPlacesByOwner(currentOwner);
             }
         }
 
@@ -66,6 +74,36 @@ namespace WpfLeisure.Pages
         private void BtnNewPlace_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new PlacePage(currentOwner.User, new Place()));
+        }
+
+        private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
+        }
+        private void Filter()
+        {
+            var filterPlace = DataAccess.GetPlacesList();
+
+            if (TBSearch.Text != "")
+            {
+                filterPlace = DataAccess.GetPlacesByNameOrAdress(TBSearch.Text);
+            }
+            if (CBType.SelectedIndex == 0)
+            {
+                filterPlace = DataAccess.GetPlacesByNameOrAdress(TBSearch.Text);
+            }
+
+            else if (CBType.SelectedIndex > 0)
+            {
+                var type = CBType.SelectedItem as Place_Type;
+                filterPlace = DataAccess.GetPlacesByType(type.Id);
+            }
+            LVPlaces.ItemsSource = filterPlace;
+        }
+
+        private void CBType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter();
         }
     }
 }

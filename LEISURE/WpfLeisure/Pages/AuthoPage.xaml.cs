@@ -38,8 +38,8 @@ namespace WpfLeisure.Pages
                     Properties.Settings.Default.login = null;
                 Properties.Settings.Default.Save();
                 MessageBox.Show("Добро пожаловать");
-                if (currentUser.ID_Role == 1)
-                    NavigationService.Navigate(new ActivitiesPage());
+                if (DataAccess.CurrentUserIsClient(currentUser))
+                    NavigationService.Navigate(new PlacesPage(currentUser));
                 else
                     NavigationService.Navigate(new PlacesPage(currentUser));
 
