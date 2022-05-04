@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfLeisure.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="810" d:DesignWidth="1440"
       Title="PlacesPage">
 
     <Grid>
@@ -14,14 +14,14 @@
                     Width="450"
                     Height="30"
                     VerticalAlignment="Top">
-            
+
             <TextBox x:Name="TBSearch"
                      Width="300"
                      VerticalAlignment="Bottom"
                      Height="30"
                      HorizontalAlignment="Left"
                      TextChanged="TBSearch_TextChanged"/>
-            
+
             <ComboBox  DisplayMemberPath="Name" 
                       x:Name="CBType"
                       Height="30"
@@ -30,15 +30,15 @@
                   HorizontalAlignment="Right"
                       VerticalAlignment="Top" SelectionChanged="CBType_SelectionChanged"/>
         </StackPanel>
-        
-        <StackPanel Width="500"
-                    Height="350"
+
+        <StackPanel Width="900"
+                    Height="700"
                     Margin="0,50,0,0"
                     HorizontalAlignment="Left">
             <ListView x:Name="LVPlaces"  
-                      Background="Gray"
+                      Background="Black"
                   ItemsSource="{Binding Places}" 
-                      Height="400"
+                      Height="700"
                   SelectionChanged="LVPlaces_SelectionChanged">
                 <ListView.ItemsPanel >
                     <ItemsPanelTemplate>
@@ -47,35 +47,35 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate >
-                        <StackPanel Width="100" Height="150" Margin="10,10,10,10">
-                            <Image Source="{Binding Photo}" Height="70"/>
+                        <StackPanel Width="200" Height="200" Margin="10,0,0,10" Background="White">
+                            <Image Source="{Binding Photo}" Height="150" Width="255"/>
                             <TextBlock Text="{Binding Name}" 
                                        FontSize="15"  
-                                       TextWrapping="Wrap"/>
-                            <TextBlock Text="{Binding Adress}"
-                                       FontSize="15"  
+                                       TextAlignment="Center"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <StackPanel Width="200"
+        <StackPanel Width="400"
                     x:Name="PlaceData"
                     HorizontalAlignment="Right"
-                    Height="300"
-                    Margin="0,0,10,0">
+                    Height="800"
+                    Margin="0,0,10,0"
+                    VerticalAlignment="Top">
             <Image x:Name="ImgPlace"
                    Source="{Binding Photo}"
-                   Height="100"
-                   Width="150"
+                   Height="300"
+                   Width="400"
                    Margin="0,0,0,10"/>
-            
+
             <TextBox x:Name="TBName"
                      Margin="0,0,0,10"
-                     Height="30"
+                     Height="60"
+                     TextWrapping="Wrap"
                      IsReadOnly="True"/>
-            
+
             <TextBox x:Name="TBType"
                      Margin="0,0,0,10"
                      Height="30"
@@ -85,7 +85,7 @@
                      Margin="0,0,0,10"
                      Height="30"
                      IsReadOnly="True"/>
-            
+
             <TextBox x:Name="TBCapacity"
                      Margin="0,0,0,10"
                      Height="30"
@@ -95,20 +95,20 @@
                      Margin="0,0,0,10"
                      Height="30"
                      IsReadOnly="True"/>
-            
+
             <TextBox x:Name="TBVisits"
                      Margin="0,0,0,10"
                      Height="30"
                      IsReadOnly="True"/>
 
-           
+
         </StackPanel>
         <Button x:Name="BtnNewPlace"
                     Click="BtnNewPlace_Click"
                     Content="Новый объект" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Margin="0,0,50,30"/>
+                Margin="0,0,354,719" RenderTransformOrigin="-1.905,-11.067"/>
 
     </Grid>
 </Page>

@@ -34,7 +34,8 @@ namespace WpfLeisure.Pages
             if(DataAccess.CurrentUserIsClient(currentUser))
             {
                 BtnNewPlace.Visibility = Visibility.Hidden;
-                LVPlaces.ItemsSource = DataAccess.GetPlaces();
+                LVPlaces.ItemsSource = DataAccess.GetPlacesList();
+                
                 CBType.ItemsSource = DataAccess.GetPlaceTypes();
                 var alltypes = DataAccess.GetPlaceTypes();
                 alltypes.Insert(0, new Place_Type() { Id = -1, Name = "Все" });
