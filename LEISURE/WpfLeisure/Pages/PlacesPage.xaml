@@ -10,16 +10,15 @@
 
     <Grid Background="White">
         <StackPanel x:Name="SearchPanel"
-                    Margin="-280,10,0,0"
-                    Width="450"
+                    Margin="-280,80,0,0"
+                    Width="550"
                     Height="30"
                     VerticalAlignment="Top">
 
             <TextBox x:Name="TBSearch"
-                     Width="300"
-                     VerticalAlignment="Bottom"
+                     Width="370"
                      Height="30"
-                     HorizontalAlignment="Left"
+                     Margin="-160,0,0,0"
                      TextChanged="TBSearch_TextChanged"/>
 
             <ComboBox  DisplayMemberPath="Name" 
@@ -31,26 +30,29 @@
                       VerticalAlignment="Top" SelectionChanged="CBType_SelectionChanged"/>
         </StackPanel>
 
-        <StackPanel Width="1400"
+        <StackPanel Width="1200"
                     Height="600"
                     Margin="20,120,0,0"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Center">
             <ListView x:Name="LVPlaces"  
                       Background="White"
                   ItemsSource="{Binding Places}" 
-                      Height="604"
-                      Width="1400"
+                      Height="554"
+                      Width="1200"
                       BorderBrush="White"
                   SelectionChanged="LVPlaces_SelectionChanged">
-                <ListView.ItemsPanel >
+                <ListView.ItemsPanel  >
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="4"/>
+                        <UniformGrid Columns="4" HorizontalAlignment="Center"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <StackPanel Width="200" Height="200" Margin="10,0,0,10" Background="Black" >
-                            <Image Source="{Binding Photo}" Height="150" Width="255"/>
+                    <DataTemplate>
+                        <StackPanel Width="220" Height="200"
+                                    Margin="0,0,0,10"
+                                    Background="Black" 
+                                    HorizontalAlignment="Center" >
+                            <Image Source="{Binding Photo}" Height="150" Width="300"/>
                             <TextBlock Text="{Binding Name}" 
                                        FontSize="15"  
                                        Foreground="White"
@@ -61,60 +63,19 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <!--<StackPanel Width="400"
-                    x:Name="PlaceData"
-                    HorizontalAlignment="Right"
-                    Height="800"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Top">
-            <Image x:Name="ImgPlace"
-                   Source="{Binding Photo}"
-                   Height="300"
-                   Width="400"
-                   Margin="0,0,0,10"/>
-
-            <TextBox x:Name="TBName"
-                     Margin="0,0,0,10"
-                     Height="60"
-                     TextWrapping="Wrap"
-                     IsReadOnly="True"/>
-
-            <TextBox x:Name="TBType"
-                     Margin="0,0,0,10"
-                     Height="30"
-                     IsReadOnly="True"/>
-
-            <TextBox x:Name="TBAdress"
-                     Margin="0,0,0,10"
-                     Height="30"
-                     IsReadOnly="True"/>
-
-            <TextBox x:Name="TBCapacity"
-                     Margin="0,0,0,10"
-                     Height="30"
-                     IsReadOnly="True"/>
-
-
-            <TextBox x:Name="TBVisits"
-                     Margin="0,0,0,10"
-                     Height="30"
-                     IsReadOnly="True"/>
-
-
-        </StackPanel>-->
         <Button x:Name="BtnNewPlace"
                     Click="BtnNewPlace_Click"
                     Content="Новый объект" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Margin="0,0,398,697"/>
+                Margin="0,0,398,700"/>
 
         <Button x:Name="BtnRequests"
                     Click="BtnRequests_Click"
                     Content="Заявки" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Margin="0,0,221,697"/>
+                Margin="0,0,221,700"/>
 
 
 

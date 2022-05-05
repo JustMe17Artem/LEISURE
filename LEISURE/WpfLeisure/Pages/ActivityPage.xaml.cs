@@ -122,7 +122,7 @@ namespace WpfLeisure.Pages
         {
             DataAccess.AcceptRequest(currentRequest);
             try
-            
+            {
                 DataAccess.AddActivityByRequest(currentRequest);
                 MessageBox.Show("Заявка принята, мероприятие создано");
             }
@@ -130,8 +130,6 @@ namespace WpfLeisure.Pages
             {
                 MessageBox.Show(ex.Message);
             }
-           
-            
         }
     }
 }
