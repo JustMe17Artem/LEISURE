@@ -27,6 +27,7 @@ namespace WpfLeisure.Pages
         private static Place currentPlace;
         private static Activity currentActivity;
         private static Request currentRequest;
+        private static byte[] photo { get; set; }
         public ActivityPage(Client client, Place place, Request request)
         {
             InitializeComponent();
@@ -47,19 +48,20 @@ namespace WpfLeisure.Pages
             InitializeComponent();
             currentOwner = owner;
             currentRequest = request;
+            photo = request.Photo;
             BtnAddPhoto.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
             BtnAddActivity.Visibility = Visibility.Hidden;
             CBType.Visibility = Visibility.Hidden;
             TblVisits.Visibility = Visibility.Hidden;
             TBVisits.Visibility = Visibility.Hidden;
-            TBContactInfo.Text = request.ContactInfo;
-            TBName.Text = request.Name;
-            TBPrice.Text = request.Price.ToString();
-            TBType.Text = request.Activity_Type.Name;
-            DPStart.SelectedDate = request.DateStart;
-            DPEnd.SelectedDate = request.DateEnd;
-            TBDescription.Text = request.Description;
+            TBContactInfo.Text = currentRequest.ContactInfo;
+            TBName.Text = currentRequest.Name;
+            TBPrice.Text = currentRequest.Price.ToString();
+            TBType.Text = currentRequest.Activity_Type.Name;
+            DPStart.SelectedDate = currentRequest.DateStart;
+            DPEnd.SelectedDate = currentRequest.DateEnd;
+            TBDescription.Text = currentRequest.Description;
             TBContactInfo.IsEnabled = false;
             TBName.IsEnabled = false;
             TBPrice.IsEnabled = false;
@@ -116,11 +118,20 @@ namespace WpfLeisure.Pages
             MessageBox.Show("Заявка отклонена");
         }
 
-        private void BtnAcceptRequest_Click(object sender, RoutedEventArgs e)
+        private void BtnAcceptRequest_Click_1(object sender, RoutedEventArgs e)
         {
             DataAccess.AcceptRequest(currentRequest);
-            MessageBox.Show("Заявка принята, мероприятие создано");
-            //DataAccess.AddNewActivity(currenctRequest);
+            try
+            
+                DataAccess.AddActivityByRequest(currentRequest);
+                MessageBox.Show("Заявка принята, мероприятие создано");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+            
         }
     }
 }

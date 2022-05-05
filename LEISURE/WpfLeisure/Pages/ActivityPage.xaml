@@ -119,15 +119,15 @@
                      HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <Button Width="120"
+        <Button Width="Auto"
                 x:Name="BtnAddActivity"
                 Click="BtnAddActivity_Click"
                 Content="Подать заявку"
-                Height="30" Margin="78,538,1242,242"/>
+                Height="Auto" Margin="815,573,488,146"/>
 
         <Button Width="Auto"
                 x:Name="BtnAcceptRequest"
-                Click="BtnAcceptRequest_Click"
+                Click="BtnAcceptRequest_Click_1"
                 Content="Принять заявку"
                 Height="Auto" Margin="875,691,410,39" />
 

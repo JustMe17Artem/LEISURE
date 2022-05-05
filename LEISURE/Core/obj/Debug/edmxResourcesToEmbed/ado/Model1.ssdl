@@ -12,9 +12,9 @@
     <Property Name="Start_Date" Type="datetime" />
     <Property Name="End_Date" Type="datetime" />
     <Property Name="ID_Type" Type="int" />
-    <Property Name="Photo" Type="varbinary" MaxLength="100" />
+    <Property Name="Photo" Type="varbinary(max)" />
     <Property Name="ID_Request" Type="int" />
-    <Property Name="Vistits" Type="int" />
+    <Property Name="Visits" Type="int" />
   </EntityType>
   <EntityType Name="Activity_Type">
     <Key>

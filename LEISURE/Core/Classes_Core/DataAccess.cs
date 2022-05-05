@@ -168,6 +168,31 @@ namespace Core.Classes_Core
             }
         }
 
+        public static bool AddActivityByRequest(Request request)
+        {
+            try
+            {
+                Activity activity = new Activity();
+                activity.Name = request.Name;
+                activity.Description = request.Description;
+                activity.Price = request.Price;
+                activity.ID_Place = request.ID_Place;
+                activity.Start_Date = request.DateStart;
+                activity.End_Date = request.DateEnd;
+                activity.Photo = request.Photo;
+                activity.ID_Type = request.ID_Type;
+                activity.ID_Request = request.Id;
+                activity.Visits = 0;
+                DB_Connection.connection.Activity.Add(activity);
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static bool AddNewRequest(Place place, DateTime start, DateTime end, float price, string description, byte[]photo, string name, int idType, string info)
         {
             try

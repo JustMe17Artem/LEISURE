@@ -17,9 +17,9 @@
           <Property Name="Start_Date" Type="datetime" />
           <Property Name="End_Date" Type="datetime" />
           <Property Name="ID_Type" Type="int" />
-          <Property Name="Photo" Type="varbinary" MaxLength="100" />
+          <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="ID_Request" Type="int" />
-          <Property Name="Vistits" Type="int" />
+          <Property Name="Visits" Type="int" />
         </EntityType>
         <EntityType Name="Activity_Type">
           <Key>
@@ -352,12 +352,12 @@
           <Property Name="Start_Date" Type="DateTime" Precision="3" />
           <Property Name="End_Date" Type="DateTime" Precision="3" />
           <Property Name="ID_Type" Type="Int32" />
-          <Property Name="Photo" Type="Binary" MaxLength="100" FixedLength="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Activity_Type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_Type" />
           <NavigationProperty Name="Place" Relationship="Self.FK_Activity_Place" FromRole="Activity" ToRole="Place" />
           <Property Name="ID_Request" Type="Int32" />
           <NavigationProperty Name="Request" Relationship="LEISURE_KursachModel.FK_Activity_Request" FromRole="Activity" ToRole="Request" />
-          <Property Name="Vistits" Type="Int32" />
+          <Property Name="Visits" Type="Int32" />
         </EntityType>
         <EntityType Name="Activity_Type">
           <Key>
@@ -704,7 +704,7 @@
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="LEISURE_KursachModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="Vistits" ColumnName="Vistits" />
+                <ScalarProperty Name="Visits" ColumnName="Visits" />
                 <ScalarProperty Name="ID_Request" ColumnName="ID_Request" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
