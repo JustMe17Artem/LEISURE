@@ -107,7 +107,9 @@
                     Content="Новый объект" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Margin="0,0,392,770" RenderTransformOrigin="-1.905,-11.067"/>
+                Margin="0,0,392,770"/>
+
+       
 
     </Grid>
 </Page>

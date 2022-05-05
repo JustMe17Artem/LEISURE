@@ -83,6 +83,9 @@
     <Compile Include="ado\Place_Type.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ado\Request.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ado\Review.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

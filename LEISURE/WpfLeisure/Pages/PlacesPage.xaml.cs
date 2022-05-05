@@ -98,5 +98,10 @@ namespace WpfLeisure.Pages
             LVPlaces.SelectedItem = null;
             Filter();
         }
+
+        private void BtnNewRequest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

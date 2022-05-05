@@ -10,6 +10,9 @@
     <Compile Update="Pages\ActivitiesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\ActivityPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\AuthoPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\ActivitiesPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ActivityPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\AuthoPage.xaml">

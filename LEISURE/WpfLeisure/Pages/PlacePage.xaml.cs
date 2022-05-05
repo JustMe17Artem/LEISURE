@@ -32,12 +32,12 @@ namespace WpfLeisure.Pages
             InitializeComponent();
             currentUser = user;
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
-            DataContext = this;
+            //DataContext = this;
             TBName.IsReadOnly = true;
             TBAdress.IsReadOnly = true;
             TBCapacity.IsReadOnly = true;
             TBType.IsReadOnly = true;
-            TBVisits.IsReadOnly = true;
+            TBDescription.IsReadOnly = true;
             currentPlace = place;
             TBName.Text = place.Name;
             TBType.Text = place.Place_Type.Name;
@@ -50,14 +50,13 @@ namespace WpfLeisure.Pages
             BtnClosePlace.Visibility = Visibility.Hidden;
             LVReviews.ItemsSource = DataAccess.GetReviews(currentPlace.Id);
             DataContext = currentPlace;
-
-            
         }
         public PlacePage(Place place, Owner owner)
         {
             InitializeComponent();
             currentPlace = place;
             currentOwner = owner;
+            BtnNewRequest.Visibility = Visibility.Hidden;
             TBName.Text = place.Name;
             TBAdress.Text = place.Adress;
             TBCapacity.Text = place.Capacity.ToString();
@@ -65,13 +64,13 @@ namespace WpfLeisure.Pages
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
             BtnAddPlace.Visibility = Visibility.Hidden;
             TBType.Visibility = Visibility.Hidden;
-            TBVisits.IsReadOnly = true;
             TBVisits.Text = currentPlace.Visits.ToString();
             BtnSavePlace.Visibility = Visibility.Visible;
             BtnClosePlace.Visibility = Visibility.Visible;
             BtnVisit.Visibility = Visibility.Hidden;
             BtnAddReview.Visibility = Visibility.Visible;
             TBReview.Visibility = Visibility.Visible;
+            LVReviews.ItemsSource = DataAccess.GetReviews(currentPlace.Id);
             DataContext = currentPlace;
 
         }
@@ -81,7 +80,7 @@ namespace WpfLeisure.Pages
             var type = CBType.SelectedItem as Place_Type;
             try
             {
-                DataAccess.AddNewPlace(TBName.Text, type.Id, TBAdress.Text, currentOwner.Id, Int32.Parse(TBCapacity.Text), currentPlace.Photo);
+                DataAccess.AddNewPlace(TBName.Text, type.Id, TBAdress.Text, currentOwner.Id, Int32.Parse(TBCapacity.Text), currentPlace.Photo, TBDescription.Text);
             }
             catch (Exception ex)
             {
@@ -134,6 +133,11 @@ namespace WpfLeisure.Pages
         private void BtnAddReview_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.AddNewReview(DataAccess.GetCurrentClient(currentUser).Id, currentPlace.Id, TBReview.Text);
+        }
+
+        private void BtnNewRequest_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ActivityPage(DataAccess.GetCurrentClient(currentUser), currentPlace, new Request()));
         }
     }
 }

@@ -18,6 +18,8 @@
           <Property Name="End_Date" Type="datetime" />
           <Property Name="ID_Type" Type="int" />
           <Property Name="Photo" Type="varbinary" MaxLength="100" />
+          <Property Name="ID_Request" Type="int" />
+          <Property Name="Vistits" Type="int" />
         </EntityType>
         <EntityType Name="Activity_Type">
           <Key>
@@ -60,6 +62,7 @@
           <Property Name="IsOpen" Type="bit" />
           <Property Name="Visits" Type="int" />
           <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Place_Type">
           <Key>
@@ -67,6 +70,20 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Place" Type="int" />
+          <Property Name="DateStart" Type="datetime" />
+          <Property Name="DateEnd" Type="datetime" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Type" Type="int" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -128,6 +145,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Activity_Request">
+          <End Role="Request" Type="Self.Request" Multiplicity="0..1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="ID_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Client_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
@@ -161,6 +190,30 @@
             </Principal>
             <Dependent Role="Place">
               <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Activity_Type">
+          <End Role="Activity_Type" Type="Self.Activity_Type" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity_Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Place">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="ID_Place" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -207,6 +260,7 @@
           <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Place_Type" EntityType="Self.Place_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -217,6 +271,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Activity_Place" Association="Self.FK_Activity_Place">
             <End Role="Place" EntitySet="Place" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_Request" Association="Self.FK_Activity_Request">
+            <End Role="Request" EntitySet="Request" />
             <End Role="Activity" EntitySet="Activity" />
           </AssociationSet>
           <AssociationSet Name="FK_Client_User" Association="Self.FK_Client_User">
@@ -230,6 +288,14 @@
           <AssociationSet Name="FK_Place_Place_Type" Association="Self.FK_Place_Place_Type">
             <End Role="Place_Type" EntitySet="Place_Type" />
             <End Role="Place" EntitySet="Place" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Activity_Type" Association="Self.FK_Request_Activity_Type">
+            <End Role="Activity_Type" EntitySet="Activity_Type" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Place" Association="Self.FK_Request_Place">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Request" EntitySet="Request" />
           </AssociationSet>
           <AssociationSet Name="FK_Review_Client" Association="Self.FK_Review_Client">
             <End Role="Client" EntitySet="Client" />
@@ -263,6 +329,9 @@
           <Property Name="Photo" Type="Binary" MaxLength="100" FixedLength="false" />
           <NavigationProperty Name="Activity_Type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_Type" />
           <NavigationProperty Name="Place" Relationship="Self.FK_Activity_Place" FromRole="Activity" ToRole="Place" />
+          <Property Name="ID_Request" Type="Int32" />
+          <NavigationProperty Name="Request" Relationship="LEISURE_KursachModel.FK_Activity_Request" FromRole="Activity" ToRole="Request" />
+          <Property Name="Vistits" Type="Int32" />
         </EntityType>
         <EntityType Name="Activity_Type">
           <Key>
@@ -271,6 +340,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity_Type" ToRole="Activity" />
+          <NavigationProperty Name="Request" Relationship="LEISURE_KursachModel.FK_Request_Activity_Type" FromRole="Activity_Type" ToRole="Request" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -312,6 +382,8 @@
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Place" FromRole="Place" ToRole="Activity" />
           <NavigationProperty Name="Place_Type" Relationship="Self.FK_Place_Place_Type" FromRole="Place" ToRole="Place_Type" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Review_Place" FromRole="Place" ToRole="Review" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="LEISURE_KursachModel.FK_Request_Place" FromRole="Place" ToRole="Request" />
         </EntityType>
         <EntityType Name="Place_Type">
           <Key>
@@ -502,7 +574,73 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <EntitySet Name="Request" EntityType="LEISURE_KursachModel.Request" />
+          <AssociationSet Name="FK_Activity_Request" Association="LEISURE_KursachModel.FK_Activity_Request">
+            <End Role="Request" EntitySet="Request" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Place" Association="LEISURE_KursachModel.FK_Request_Place">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Activity_Type" Association="LEISURE_KursachModel.FK_Request_Activity_Type">
+            <End Role="Activity_Type" EntitySet="Activity_Type" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Place" Type="Int32" />
+          <Property Name="DateStart" Type="DateTime" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Activity" Relationship="LEISURE_KursachModel.FK_Activity_Request" FromRole="Request" ToRole="Activity" />
+          <NavigationProperty Name="Place" Relationship="LEISURE_KursachModel.FK_Request_Place" FromRole="Request" ToRole="Place" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Type" Type="Int32" />
+          <NavigationProperty Name="Activity_Type" Relationship="LEISURE_KursachModel.FK_Request_Activity_Type" FromRole="Request" ToRole="Activity_Type" />
+        </EntityType>
+        <Association Name="FK_Activity_Request">
+          <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="0..1" />
+          <End Type="LEISURE_KursachModel.Activity" Role="Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="ID_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Place">
+          <End Type="LEISURE_KursachModel.Place" Role="Place" Multiplicity="0..1" />
+          <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="ID_Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Activity_Type">
+          <End Type="LEISURE_KursachModel.Activity_Type" Role="Activity_Type" Multiplicity="0..1" />
+          <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity_Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -512,6 +650,8 @@
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="LEISURE_KursachModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="Vistits" ColumnName="Vistits" />
+                <ScalarProperty Name="ID_Request" ColumnName="ID_Request" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -558,6 +698,7 @@
           <EntitySetMapping Name="Place">
             <EntityTypeMapping TypeName="LEISURE_KursachModel.Place">
               <MappingFragment StoreEntitySet="Place">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
@@ -615,6 +756,21 @@
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request">
+            <EntityTypeMapping TypeName="LEISURE_KursachModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="ID_Place" ColumnName="ID_Place" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

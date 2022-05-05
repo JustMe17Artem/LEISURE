@@ -19,6 +19,7 @@ namespace Core.ado
         {
             this.Activity = new HashSet<Activity>();
             this.Review = new HashSet<Review>();
+            this.Request = new HashSet<Request>();
         }
     
         public int Id { get; set; }
@@ -30,11 +31,14 @@ namespace Core.ado
         public Nullable<bool> IsOpen { get; set; }
         public Nullable<int> Visits { get; set; }
         public byte[] Photo { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }
         public virtual Place_Type Place_Type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Review { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Request> Request { get; set; }
     }
 }

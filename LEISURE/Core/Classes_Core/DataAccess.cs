@@ -57,7 +57,7 @@ namespace Core.Classes_Core
             return client;
         }
 
-        public static bool AddNewPlace(string name, int idType, string adress, int idOwner, int capacity, byte[] photo)
+        public static bool AddNewPlace(string name, int idType, string adress, int idOwner, int capacity, byte[] photo, string description)
         {
             Place place = new Place();
             place.Name = name;
@@ -67,6 +67,7 @@ namespace Core.Classes_Core
             place.Capacity = capacity;
             place.IsOpen = true;
             place.Visits = 0;
+            place.Description = description;
             place.Photo = photo;
             try
             {
@@ -167,6 +168,29 @@ namespace Core.Classes_Core
             }
         }
 
+        public static bool AddNewRequest(Place place, DateTime start, DateTime end, float price, string description, byte[]photo, string name, int idType)
+        {
+            try
+            {
+                Request request = new Request();
+                request.ID_Place = place.Id;
+                request.DateStart = start;
+                request.DateEnd = end;
+                request.Price = price;
+                request.Description = description;
+                request.Photo = photo;
+                request.Name = name;
+                request.ID_Type = idType;
+                DB_Connection.connection.Request.Add(request);
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static bool AddNewReview(int idClient, int idPlace, string message)
         {
             try
@@ -207,6 +231,12 @@ namespace Core.Classes_Core
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Type == id || p.ID_Type == -1));
         }
+
+        public static ObservableCollection<Activity_Type> GetActivityTypes()
+        {
+            return new ObservableCollection<Activity_Type>(DB_Connection.connection.Activity_Type);
+        }
+
         public static ObservableCollection<Review> GetReviews(int idPlace)
         {
             return new ObservableCollection<Review>(DB_Connection.connection.Review.Where(r => r.ID_Place == idPlace));
