@@ -168,7 +168,7 @@ namespace Core.Classes_Core
             }
         }
 
-        public static bool AddNewRequest(Place place, DateTime start, DateTime end, float price, string description, byte[]photo, string name, int idType)
+        public static bool AddNewRequest(Place place, DateTime start, DateTime end, float price, string description, byte[]photo, string name, int idType, string info)
         {
             try
             {
@@ -180,7 +180,9 @@ namespace Core.Classes_Core
                 request.Description = description;
                 request.Photo = photo;
                 request.Name = name;
+                request.ID_Status = 1;
                 request.ID_Type = idType;
+                request.ContactInfo = info;
                 DB_Connection.connection.Request.Add(request);
                 DB_Connection.connection.SaveChanges();
                 return true;
@@ -210,7 +212,10 @@ namespace Core.Classes_Core
             }
         }
 
-
+        public static ObservableCollection<Request> GetRequestsForOwner(int idOwner)
+        {
+            return new ObservableCollection<Request>(DB_Connection.connection.Request.Where(r => r.Place.ID_Owner == idOwner));
+        }
 
 
         public static bool ClosePlace(Place place)
@@ -247,6 +252,34 @@ namespace Core.Classes_Core
             try
             {
                 place.Visits += 1;
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AcceptRequest(Request request)
+        {
+            try
+            {
+                request.ID_Status = 2;
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool DeclineRequest(Request request)
+        {
+            try
+            {
+                request.ID_Status = 3;
                 DB_Connection.connection.SaveChanges();
                 return true;
             }

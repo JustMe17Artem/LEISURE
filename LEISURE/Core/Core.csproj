@@ -92,6 +92,9 @@
     <Compile Include="ado\Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ado\Status_Request.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ado\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

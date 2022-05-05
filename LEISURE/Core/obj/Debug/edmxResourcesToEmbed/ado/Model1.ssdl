@@ -79,6 +79,8 @@
     <Property Name="Photo" Type="varbinary(max)" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="ID_Type" Type="int" />
+    <Property Name="ContactInfo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_Status" Type="int" />
   </EntityType>
   <EntityType Name="Review">
     <Key>
@@ -95,6 +97,13 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Status_Request">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -212,6 +221,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Request_Status_Request">
+    <End Role="Status_Request" Type="Self.Status_Request" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status_Request">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="ID_Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Review_Client">
     <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
     <End Role="Review" Type="Self.Review" Multiplicity="*" />
@@ -258,6 +279,7 @@
     <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status_Request" EntityType="Self.Status_Request" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Activity_Activity_Type" Association="Self.FK_Activity_Activity_Type">
@@ -290,6 +312,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Request_Place" Association="Self.FK_Request_Place">
       <End Role="Place" EntitySet="Place" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_Status_Request" Association="Self.FK_Request_Status_Request">
+      <End Role="Status_Request" EntitySet="Status_Request" />
       <End Role="Request" EntitySet="Request" />
     </AssociationSet>
     <AssociationSet Name="FK_Review_Client" Association="Self.FK_Review_Client">

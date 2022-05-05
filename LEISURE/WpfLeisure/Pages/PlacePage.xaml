@@ -193,7 +193,8 @@
 
         <TextBox x:Name="TBDescription"
                  Width="400" 
-                 Margin="910,77,130,483"
+                 Margin="910,-47,110,383"
+                 Grid.RowSpan="2"
                  TextWrapping="Wrap"
                  Height="250"/>
 

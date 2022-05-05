@@ -36,5 +36,6 @@ namespace Core.ado
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Request> Request { get; set; }
+        public virtual DbSet<Status_Request> Status_Request { get; set; }
     }
 }

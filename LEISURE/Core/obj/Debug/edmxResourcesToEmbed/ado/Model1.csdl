@@ -273,6 +273,11 @@
       <End Role="Activity_Type" EntitySet="Activity_Type" />
       <End Role="Request" EntitySet="Request" />
     </AssociationSet>
+    <EntitySet Name="Status_Request" EntityType="LEISURE_KursachModel.Status_Request" />
+    <AssociationSet Name="FK_Request_Status_Request" Association="LEISURE_KursachModel.FK_Request_Status_Request">
+      <End Role="Status_Request" EntitySet="Status_Request" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Request">
     <Key>
@@ -290,6 +295,9 @@
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ID_Type" Type="Int32" />
     <NavigationProperty Name="Activity_Type" Relationship="LEISURE_KursachModel.FK_Request_Activity_Type" FromRole="Request" ToRole="Activity_Type" />
+    <Property Name="ContactInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Status" Type="Int32" />
+    <NavigationProperty Name="Status_Request" Relationship="LEISURE_KursachModel.FK_Request_Status_Request" FromRole="Request" ToRole="Status_Request" />
   </EntityType>
   <Association Name="FK_Activity_Request">
     <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="0..1" />
@@ -324,6 +332,26 @@
       </Principal>
       <Dependent Role="Request">
         <PropertyRef Name="ID_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Status_Request">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Request" Relationship="LEISURE_KursachModel.FK_Request_Status_Request" FromRole="Status_Request" ToRole="Request" />
+  </EntityType>
+  <Association Name="FK_Request_Status_Request">
+    <End Type="LEISURE_KursachModel.Status_Request" Role="Status_Request" Multiplicity="0..1" />
+    <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status_Request">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="ID_Status" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -103,5 +103,10 @@ namespace WpfLeisure.Pages
         {
 
         }
+
+        private void BtnRequests_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RequestsPage(currentOwner));
+        }
     }
 }

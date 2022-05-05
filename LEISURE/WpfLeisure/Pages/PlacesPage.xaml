@@ -32,13 +32,13 @@
         </StackPanel>
 
         <StackPanel Width="1400"
-                    Height="700"
-                    Margin="20,50,0,0"
+                    Height="600"
+                    Margin="20,120,0,0"
                     HorizontalAlignment="Left">
             <ListView x:Name="LVPlaces"  
                       Background="White"
                   ItemsSource="{Binding Places}" 
-                      Height="700"
+                      Height="604"
                       Width="1400"
                       BorderBrush="White"
                   SelectionChanged="LVPlaces_SelectionChanged">
@@ -107,9 +107,18 @@
                     Content="Новый объект" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Margin="0,0,392,770"/>
+                Margin="0,0,398,697"/>
 
-       
+        <Button x:Name="BtnRequests"
+                    Click="BtnRequests_Click"
+                    Content="Заявки" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0,221,697"/>
+
+
+
+
 
     </Grid>
 </Page>

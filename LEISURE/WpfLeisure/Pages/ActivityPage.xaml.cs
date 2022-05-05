@@ -46,9 +46,36 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentOwner = owner;
+            currentRequest = request;
+            BtnAddPhoto.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
+            BtnAddActivity.Visibility = Visibility.Hidden;
             CBType.Visibility = Visibility.Hidden;
-            DataContext = this;
+            TblVisits.Visibility = Visibility.Hidden;
+            TBVisits.Visibility = Visibility.Hidden;
+            TBContactInfo.Text = request.ContactInfo;
+            TBName.Text = request.Name;
+            TBPrice.Text = request.Price.ToString();
+            TBType.Text = request.Activity_Type.Name;
+            DPStart.SelectedDate = request.DateStart;
+            DPEnd.SelectedDate = request.DateEnd;
+            TBDescription.Text = request.Description;
+            TBContactInfo.IsEnabled = false;
+            TBName.IsEnabled = false;
+            TBPrice.IsEnabled = false;
+            TBType.IsEnabled = false;
+            DPStart.IsEnabled = false;
+            DPEnd.IsEnabled = false;
+            TBDescription.IsEnabled = false;
+
+            DataContext = request;
+        }
+        public ActivityPage(Client client, Activity activity)
+        {
+            InitializeComponent();
+            currentActivity = activity;
+            currentClient = client;
+            DataContext = currentActivity;
         }
 
         private void BtnVisit_Click(object sender, RoutedEventArgs e)
@@ -74,7 +101,7 @@ namespace WpfLeisure.Pages
             var type = CBType.SelectedItem as Activity_Type;
             try
             {
-                DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text, currentRequest.Photo, TBName.Text, type.Id);
+                DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text, currentRequest.Photo, TBName.Text, type.Id, TBContactInfo.Text);
             }
             catch (Exception ex)
             {
@@ -85,12 +112,15 @@ namespace WpfLeisure.Pages
 
         private void BtnDeclinerequest_Click(object sender, RoutedEventArgs e)
         {
-
+            DataAccess.DeclineRequest(currentRequest);
+            MessageBox.Show("Заявка отклонена");
         }
 
         private void BtnAcceptRequest_Click(object sender, RoutedEventArgs e)
         {
-
+            DataAccess.AcceptRequest(currentRequest);
+            MessageBox.Show("Заявка принята, мероприятие создано");
+            //DataAccess.AddNewActivity(currenctRequest);
         }
     }
 }

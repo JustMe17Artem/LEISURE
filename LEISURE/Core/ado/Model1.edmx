@@ -84,6 +84,8 @@
           <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="ID_Type" Type="int" />
+          <Property Name="ContactInfo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Status" Type="int" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -100,6 +102,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Status_Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -217,6 +226,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Request_Status_Request">
+          <End Role="Status_Request" Type="Self.Status_Request" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Request">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="ID_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Review_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
@@ -263,6 +284,7 @@
           <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status_Request" EntityType="Self.Status_Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Activity_Activity_Type" Association="Self.FK_Activity_Activity_Type">
@@ -295,6 +317,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Request_Place" Association="Self.FK_Request_Place">
             <End Role="Place" EntitySet="Place" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Status_Request" Association="Self.FK_Request_Status_Request">
+            <End Role="Status_Request" EntitySet="Status_Request" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
           <AssociationSet Name="FK_Review_Client" Association="Self.FK_Review_Client">
@@ -587,6 +613,11 @@
             <End Role="Activity_Type" EntitySet="Activity_Type" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
+          <EntitySet Name="Status_Request" EntityType="LEISURE_KursachModel.Status_Request" />
+          <AssociationSet Name="FK_Request_Status_Request" Association="LEISURE_KursachModel.FK_Request_Status_Request">
+            <End Role="Status_Request" EntitySet="Status_Request" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Request">
           <Key>
@@ -604,6 +635,9 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_Type" Type="Int32" />
           <NavigationProperty Name="Activity_Type" Relationship="LEISURE_KursachModel.FK_Request_Activity_Type" FromRole="Request" ToRole="Activity_Type" />
+          <Property Name="ContactInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Status" Type="Int32" />
+          <NavigationProperty Name="Status_Request" Relationship="LEISURE_KursachModel.FK_Request_Status_Request" FromRole="Request" ToRole="Status_Request" />
         </EntityType>
         <Association Name="FK_Activity_Request">
           <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="0..1" />
@@ -638,6 +672,26 @@
             </Principal>
             <Dependent Role="Request">
               <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Status_Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="LEISURE_KursachModel.FK_Request_Status_Request" FromRole="Status_Request" ToRole="Request" />
+        </EntityType>
+        <Association Name="FK_Request_Status_Request">
+          <End Type="LEISURE_KursachModel.Status_Request" Role="Status_Request" Multiplicity="0..1" />
+          <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Request">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="ID_Status" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -762,6 +816,8 @@
           <EntitySetMapping Name="Request">
             <EntityTypeMapping TypeName="LEISURE_KursachModel.Request">
               <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
+                <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
                 <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
@@ -770,6 +826,14 @@
                 <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
                 <ScalarProperty Name="DateStart" ColumnName="DateStart" />
                 <ScalarProperty Name="ID_Place" ColumnName="ID_Place" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status_Request">
+            <EntityTypeMapping TypeName="LEISURE_KursachModel.Status_Request">
+              <MappingFragment StoreEntitySet="Status_Request">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
