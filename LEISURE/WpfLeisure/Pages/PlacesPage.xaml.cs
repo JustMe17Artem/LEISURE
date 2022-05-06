@@ -12,7 +12,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Core.ado;
 using Core.Classes_Core;
-using System.Linq;
 
 namespace WpfLeisure.Pages
 {
@@ -51,7 +50,6 @@ namespace WpfLeisure.Pages
         private void LVPlaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedPlace = LVPlaces.SelectedItem as Place;
-            DataContext = selectedPlace;
             if (DataAccess.CurrentUserIsClient(currentUser))
             {
                 NavigationService.Navigate(new PlacePage(currentClient, selectedPlace));

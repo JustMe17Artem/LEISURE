@@ -19,6 +19,11 @@ namespace Core.Classes_Core
         {
             return roles;
         }
+        public static ObservableCollection<Activity> GetActivities()
+        {
+            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity);
+            return activities;
+        }
         public static IEnumerable<Place> GetPlacesList()
         {
             return (IEnumerable<Place>)DataAccess.GetPlaces().Where(p => p.IsOpen == true).ToList();
@@ -309,6 +314,20 @@ namespace Core.Classes_Core
             try
             {
                 place.Visits += 1;
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddVisitToActivity(Activity activity)
+        {
+            try
+            {
+                activity.Visits += 1;
                 DB_Connection.connection.SaveChanges();
                 return true;
             }

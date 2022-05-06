@@ -142,7 +142,6 @@ namespace WpfLeisure.Pages
                     MessageBox.Show(ex.Message);
                 }
             }
-            
         }
 
         private void BtnClosePlace_Click(object sender, RoutedEventArgs e)
@@ -177,7 +176,7 @@ namespace WpfLeisure.Pages
 
         private void BtnNewRequest_Click(object sender, RoutedEventArgs e)
         {
-                NavigationService.Navigate(new ActivityPage(currentClient, currentPlace, new Request()));
+             NavigationService.Navigate(new ActivityPage(currentClient, currentPlace, new Request()));
         }
 
         private void BtnNewActivity_Click(object sender, RoutedEventArgs e)

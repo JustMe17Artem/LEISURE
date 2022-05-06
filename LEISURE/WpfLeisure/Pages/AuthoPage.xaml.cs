@@ -39,7 +39,7 @@ namespace WpfLeisure.Pages
                 Properties.Settings.Default.Save();
                 MessageBox.Show("Добро пожаловать");
                 if (DataAccess.CurrentUserIsClient(currentUser))
-                    NavigationService.Navigate(new PlacesPage(currentUser));
+                    NavigationService.Navigate(new ActivitiesPage(currentUser));
                 else
                     NavigationService.Navigate(new PlacesPage(currentUser));
 

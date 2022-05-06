@@ -91,7 +91,22 @@ namespace WpfLeisure.Pages
                 BtnAddNewActivity.Visibility = Visibility.Hidden;
                 BtnDeclineRequest.Visibility = Visibility.Hidden;
                 TblInfo.Visibility = Visibility.Hidden;
+                BtnAcceptRequest.Visibility = Visibility.Hidden;
                 TBContactInfo.Visibility = Visibility.Hidden;
+                BtnAddNewActivity.Visibility = Visibility.Hidden;
+                TBName.Text = currentActivity.Name;
+                TBPrice.Text = currentActivity.Price.ToString();
+                TBType.Text = currentActivity.Activity_Type.Name;
+                DPStart.SelectedDate = currentActivity.Start_Date;
+                DPEnd.SelectedDate = currentActivity.End_Date;
+                TBDescription.Text = currentActivity.Description;
+                TBContactInfo.IsReadOnly = true;
+                TBName.IsReadOnly = true;
+                TBPrice.IsReadOnly = true;
+                TBType.IsReadOnly = true;
+                DPStart.IsEnabled = false;
+                DPEnd.IsEnabled = false;
+                TBDescription.IsReadOnly = true;
                 TBName.IsReadOnly = true;
                 TBPrice.IsReadOnly = true;
                 TBType.IsReadOnly = true;
@@ -111,6 +126,7 @@ namespace WpfLeisure.Pages
                 BtnAcceptRequest.Visibility = Visibility.Hidden;
                 BtnAddActivity.Visibility = Visibility.Hidden;
                 BtnDeclineRequest.Visibility = Visibility.Hidden;
+                BtnAcceptRequest.Visibility = Visibility.Hidden;
                 CBType.ItemsSource = DataAccess.GetActivityTypes();
                 DataContext = this;
             }
@@ -136,7 +152,6 @@ namespace WpfLeisure.Pages
                     currentActivity.Photo = File.ReadAllBytes(openFile.FileName);
                     ActivityPhoto.Source = new BitmapImage(new Uri(openFile.FileName));
                 }
-                
             }
         }
 
@@ -184,7 +199,7 @@ namespace WpfLeisure.Pages
 
         private void BtnVisit_Click(object sender, RoutedEventArgs e)
         {
-
+            DataAccess.AddVisitToActivity(currentActivity);
         }
 
         private void BtnAddNewActivity_Click(object sender, RoutedEventArgs e)

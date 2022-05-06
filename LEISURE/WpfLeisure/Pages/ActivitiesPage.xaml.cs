@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Core.ado;
+using Core.Classes_Core;
 
 namespace WpfLeisure.Pages
 {
@@ -18,9 +20,37 @@ namespace WpfLeisure.Pages
     /// </summary>
     public partial class ActivitiesPage : Page
     {
-        public ActivitiesPage()
+        private static User currentUser;
+        public ActivitiesPage(User user)
         {
             InitializeComponent();
+            currentUser = user;
+            LVActivities.ItemsSource = DataAccess.GetActivities();
+            CBType.ItemsSource = DataAccess.GetPlaceTypes();
+            var alltypes = DataAccess.GetPlaceTypes();
+            alltypes.Insert(0, new Place_Type() { Id = -1, Name = "Все" });
+            CBType.ItemsSource = alltypes;
+        }
+
+        private void BtnWatchPlaces_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void LVActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedActivity = LVActivities.SelectedItem as Activity;
+            NavigationService.Navigate(new ActivityPage(currentUser,selectedActivity, selectedActivity.Place));
+        }
+
+        private void CBType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
