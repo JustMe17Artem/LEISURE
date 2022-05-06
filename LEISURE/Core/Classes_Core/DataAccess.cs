@@ -14,6 +14,7 @@ namespace Core.Classes_Core
         private static ObservableCollection<User> users = new ObservableCollection<User>(DB_Connection.connection.User);
         private static ObservableCollection<Owner> managers = new ObservableCollection<Owner>(DB_Connection.connection.Owner);
         private static ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
+        private static ObservableCollection<Owner> owners = new ObservableCollection<Owner>(DB_Connection.connection.Owner);
         public static ObservableCollection<Role> GetRoles()
         {
             return roles;
@@ -50,6 +51,12 @@ namespace Core.Classes_Core
         {   
             Owner owner = user.Owner.Where(o => o.ID_User == user.Id).FirstOrDefault();
             return owner;
+        }
+
+        public static User GetUserFromOwner(Owner owner)
+        {
+            User user = users.Where(u => u.Id == owner.ID_User).FirstOrDefault();
+            return user;
         }
         public static Client GetCurrentClient(User user)
         {
@@ -209,6 +216,30 @@ namespace Core.Classes_Core
                 request.ID_Type = idType;
                 request.ContactInfo = info;
                 DB_Connection.connection.Request.Add(request);
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewActivity(Place place, DateTime start, DateTime end, float price, string description, byte[] photo, string name, int idType, string info)
+        {
+            try
+            {
+                Activity activity = new Activity();
+                activity.ID_Place = place.Id;
+                activity.Start_Date = start;
+                activity.End_Date = end;
+                activity.Price = price;
+                activity.Description = description;
+                activity.Photo = photo;
+                activity.Name = name;
+                activity.Visits = 0;
+                activity.ID_Type = idType;
+                DB_Connection.connection.Activity.Add(activity);
                 DB_Connection.connection.SaveChanges();
                 return true;
             }

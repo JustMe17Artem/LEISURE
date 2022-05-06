@@ -149,28 +149,33 @@
         <Button x:Name="BtnAddPhoto" 
                 Click="BtnAddPhoto_Click"
                 Content="Добавить фото"
-                Width="200"
-                Height="100"
-                FontSize="20"
+                Width="Auto"
                 VerticalAlignment="Bottom"
-                Margin="28,0,1212,57"/>
+                Margin="106,0,1212,260"/>
 
         <Button x:Name="BtnVisit" 
                 Click="BtnVisit_Click"
                 Content="Я пойду!"
-                Width="180"
+                Width="Auto"
                 FontSize="20"
                 Height="100"
                 VerticalAlignment="Bottom"
-                Margin="28,0,1212,57"/>
+                Margin="10,0,1262,58"/>
 
         <Button x:Name="BtnNewRequest" 
                 Click="BtnNewRequest_Click"
                 Content="Новая заявка"
-                Width="200"
+                Width="Auto"
                 FontSize="20"
                 Height="100"
-                Margin="-600,540,0,0"/>
+                Margin="186,653,1085,57"/>
+
+        <Button x:Name="BtnNewActivity" 
+                Click="BtnNewActivity_Click"
+                Content="Новое мероприятие"
+                Width="Auto"
+                FontSize="20"
+                Height="100" Margin="364,653,870,57"/>
 
         <TextBox x:Name="TBReview" 
                  Width="600"

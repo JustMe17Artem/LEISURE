@@ -27,12 +27,12 @@ namespace WpfLeisure.Pages
         private static Owner currentOwner;
         private static Place currentPlace;
         private static User currentUser;
-        public PlacePage(User user, Place place)
+        private static Client currentClient;
+        public PlacePage(Client client, Place place)
         {
             InitializeComponent();
-            currentUser = user;
+            currentClient = client;
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
-            //DataContext = this;
             TBName.IsReadOnly = true;
             TBAdress.IsReadOnly = true;
             TBCapacity.IsReadOnly = true;
@@ -45,6 +45,7 @@ namespace WpfLeisure.Pages
             TBCapacity.Text = place.Capacity.ToString();
             TBVisits.Text = place.Visits.ToString();
             BtnAddPhoto.Visibility = Visibility.Hidden;
+            BtnNewActivity.Visibility = Visibility.Hidden;
             BtnAddPlace.Visibility = Visibility.Hidden;
             BtnSavePlace.Visibility = Visibility.Hidden;
             BtnClosePlace.Visibility = Visibility.Hidden;
@@ -55,8 +56,8 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentPlace = place;
-            currentOwner = owner;
             BtnNewRequest.Visibility = Visibility.Hidden;
+            currentOwner = owner;
             TBName.Text = place.Name;
             TBAdress.Text = place.Adress;
             TBCapacity.Text = place.Capacity.ToString();
@@ -72,7 +73,6 @@ namespace WpfLeisure.Pages
             TBReview.Visibility = Visibility.Visible;
             LVReviews.ItemsSource = DataAccess.GetReviews(currentPlace.Id);
             DataContext = currentPlace;
-
         }
 
         private void BtnAddPlace_Click(object sender, RoutedEventArgs e)
@@ -132,12 +132,18 @@ namespace WpfLeisure.Pages
 
         private void BtnAddReview_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.AddNewReview(DataAccess.GetCurrentClient(currentUser).Id, currentPlace.Id, TBReview.Text);
+            DataAccess.AddNewReview(currentClient.Id, currentPlace.Id, TBReview.Text);
         }
 
         private void BtnNewRequest_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ActivityPage(DataAccess.GetCurrentClient(currentUser), currentPlace, new Request()));
+                NavigationService.Navigate(new ActivityPage(currentClient, currentPlace, new Request()));
+        }
+
+        private void BtnNewActivity_Click(object sender, RoutedEventArgs e)
+        {
+            currentUser = DataAccess.GetUserFromOwner(currentOwner);
+            NavigationService.Navigate(new ActivityPage(currentUser, new Activity(), currentPlace));
         }
     }
 }

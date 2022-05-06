@@ -27,7 +27,6 @@ namespace WpfLeisure.Pages
         private static Place currentPlace;
         private static Activity currentActivity;
         private static Request currentRequest;
-        private static byte[] photo { get; set; }
         public ActivityPage(Client client, Place place, Request request)
         {
             InitializeComponent();
@@ -48,7 +47,6 @@ namespace WpfLeisure.Pages
             InitializeComponent();
             currentOwner = owner;
             currentRequest = request;
-            photo = request.Photo;
             BtnAddPhoto.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
             BtnAddActivity.Visibility = Visibility.Hidden;
@@ -69,21 +67,34 @@ namespace WpfLeisure.Pages
             DPStart.IsEnabled = false;
             DPEnd.IsEnabled = false;
             TBDescription.IsEnabled = false;
-
             DataContext = request;
         }
-        public ActivityPage(Client client, Activity activity)
+        public ActivityPage(User user, Activity activity, Place place)
         {
             InitializeComponent();
             currentActivity = activity;
-            currentClient = client;
-            DataContext = currentActivity;
+            if (DataAccess.CurrentUserIsClient(user))
+            {
+                currentClient = DataAccess.GetCurrentClient(user);
+            }
+            else
+            {
+                currentPlace = place;
+                BtnVisit.Visibility = Visibility.Hidden;
+                TBContactInfo.Visibility = Visibility.Hidden;
+                TblInfo.Visibility = Visibility.Hidden;
+                TblVisits.Visibility = Visibility.Hidden;
+                TBVisits.Visibility = Visibility.Hidden;
+                TBType.Visibility = Visibility.Hidden;
+                BtnAcceptRequest.Visibility = Visibility.Hidden;
+                BtnAddActivity.Visibility = Visibility.Hidden;
+                BtnDeclineRequest.Visibility = Visibility.Hidden;
+                CBType.ItemsSource = DataAccess.GetActivityTypes();
+                DataContext = this;
+            }
+            
         }
 
-        private void BtnVisit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void BtnAddPhoto_Click(object sender, RoutedEventArgs e)
         {
@@ -93,8 +104,17 @@ namespace WpfLeisure.Pages
             };
             if (openFile.ShowDialog().GetValueOrDefault())
             {
-                currentRequest.Photo = File.ReadAllBytes(openFile.FileName);
-                ActivityPhoto.Source = new BitmapImage(new Uri(openFile.FileName));
+                if(currentRequest != null)
+                {
+                    currentRequest.Photo = File.ReadAllBytes(openFile.FileName);
+                    ActivityPhoto.Source = new BitmapImage(new Uri(openFile.FileName));
+                }
+                else
+                {
+                    currentActivity.Photo = File.ReadAllBytes(openFile.FileName);
+                    ActivityPhoto.Source = new BitmapImage(new Uri(openFile.FileName));
+                }
+                
             }
         }
 
@@ -103,7 +123,7 @@ namespace WpfLeisure.Pages
             var type = CBType.SelectedItem as Activity_Type;
             try
             {
-                DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text, currentRequest.Photo, TBName.Text, type.Id, TBContactInfo.Text);
+                DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text, currentActivity.Photo, TBName.Text, type.Id, TBContactInfo.Text);
             }
             catch (Exception ex)
             {
@@ -120,16 +140,29 @@ namespace WpfLeisure.Pages
 
         private void BtnAcceptRequest_Click_1(object sender, RoutedEventArgs e)
         {
+            
             DataAccess.AcceptRequest(currentRequest);
+            DataAccess.AddActivityByRequest(currentRequest);
+            MessageBox.Show("Заявка принята, мероприятие создано");
+        }
+
+        private void BtnVisit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnAddNewActivity_Click(object sender, RoutedEventArgs e)
+        {
+            var type = CBType.SelectedItem as Activity_Type;
             try
             {
-                DataAccess.AddActivityByRequest(currentRequest);
-                MessageBox.Show("Заявка принята, мероприятие создано");
+                DataAccess.AddNewActivity(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text, currentActivity.Photo, TBName.Text, type.Id, TBContactInfo.Text);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            MessageBox.Show("Мероприятие создано");
         }
     }
 }

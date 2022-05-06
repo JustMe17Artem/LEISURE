@@ -54,7 +54,7 @@ namespace WpfLeisure.Pages
             DataContext = selectedPlace;
             if (DataAccess.CurrentUserIsClient(currentUser))
             {
-                NavigationService.Navigate(new PlacePage(currentClient.User, selectedPlace));
+                NavigationService.Navigate(new PlacePage(currentClient, selectedPlace));
             }
             else
             {
