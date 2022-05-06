@@ -66,6 +66,7 @@ namespace WpfLeisure.Pages
             BtnVisit.Visibility = Visibility.Hidden;
             BtnAddReview.Visibility = Visibility.Hidden;
             LVReviews.Visibility = Visibility.Hidden;
+            TBType.Visibility = Visibility.Hidden;
             BtnAddReview.Visibility = Visibility.Hidden;
             TBVisits.Visibility = Visibility.Hidden;
             TBlVisits.Visibility = Visibility.Hidden;
@@ -86,7 +87,6 @@ namespace WpfLeisure.Pages
             TBCapacity.Text = place.Capacity.ToString();
             CBType.SelectedItem = place.Place_Type;
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
-            TBType.Visibility = Visibility.Hidden;
             TBVisits.Text = currentPlace.Visits.ToString();
             TBReview.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
@@ -95,34 +95,54 @@ namespace WpfLeisure.Pages
             DataContext = currentPlace;
         }
 
+        public bool PlaceIsValid()
+        {
+            if (TBName.Text.Length != 0 && TBAdress.Text.Length !=0 && TBDescription.Text.Length != 0 &&  CBType.SelectedItem != null && PlacePhoto.Source != null)
+                return true;
+            else
+                return false;
+        }
+
         private void BtnAddPlace_Click(object sender, RoutedEventArgs e)
         {
             var type = CBType.SelectedItem as Place_Type;
-            try
+            if (PlaceIsValid())
             {
-                DataAccess.AddNewPlace(TBName.Text, type.Id, TBAdress.Text, currentOwner.Id, Int32.Parse(TBCapacity.Text), currentPlace.Photo, TBDescription.Text);
+                try
+                {
+                    DataAccess.AddNewPlace(TBName.Text, type.Id, TBAdress.Text, currentOwner.Id, TBCapacity.Text, currentPlace.Photo, TBDescription.Text);
+                    MessageBox.Show("Новое место добавлено");
+                    NavigationService.Navigate(new PlacesPage(currentOwner.User));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Поля: Название,\nОписание,\nТип объекта,\nа также фото - обязательны к заполнению");
             }
-            MessageBox.Show("Новое место добавлено");
-            NavigationService.Navigate(new PlacesPage(currentOwner.User));
+           
         }
 
         private void BtnSavePlace_Click(object sender, RoutedEventArgs e)
         {
             var type = CBType.SelectedItem as Place_Type;
-            try
+            if (PlaceIsValid())
             {
-                DataAccess.EditPlace(currentPlace, TBName.Text, type.Id, TBAdress.Text, Int32.Parse(TBCapacity.Text), currentPlace.Photo);
+                try
+                {
+                    DataAccess.EditPlace(currentPlace, TBName.Text, type.Id, TBAdress.Text, TBCapacity.Text, currentPlace.Photo);
+                    MessageBox.Show("Место изменено");
+                    NavigationService.Navigate(new PlacesPage(currentOwner.User));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            MessageBox.Show("Место изменено");
-            NavigationService.Navigate(new PlacesPage(currentOwner.User));
+            
         }
 
         private void BtnClosePlace_Click(object sender, RoutedEventArgs e)

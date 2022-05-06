@@ -27,7 +27,7 @@ namespace Core.ado
         public Nullable<int> ID_Type { get; set; }
         public string Adress { get; set; }
         public Nullable<int> ID_Owner { get; set; }
-        public Nullable<int> Capacity { get; set; }
+        public string Capacity { get; set; }
         public Nullable<bool> IsOpen { get; set; }
         public Nullable<int> Visits { get; set; }
         public byte[] Photo { get; set; }

@@ -27,12 +27,17 @@
                      Margin="0,0,0,10"
                      HorizontalAlignment="Left"/>
 
-
-
             <TextBlock Text="Цена:"
                        FontSize="20"
-                       Margin="0,0,0,5"
+                       Margin="0,0,0,10"
                        Width="195"
+                       HorizontalAlignment="Left"/>
+            
+            <TextBlock Text="Если беспплатно, укажите 0 "
+                       Margin="0,-5,0,0"
+                       x:Name="TblPrice"
+                       FontSize="10"
+                       Width="140"
                        HorizontalAlignment="Left"/>
 
             <TextBox x:Name="TBPrice"

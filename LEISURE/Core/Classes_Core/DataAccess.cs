@@ -64,7 +64,7 @@ namespace Core.Classes_Core
             return client;
         }
 
-        public static bool AddNewPlace(string name, int idType, string adress, int idOwner, int capacity, byte[] photo, string description)
+        public static bool AddNewPlace(string name, int idType, string adress, int idOwner, string capacity, byte[] photo, string description)
         {
             Place place = new Place();
             place.Name = name;
@@ -155,7 +155,7 @@ namespace Core.Classes_Core
             return client.Count == 1;
         }
 
-        public static bool EditPlace(Place place,  string name, int idType, string adress, int capacity, byte[] photo)
+        public static bool EditPlace(Place place,  string name, int idType, string adress, string capacity, byte[] photo)
         {
             try
             {

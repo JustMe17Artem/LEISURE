@@ -48,6 +48,7 @@ namespace WpfLeisure.Pages
             InitializeComponent();
             currentOwner = owner;
             currentRequest = request;
+            TblPrice.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
             BtnAddActivity.Visibility = Visibility.Hidden;
             CBType.Visibility = Visibility.Hidden;
@@ -82,6 +83,7 @@ namespace WpfLeisure.Pages
             {
                 currentClient = DataAccess.GetCurrentClient(user);
                 BtnVisit.Visibility = Visibility.Visible;
+                TblPrice.Visibility = Visibility.Hidden;
                 BtnAddPhoto.Visibility = Visibility.Hidden;
                 BtnAddActivity.Visibility = Visibility.Hidden;
                 CBType.Visibility = Visibility.Hidden;
@@ -138,10 +140,17 @@ namespace WpfLeisure.Pages
             }
         }
 
+        public bool ActivityIsValid()
+        {
+            if (TBName.Text.Length != 0 && TBPrice.Text.Length != 0 && CBType.SelectedItem != null && DPStart.SelectedDate != null && DPEnd.SelectedDate != null)
+                return true;
+            else
+                return false;
+        }
         private void BtnAddActivity_Click(object sender, RoutedEventArgs e)
         {
             var type = CBType.SelectedItem as Activity_Type;
-            if(TBName.Text.Length != 0 && TBPrice.Text.Length !=0 && CBType.SelectedItem != null && DPStart.SelectedDate != null && DPEnd.SelectedDate != null /*&& ActivityPhoto.Source != null*/)
+            if(ActivityIsValid())
             {
                 try
                 {
@@ -157,8 +166,6 @@ namespace WpfLeisure.Pages
             {
                 MessageBox.Show("Поля : Название,\nСтоимость,\nТип мероприятия,\nа также даты начала и окончания - обязательны к заполнению");
             }
-            
-            
         }
 
         private void BtnDeclinerequest_Click(object sender, RoutedEventArgs e)
@@ -183,15 +190,23 @@ namespace WpfLeisure.Pages
         private void BtnAddNewActivity_Click(object sender, RoutedEventArgs e)
         {
             var type = CBType.SelectedItem as Activity_Type;
-            try
+
+            if (ActivityIsValid())
             {
-                DataAccess.AddNewActivity(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text, currentActivity.Photo, TBName.Text, type.Id, TBContactInfo.Text);
+                try
+                {
+                    DataAccess.AddNewActivity(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text, currentActivity.Photo, TBName.Text, type.Id, TBContactInfo.Text);
+                    MessageBox.Show("Мероприятие создано");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Поля : Название,\nСтоимость,\nТип мероприятия,\nа также даты начала и окончания - обязательны к заполнению");
             }
-            MessageBox.Show("Мероприятие создано");
         }
     }
 }

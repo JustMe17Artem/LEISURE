@@ -58,7 +58,7 @@
           <Property Name="ID_Type" Type="int" />
           <Property Name="Adress" Type="nvarchar" MaxLength="100" />
           <Property Name="ID_Owner" Type="int" />
-          <Property Name="Capacity" Type="int" />
+          <Property Name="Capacity" Type="nvarchar" MaxLength="50" />
           <Property Name="IsOpen" Type="bit" />
           <Property Name="Visits" Type="int" />
           <Property Name="Photo" Type="varbinary(max)" />
@@ -402,7 +402,7 @@
           <Property Name="ID_Type" Type="Int32" />
           <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ID_Owner" Type="Int32" />
-          <Property Name="Capacity" Type="Int32" />
+          <Property Name="Capacity" Type="String" />
           <Property Name="IsOpen" Type="Boolean" />
           <Property Name="Visits" Type="Int32" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
