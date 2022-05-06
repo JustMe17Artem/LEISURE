@@ -80,6 +80,7 @@
                      HorizontalAlignment="Left"/>
 
             <TextBlock Text="Посещений:"
+                       x:Name="TBlVisits"
                        FontSize="20"
                        Margin="0,0,0,10"
                        Width="130"
@@ -151,7 +152,7 @@
                 Content="Добавить фото"
                 Width="Auto"
                 VerticalAlignment="Bottom"
-                Margin="106,0,1212,260"/>
+                Margin="106,0,1212,234"/>
 
         <Button x:Name="BtnVisit" 
                 Click="BtnVisit_Click"
@@ -168,14 +169,14 @@
                 Width="Auto"
                 FontSize="20"
                 Height="100"
-                Margin="186,653,1085,57"/>
+                Margin="186,593,1085,57"/>
 
         <Button x:Name="BtnNewActivity" 
                 Click="BtnNewActivity_Click"
                 Content="Новое мероприятие"
                 Width="Auto"
                 FontSize="20"
-                Height="100" Margin="364,653,870,57"/>
+                Height="100" Margin="364,553,870,57"/>
 
         <TextBox x:Name="TBReview" 
                  Width="600"

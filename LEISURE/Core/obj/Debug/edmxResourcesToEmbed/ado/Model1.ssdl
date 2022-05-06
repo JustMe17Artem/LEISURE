@@ -81,6 +81,7 @@
     <Property Name="ID_Type" Type="int" />
     <Property Name="ContactInfo" Type="nvarchar" MaxLength="50" />
     <Property Name="ID_Status" Type="int" />
+    <Property Name="Comment" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Review">
     <Key>

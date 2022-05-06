@@ -298,6 +298,7 @@
     <Property Name="ContactInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ID_Status" Type="Int32" />
     <NavigationProperty Name="Status_Request" Relationship="LEISURE_KursachModel.FK_Request_Status_Request" FromRole="Request" ToRole="Status_Request" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Activity_Request">
     <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="0..1" />

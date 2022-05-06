@@ -31,6 +31,7 @@ namespace Core.ado
         public Nullable<int> ID_Type { get; set; }
         public string ContactInfo { get; set; }
         public Nullable<int> ID_Status { get; set; }
+        public string Comment { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }

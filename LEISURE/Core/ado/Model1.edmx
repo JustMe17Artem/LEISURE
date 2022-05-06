@@ -86,6 +86,7 @@
           <Property Name="ID_Type" Type="int" />
           <Property Name="ContactInfo" Type="nvarchar" MaxLength="50" />
           <Property Name="ID_Status" Type="int" />
+          <Property Name="Comment" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -638,6 +639,7 @@
           <Property Name="ContactInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_Status" Type="Int32" />
           <NavigationProperty Name="Status_Request" Relationship="LEISURE_KursachModel.FK_Request_Status_Request" FromRole="Request" ToRole="Status_Request" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Activity_Request">
           <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="0..1" />
@@ -816,6 +818,7 @@
           <EntitySetMapping Name="Request">
             <EntityTypeMapping TypeName="LEISURE_KursachModel.Request">
               <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
                 <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
                 <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />

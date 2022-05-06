@@ -200,7 +200,7 @@ namespace Core.Classes_Core
             }
         }
 
-        public static bool AddNewRequest(Place place, DateTime start, DateTime end, float price, string description, byte[]photo, string name, int idType, string info)
+        public static bool AddNewRequest(Place place, DateTime start, DateTime end, float price, string description,  string name, int idType, string info, string comment, byte[] photo)
         {
             try
             {
@@ -215,6 +215,7 @@ namespace Core.Classes_Core
                 request.ID_Status = 1;
                 request.ID_Type = idType;
                 request.ContactInfo = info;
+                request.Comment = comment;
                 DB_Connection.connection.Request.Add(request);
                 DB_Connection.connection.SaveChanges();
                 return true;

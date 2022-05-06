@@ -35,6 +35,7 @@ namespace WpfLeisure.Pages
             currentRequest = request;
             TblVisits.Visibility = Visibility.Hidden;
             TBVisits.Visibility = Visibility.Hidden;
+            BtnAddNewActivity.Visibility = Visibility.Hidden;
             TBType.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
             BtnAcceptRequest.Visibility = Visibility.Hidden;
@@ -47,7 +48,6 @@ namespace WpfLeisure.Pages
             InitializeComponent();
             currentOwner = owner;
             currentRequest = request;
-            BtnAddPhoto.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
             BtnAddActivity.Visibility = Visibility.Hidden;
             CBType.Visibility = Visibility.Hidden;
@@ -55,27 +55,47 @@ namespace WpfLeisure.Pages
             TBVisits.Visibility = Visibility.Hidden;
             TBContactInfo.Text = currentRequest.ContactInfo;
             TBName.Text = currentRequest.Name;
+            TBComment.Text = currentRequest.Comment;
+            BtnAddNewActivity.Visibility = Visibility.Hidden;
             TBPrice.Text = currentRequest.Price.ToString();
             TBType.Text = currentRequest.Activity_Type.Name;
             DPStart.SelectedDate = currentRequest.DateStart;
             DPEnd.SelectedDate = currentRequest.DateEnd;
             TBDescription.Text = currentRequest.Description;
-            TBContactInfo.IsEnabled = false;
-            TBName.IsEnabled = false;
-            TBPrice.IsEnabled = false;
-            TBType.IsEnabled = false;
+            TBComment.IsReadOnly = true;
+            TBContactInfo.IsReadOnly = true;
+            TBName.IsReadOnly = true;
+            TBPrice.IsReadOnly = true;
+            TBType.IsReadOnly = true;
             DPStart.IsEnabled = false;
             DPEnd.IsEnabled = false;
-            TBDescription.IsEnabled = false;
+            TBDescription.IsReadOnly = true;
             DataContext = request;
         }
         public ActivityPage(User user, Activity activity, Place place)
         {
             InitializeComponent();
             currentActivity = activity;
+            TblComment.Visibility = Visibility.Hidden;
+            TBComment.Visibility = Visibility.Hidden;
             if (DataAccess.CurrentUserIsClient(user))
             {
                 currentClient = DataAccess.GetCurrentClient(user);
+                BtnVisit.Visibility = Visibility.Visible;
+                BtnAddPhoto.Visibility = Visibility.Hidden;
+                BtnAddActivity.Visibility = Visibility.Hidden;
+                CBType.Visibility = Visibility.Hidden;
+                BtnAddActivity.Visibility = Visibility.Hidden;
+                BtnAddNewActivity.Visibility = Visibility.Hidden;
+                BtnDeclineRequest.Visibility = Visibility.Hidden;
+                TblInfo.Visibility = Visibility.Hidden;
+                TBContactInfo.Visibility = Visibility.Hidden;
+                TBName.IsReadOnly = true;
+                TBPrice.IsReadOnly = true;
+                TBType.IsReadOnly = true;
+                DPEnd.IsEnabled = false;
+                DPEnd.IsEnabled = false;
+                DataContext = currentActivity;
             }
             else
             {
@@ -121,15 +141,24 @@ namespace WpfLeisure.Pages
         private void BtnAddActivity_Click(object sender, RoutedEventArgs e)
         {
             var type = CBType.SelectedItem as Activity_Type;
-            try
+            if(TBName.Text.Length != 0 && TBPrice.Text.Length !=0 && CBType.SelectedItem != null && DPStart.SelectedDate != null && DPEnd.SelectedDate != null /*&& ActivityPhoto.Source != null*/)
             {
-                DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text, currentActivity.Photo, TBName.Text, type.Id, TBContactInfo.Text);
+                try
+                {
+                    DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text,  TBName.Text, type.Id, TBContactInfo.Text, TBComment.Text, currentRequest.Photo);
+                    MessageBox.Show("Заявка отправлена");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Поля : Название,\nСтоимость,\nТип мероприятия,\nа также даты начала и окончания - обязательны к заполнению");
             }
-            MessageBox.Show("Заявка отправлена");
+            
+            
         }
 
         private void BtnDeclinerequest_Click(object sender, RoutedEventArgs e)

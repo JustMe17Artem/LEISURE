@@ -64,7 +64,7 @@ namespace WpfLeisure.Pages
 
         private void BtnNewPlace_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PlacePage(new Place(), currentOwner));
+            NavigationService.Navigate(new PlacePage(currentOwner, new Place()));
         }
 
         private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)

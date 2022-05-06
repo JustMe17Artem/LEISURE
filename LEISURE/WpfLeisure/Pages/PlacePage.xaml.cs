@@ -52,10 +52,33 @@ namespace WpfLeisure.Pages
             LVReviews.ItemsSource = DataAccess.GetReviews(currentPlace.Id);
             DataContext = currentPlace;
         }
-        public PlacePage(Place place, Owner owner)
+
+        public PlacePage(Owner owner, Place place)// новое место
         {
             InitializeComponent();
             currentPlace = place;
+            currentOwner = owner;
+            BtnClosePlace.Visibility = Visibility.Hidden;
+            BtnSavePlace.Visibility = Visibility.Hidden;
+            BtnNewActivity.Visibility = Visibility.Hidden;
+            TBReview.Visibility = Visibility.Hidden;
+            BtnAddReview.Visibility = Visibility.Hidden;
+            BtnVisit.Visibility = Visibility.Hidden;
+            BtnAddReview.Visibility = Visibility.Hidden;
+            LVReviews.Visibility = Visibility.Hidden;
+            BtnAddReview.Visibility = Visibility.Hidden;
+            TBVisits.Visibility = Visibility.Hidden;
+            TBlVisits.Visibility = Visibility.Hidden;
+            BtnNewRequest.Visibility = Visibility.Hidden;
+            CBType.ItemsSource = DataAccess.GetPlaceTypes();
+            DataContext = this;
+        }
+
+        public PlacePage(Place place, Owner owner)// место
+        {
+            InitializeComponent();
+            currentPlace = place;
+            BtnAddPlace.Visibility = Visibility.Hidden;
             BtnNewRequest.Visibility = Visibility.Hidden;
             currentOwner = owner;
             TBName.Text = place.Name;
@@ -63,14 +86,11 @@ namespace WpfLeisure.Pages
             TBCapacity.Text = place.Capacity.ToString();
             CBType.SelectedItem = place.Place_Type;
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
-            BtnAddPlace.Visibility = Visibility.Hidden;
             TBType.Visibility = Visibility.Hidden;
             TBVisits.Text = currentPlace.Visits.ToString();
-            BtnSavePlace.Visibility = Visibility.Visible;
-            BtnClosePlace.Visibility = Visibility.Visible;
+            TBReview.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
-            BtnAddReview.Visibility = Visibility.Visible;
-            TBReview.Visibility = Visibility.Visible;
+            BtnAddReview.Visibility = Visibility.Hidden;
             LVReviews.ItemsSource = DataAccess.GetReviews(currentPlace.Id);
             DataContext = currentPlace;
         }

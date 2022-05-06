@@ -116,6 +116,7 @@
     <EntitySetMapping Name="Request">
       <EntityTypeMapping TypeName="LEISURE_KursachModel.Request">
         <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
           <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
           <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
           <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />

@@ -119,30 +119,33 @@
                      HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <Button Width="Auto"
+        <Button 
                 x:Name="BtnAddActivity"
                 Click="BtnAddActivity_Click"
                 Content="Подать заявку"
-                Height="Auto" Margin="815,573,488,146"/>
+                 Width="100"
+                Height="50" Margin="60,630,1226,29"/>
 
         <Button Width="Auto"
                 x:Name="BtnAcceptRequest"
                 Click="BtnAcceptRequest_Click_1"
                 Content="Принять заявку"
-                Height="Auto" Margin="875,691,410,39" />
+                Height="70"
+                Margin="850,592,455,48"/>
 
         <Button Width="Auto"
                 x:Name="BtnAddNewActivity"
                 Click="BtnAddNewActivity_Click"
-                Content="Новое мероприятие"
-                Height="80" Margin="1107,691,165,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" />
-       
+                Content="Создать мероприятие"
+                Height="50" Margin="58,604,1214,101"/>
+
 
         <Button Width="Auto"
                 x:Name="BtnDeclineRequest"
                 Click="BtnDeclinerequest_Click"
                 Content="Отклонить заявку"
-                Height="Auto" Margin="660,691,624,39" />
+                 Height="70"
+                Margin="660,592,624,48" />
 
 
         <Image Source="{Binding Photo}" 
@@ -155,11 +158,10 @@
         <Button x:Name="BtnAddPhoto" 
                 Click="BtnAddPhoto_Click"
                 Content="Добавить фото"
-                Width="180"
-                Height="100"
-                FontSize="20"
+                Width="100"
+                Height="60"
                 VerticalAlignment="Bottom"
-                Margin="56,0,1204,29"/>
+                Margin="78,0,1242,151" RenderTransformOrigin="0.517,0.43"/>
 
         <Button x:Name="BtnVisit" 
                 Click="BtnVisit_Click"
@@ -172,16 +174,31 @@
 
         <TextBox x:Name="TBDescription"
                  Width="380" 
-                 Margin="879,65,161,495"
+                 Margin="879,-25,161,395"
                  TextWrapping="Wrap"
-                 Height="250"/>
+                 Height="200"/>
 
 
         <TextBlock Text="Описание:"
                        FontSize="20"
+                       
                        Height="30"        
-                       Margin="885,20,0,760"
+                       Margin="885,0,0,660"
                        Width="100"
                        HorizontalAlignment="Left"/>
+
+        <TextBlock Text="Примечание:"
+                       FontSize="20"
+                       Height="30"       
+                       x:Name="TblComment"
+                       Margin="885,20,0,80"
+                       Width="130"
+                       HorizontalAlignment="Left"/>
+
+
+        <TextBox x:Name="TBComment" 
+                 Margin="885,295,62,295"
+                 TextWrapping="Wrap"
+                 Height="30"/>
     </Grid>
 </Page>
