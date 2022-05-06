@@ -84,6 +84,7 @@ namespace WpfLeisure.Pages
             currentOwner = owner;
             TBName.Text = place.Name;
             TBAdress.Text = place.Adress;
+            TBType.Visibility = Visibility.Hidden;
             TBCapacity.Text = place.Capacity.ToString();
             CBType.SelectedItem = place.Place_Type;
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
