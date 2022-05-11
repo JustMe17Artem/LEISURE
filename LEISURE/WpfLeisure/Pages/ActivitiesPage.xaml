@@ -15,11 +15,11 @@
                     Height="30"
                     VerticalAlignment="Top">
 
-            <TextBox x:Name="TBSearch"
+            <!--<TextBox x:Name="TBSearch"
                      Width="370"
                      Height="30"
                      Margin="-160,0,0,0"
-                     TextChanged="TBSearch_TextChanged"/>
+                     TextChanged="TBSearch_TextChanged"/>-->
 
             <ComboBox  DisplayMemberPath="Name" 
                       x:Name="CBType"

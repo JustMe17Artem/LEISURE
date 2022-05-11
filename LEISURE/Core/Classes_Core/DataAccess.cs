@@ -205,7 +205,7 @@ namespace Core.Classes_Core
             }
         }
 
-        public static bool AddNewRequest(Place place, DateTime start, DateTime end, float price, string description,  string name, int idType, string info, string comment, byte[] photo)
+        public static bool AddNewRequest(Place place, DateTime start, DateTime end, Nullable<float> price, string description,  string name, Nullable<int> idType, string info, string comment, byte[] photo)
         {
             try
             {
@@ -298,13 +298,17 @@ namespace Core.Classes_Core
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Type == id || p.ID_Type == -1));
         }
+        public static ObservableCollection<Activity> GetActivitiesByType(int id)
+        {
+            return new ObservableCollection<Activity>(DB_Connection.connection.Activity.Where(p => p.ID_Type == id || p.ID_Type == -1));
+        }
 
         public static ObservableCollection<Activity_Type> GetActivityTypes()
         {
             return new ObservableCollection<Activity_Type>(DB_Connection.connection.Activity_Type);
         }
 
-        public static ObservableCollection<Review> GetReviews(int idPlace)
+        public static ObservableCollection<Review> GetRevi(int idPlace)
         {
             return new ObservableCollection<Review>(DB_Connection.connection.Review.Where(r => r.ID_Place == idPlace));
         }

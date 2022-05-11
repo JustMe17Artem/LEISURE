@@ -26,20 +26,14 @@ namespace WpfLeisure.Pages
             InitializeComponent();
             currentUser = user;
             LVActivities.ItemsSource = DataAccess.GetActivities();
-            CBType.ItemsSource = DataAccess.GetPlaceTypes();
-            var alltypes = DataAccess.GetPlaceTypes();
-            alltypes.Insert(0, new Place_Type() { Id = -1, Name = "Все" });
+            var alltypes = DataAccess.GetActivityTypes();
+            alltypes.Insert(0, new Activity_Type() { Id = -1, Name = "Все" });
             CBType.ItemsSource = alltypes;
         }
 
         private void BtnWatchPlaces_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            NavigationService.Navigate(new PlacesPage(currentUser));
         }
 
         private void LVActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -50,7 +44,19 @@ namespace WpfLeisure.Pages
 
         private void CBType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Filter();
         }
+        private void Filter()
+        {
+            var filterActivities = DataAccess.GetActivities();
+
+            if (CBType.SelectedIndex > 0)
+            {
+                var type = CBType.SelectedItem as Place_Type;
+                filterActivities = DataAccess.GetActivitiesByType(type.Id);
+            }
+            LVActivities.ItemsSource = filterActivities;
+        }
+
     }
 }

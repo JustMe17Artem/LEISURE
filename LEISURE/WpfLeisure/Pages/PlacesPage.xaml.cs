@@ -35,7 +35,6 @@ namespace WpfLeisure.Pages
                 BtnNewPlace.Visibility = Visibility.Hidden;
                 LVPlaces.ItemsSource = DataAccess.GetPlacesList();
                 BtnRequests.Visibility = Visibility.Hidden;
-                CBType.ItemsSource = DataAccess.GetPlaceTypes();
                 var alltypes = DataAccess.GetPlaceTypes();
                 alltypes.Insert(0, new Place_Type() { Id = -1, Name = "Все" });
                 CBType.ItemsSource = alltypes;
@@ -65,24 +64,11 @@ namespace WpfLeisure.Pages
             NavigationService.Navigate(new PlacePage(currentOwner, new Place()));
         }
 
-        private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Filter();
-        }
         private void Filter()
         {
             var filterPlace = DataAccess.GetPlacesList();
 
-            if (TBSearch.Text != "")
-            {
-                filterPlace = DataAccess.GetPlacesByNameOrAdress(TBSearch.Text);
-            }
-            if (CBType.SelectedIndex == 0)
-            {
-                filterPlace = DataAccess.GetPlacesByNameOrAdress(TBSearch.Text);
-            }
-
-            else if (CBType.SelectedIndex > 0)
+            if (CBType.SelectedIndex > 0)
             {
                 var type = CBType.SelectedItem as Place_Type;
                 filterPlace = DataAccess.GetPlacesByType(type.Id);
@@ -92,7 +78,6 @@ namespace WpfLeisure.Pages
 
         private void CBType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LVPlaces.SelectedItem = null;
             Filter();
         }
 
