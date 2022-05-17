@@ -222,6 +222,10 @@ namespace Core.Classes_Core
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place);
         }
+        public static Place GetPlace(int id)
+        {
+            return GetPlaces().Where(p => p.Id == id).FirstOrDefault();
+        }
 
         public static bool CurrentUserIsClient(User user)
         {
