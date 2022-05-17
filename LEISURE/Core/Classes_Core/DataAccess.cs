@@ -19,15 +19,22 @@ namespace Core.Classes_Core
             ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
             return roles;
         }
-        public static List<Role> Get() // метод миши
+        public static ObservableCollection<Client> GetClients()
+        {
+            ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
+            return clients;
+        }
+
+        public static ObservableCollection<Activity> GetActivities()
+        {
+            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity);
+            return activities;
+        }
+        public static List<Role> Get() // метод миши. не работает
         {
             return DB_Connection.connection.Role.ToList();
         }
-        public static List<Role> GetRoless()
-        {
-            return DB_Connection.connection.Role.ToList();
-        }
-        public static List<Role> GetTypeObjects()
+        public static List<Role> GetRolesList() // для получения ролей, хорошо работает с апишкой
         {
             List<Role> types = new List<Role>(DB_Connection.connection.Role);
             List<Role> typess = new List<Role>();
@@ -43,11 +50,7 @@ namespace Core.Classes_Core
             return types;
         }
 
-        public static ObservableCollection<Activity> GetActivities()
-        {
-            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity);
-            return activities;
-        }
+        
         public static IEnumerable<Place> GetPlacesList()
         {
             return (IEnumerable<Place>)DataAccess.GetPlaces().Where(p => p.IsOpen == true).ToList();
@@ -203,6 +206,11 @@ namespace Core.Classes_Core
         {
            ObservableCollection<Place_Type> types = new ObservableCollection<Place_Type>(DB_Connection.connection.Place_Type);
             return types.Where(t => t.Id == id).FirstOrDefault();
+        }
+
+        public static Client GetClientById(int id)
+        {
+            return clients.Where(c => c.Id == id).FirstOrDefault();
         }
 
 
@@ -373,6 +381,7 @@ namespace Core.Classes_Core
         {
             return new ObservableCollection<Review>(DB_Connection.connection.Review.Where(r => r.ID_Place == idPlace));
         }
+
 
         public static bool AddVisitToPlace(Place place)
         {

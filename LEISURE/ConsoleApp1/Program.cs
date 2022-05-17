@@ -9,9 +9,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            foreach(var r in DataAccess.GetRoles())
+            foreach(var r in DataAccess.GetReviews(4))
             {
-                Console.WriteLine(r.Name);
+                Console.WriteLine(r.ID_Client);
             }
         }
     }

@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 using Core.ado;
 using Core.Classes_Core;
 
-
 namespace ApiLeisure.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActivityController : Controller
+    public class ClientController : Controller
     {
         public IActionResult Index()
         {
@@ -19,11 +18,17 @@ namespace ApiLeisure.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Activity> Get()
+        public IEnumerable<Client> Get()
         {
-            return DataAccess.GetActivities();
+            return DataAccess.GetClients();
         }
-        
+        [HttpGet("{id}")]
+        public ActionResult<Client> Get(int id)
+        {
+            var client = DataAccess.GetClientById(id);
+            if (client == null)
+                return NotFound();
+            return client;
+        }
     }
 }
-    
