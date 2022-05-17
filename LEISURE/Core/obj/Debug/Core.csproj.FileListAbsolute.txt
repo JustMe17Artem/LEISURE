@@ -17,8 +17,16 @@ C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\EntityFra
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\EntityFramework.xml
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\obj\Debug\Core.csproj.AssemblyReference.cache
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\obj\Debug\Core.csproj.CopyComplete
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\obj\Debug\Core.dll
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\obj\Debug\Core.pdb
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\System.Security.AccessControl.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\System.Security.Permissions.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\System.Security.AccessControl.xml
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\System.Security.Permissions.xml
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\Core\obj\Debug\Core.csproj.AssemblyReference.cache

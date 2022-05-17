@@ -10,15 +10,39 @@ namespace Core.Classes_Core
 {
     public class DataAccess
     {
-        private static ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
         private static ObservableCollection<User> users = new ObservableCollection<User>(DB_Connection.connection.User);
         private static ObservableCollection<Owner> managers = new ObservableCollection<Owner>(DB_Connection.connection.Owner);
         private static ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
         private static ObservableCollection<Owner> owners = new ObservableCollection<Owner>(DB_Connection.connection.Owner);
         public static ObservableCollection<Role> GetRoles()
         {
+            ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
             return roles;
         }
+        public static List<Role> Get() // метод миши
+        {
+            return DB_Connection.connection.Role.ToList();
+        }
+        public static List<Role> GetRoless()
+        {
+            return DB_Connection.connection.Role.ToList();
+        }
+        public static List<Role> GetTypeObjects()
+        {
+            List<Role> types = new List<Role>(DB_Connection.connection.Role);
+            List<Role> typess = new List<Role>();
+            foreach (var part in types)
+            {
+                typess.Add(
+                    new Role
+                    {
+                        Id = part.Id,
+                        Name = part.Name
+                    });
+            }
+            return types;
+        }
+
         public static ObservableCollection<Activity> GetActivities()
         {
             ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity);
@@ -92,6 +116,20 @@ namespace Core.Classes_Core
                 return false;
             }
         }
+
+        public static bool AddNewPlaceType(Place_Type type)
+        {
+            try
+            {
+                DB_Connection.connection.Place_Type.Add(type);
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public static bool AddNewUser( string login, string password)
         {
             User user = new User();
@@ -139,9 +177,32 @@ namespace Core.Classes_Core
 
         }
 
+        public static bool UpdatePlaceType(Place_Type type)
+        {
+            var place = DataAccess.GetPlaceType(type.Id);
+            place.Name = type.Name;
+            try
+            {
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+
+        }
+
         public static ObservableCollection<Place> GetPlacesByOwner(Owner owner)
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Owner == owner.Id));
+        }
+
+        public static Place_Type GetPlaceType(int id)
+        {
+           ObservableCollection<Place_Type> types = new ObservableCollection<Place_Type>(DB_Connection.connection.Place_Type);
+            return types.Where(t => t.Id == id).FirstOrDefault();
         }
 
 
@@ -308,7 +369,7 @@ namespace Core.Classes_Core
             return new ObservableCollection<Activity_Type>(DB_Connection.connection.Activity_Type);
         }
 
-        public static ObservableCollection<Review> GetRevi(int idPlace)
+        public static ObservableCollection<Review> GetReviews(int idPlace)
         {
             return new ObservableCollection<Review>(DB_Connection.connection.Review.Where(r => r.ID_Place == idPlace));
         }

@@ -52,7 +52,7 @@ namespace WpfLeisure.Pages
 
             if (CBType.SelectedIndex > 0)
             {
-                var type = CBType.SelectedItem as Place_Type;
+                var type = CBType.SelectedItem as Activity_Type;
                 filterActivities = DataAccess.GetActivitiesByType(type.Id);
             }
             LVActivities.ItemsSource = filterActivities;

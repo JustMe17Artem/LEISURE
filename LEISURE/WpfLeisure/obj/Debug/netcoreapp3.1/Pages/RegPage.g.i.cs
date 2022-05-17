@@ -101,7 +101,7 @@ namespace WpfLeisure.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfLeisure;component/pages/regpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfLeisure;V1.0.0.0;component/pages/regpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\RegPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
