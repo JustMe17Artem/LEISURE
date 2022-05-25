@@ -19,7 +19,7 @@ namespace ApiLeisure.Controllers
         [HttpGet]
         public IEnumerable<Place_Type> Get()
         {
-            return DataAccess.GetPlaceTypes();
+           return DataAccess.GetPlaceTypes();
         }
         [HttpPost]
         public IActionResult Create(Place_Type type)
@@ -50,7 +50,5 @@ namespace ApiLeisure.Controllers
 
             return NoContent();
         }
-
-
     }
 }

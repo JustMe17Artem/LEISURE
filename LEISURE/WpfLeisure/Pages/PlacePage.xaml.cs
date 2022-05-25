@@ -63,7 +63,7 @@ namespace WpfLeisure.Pages
             BtnNewActivity.Visibility = Visibility.Hidden;
             TBReview.Visibility = Visibility.Hidden;
             BtnAddReview.Visibility = Visibility.Hidden;
-            BtnVisit.Visibility = Visibility.Hidden;
+            //BtnVisit.Visibility = Visibility.Hidden;
             BtnAddReview.Visibility = Visibility.Hidden;
             LVReviews.Visibility = Visibility.Hidden;
             TBType.Visibility = Visibility.Hidden;
@@ -90,7 +90,7 @@ namespace WpfLeisure.Pages
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
             TBVisits.Text = currentPlace.Visits.ToString();
             TBReview.Visibility = Visibility.Hidden;
-            BtnVisit.Visibility = Visibility.Hidden;
+            //BtnVisit.Visibility = Visibility.Hidden;
             BtnAddReview.Visibility = Visibility.Hidden;
             LVReviews.ItemsSource = DataAccess.GetReviews(currentPlace.Id);
             DataContext = currentPlace;
@@ -134,7 +134,7 @@ namespace WpfLeisure.Pages
             {
                 try
                 {
-                    DataAccess.EditPlace(currentPlace, TBName.Text, type.Id, TBAdress.Text, TBCapacity.Text, currentPlace.Photo);
+                    DataAccess.EditPlace(currentPlace, TBName.Text, type.Id, TBAdress.Text, TBCapacity.Text, currentPlace.Photo, TBDescription.Text);
                     MessageBox.Show("Место изменено");
                     NavigationService.Navigate(new PlacesPage(currentOwner.User));
                 }
@@ -142,6 +142,10 @@ namespace WpfLeisure.Pages
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Поля: Название,\nОписание,\nТип объекта,\nа также фото - обязательны к заполнению");
             }
         }
 
@@ -173,6 +177,7 @@ namespace WpfLeisure.Pages
         private void BtnAddReview_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.AddNewReview(currentClient.Id, currentPlace.Id, TBReview.Text);
+            MessageBox.Show("Отзыв добавлен");
         }
 
         private void BtnNewRequest_Click(object sender, RoutedEventArgs e)

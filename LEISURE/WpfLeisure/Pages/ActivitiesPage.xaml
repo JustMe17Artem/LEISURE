@@ -66,6 +66,7 @@
         <Button x:Name="BtnWatchPlaces"
                     Click="BtnWatchPlaces_Click"
                     Content="Места" 
+                
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 Margin="0,0,398,700"/>

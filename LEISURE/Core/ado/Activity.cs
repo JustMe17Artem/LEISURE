@@ -20,11 +20,11 @@ namespace Core.ado
         public Nullable<double> Price { get; set; }
         public Nullable<int> ID_Place { get; set; }
         public Nullable<System.DateTime> Start_Date { get; set; }
-        public Nullable<System.DateTime> End_Date { get; set; }
         public Nullable<int> ID_Type { get; set; }
         public byte[] Photo { get; set; }
         public Nullable<int> ID_Request { get; set; }
         public Nullable<int> Visits { get; set; }
+        public Nullable<System.TimeSpan> Time_Start { get; set; }
     
         public virtual Activity_Type Activity_Type { get; set; }
         public virtual Place Place { get; set; }

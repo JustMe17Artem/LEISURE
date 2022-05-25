@@ -37,7 +37,7 @@ namespace WpfLeisure.Pages
             TBVisits.Visibility = Visibility.Hidden;
             BtnAddNewActivity.Visibility = Visibility.Hidden;
             TBType.Visibility = Visibility.Hidden;
-            BtnVisit.Visibility = Visibility.Hidden;
+            //BtnVisit.Visibility = Visibility.Hidden;
             BtnAcceptRequest.Visibility = Visibility.Hidden;
             BtnDeclineRequest.Visibility = Visibility.Hidden;
             CBType.ItemsSource = DataAccess.GetActivityTypes();
@@ -49,7 +49,7 @@ namespace WpfLeisure.Pages
             currentOwner = owner;
             currentRequest = request;
             TblPrice.Visibility = Visibility.Hidden;
-            BtnVisit.Visibility = Visibility.Hidden;
+            //BtnVisit.Visibility = Visibility.Hidden;
             BtnAddActivity.Visibility = Visibility.Hidden;
             CBType.Visibility = Visibility.Hidden;
             TblVisits.Visibility = Visibility.Hidden;
@@ -61,7 +61,6 @@ namespace WpfLeisure.Pages
             TBPrice.Text = currentRequest.Price.ToString();
             TBType.Text = currentRequest.Activity_Type.Name;
             DPStart.SelectedDate = currentRequest.DateStart;
-            DPEnd.SelectedDate = currentRequest.DateEnd;
             TBDescription.Text = currentRequest.Description;
             TBComment.IsReadOnly = true;
             TBContactInfo.IsReadOnly = true;
@@ -69,7 +68,6 @@ namespace WpfLeisure.Pages
             TBPrice.IsReadOnly = true;
             TBType.IsReadOnly = true;
             DPStart.IsEnabled = false;
-            DPEnd.IsEnabled = false;
             TBDescription.IsReadOnly = true;
             DataContext = request;
         }
@@ -82,7 +80,7 @@ namespace WpfLeisure.Pages
             if (DataAccess.CurrentUserIsClient(user))
             {
                 currentClient = DataAccess.GetCurrentClient(user);
-                BtnVisit.Visibility = Visibility.Visible;
+                //BtnVisit.Visibility = Visibility.Visible;
                 TblPrice.Visibility = Visibility.Hidden;
                 BtnAddPhoto.Visibility = Visibility.Hidden;
                 BtnAddActivity.Visibility = Visibility.Hidden;
@@ -98,26 +96,22 @@ namespace WpfLeisure.Pages
                 TBPrice.Text = currentActivity.Price.ToString();
                 TBType.Text = currentActivity.Activity_Type.Name;
                 DPStart.SelectedDate = currentActivity.Start_Date;
-                DPEnd.SelectedDate = currentActivity.End_Date;
                 TBDescription.Text = currentActivity.Description;
                 TBContactInfo.IsReadOnly = true;
                 TBName.IsReadOnly = true;
                 TBPrice.IsReadOnly = true;
                 TBType.IsReadOnly = true;
                 DPStart.IsEnabled = false;
-                DPEnd.IsEnabled = false;
                 TBDescription.IsReadOnly = true;
                 TBName.IsReadOnly = true;
                 TBPrice.IsReadOnly = true;
                 TBType.IsReadOnly = true;
-                DPEnd.IsEnabled = false;
-                DPEnd.IsEnabled = false;
                 DataContext = currentActivity;
             }
             else
             {
                 currentPlace = place;
-                BtnVisit.Visibility = Visibility.Hidden;
+                //BtnVisit.Visibility = Visibility.Hidden;
                 TBContactInfo.Visibility = Visibility.Hidden;
                 TblInfo.Visibility = Visibility.Hidden;
                 TblVisits.Visibility = Visibility.Hidden;
@@ -157,7 +151,7 @@ namespace WpfLeisure.Pages
 
         public bool ActivityIsValid()
         {
-            if (TBName.Text.Length != 0 && TBPrice.Text.Length != 0 && CBType.SelectedItem != null && DPStart.SelectedDate != null && DPEnd.SelectedDate != null)
+            if (TBName.Text.Length != 0 && TBPrice.Text.Length != 0 && CBType.SelectedItem != null && DPStart.SelectedDate != null)
                 return true;
             else
                 return false;
@@ -169,7 +163,7 @@ namespace WpfLeisure.Pages
             {
                 try
                 {
-                    DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text,  TBName.Text, type.Id, TBContactInfo.Text, TBComment.Text, currentRequest.Photo);
+                    DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, TPTime.SelectedTime.Value.TimeOfDay, float.Parse(TBPrice.Text), TBDescription.Text,  TBName.Text, type.Id, TBContactInfo.Text, TBComment.Text, currentRequest.Photo);
                     MessageBox.Show("Заявка отправлена");
                 }
                 catch (Exception ex)
@@ -210,7 +204,7 @@ namespace WpfLeisure.Pages
             {
                 try
                 {
-                    DataAccess.AddNewActivity(currentPlace, DPStart.SelectedDate.Value, DPEnd.SelectedDate.Value, float.Parse(TBPrice.Text), TBDescription.Text, currentActivity.Photo, TBName.Text, type.Id, TBContactInfo.Text);
+                    DataAccess.AddNewActivity(currentPlace, DPStart.SelectedDate.Value, TPTime.SelectedTime.Value.TimeOfDay, float.Parse(TBPrice.Text), TBDescription.Text, currentActivity.Photo, TBName.Text, type.Id);
                     MessageBox.Show("Мероприятие создано");
                 }
                 catch (Exception ex)

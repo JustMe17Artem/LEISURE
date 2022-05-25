@@ -10,7 +10,6 @@
     <Property Name="Price" Type="Double" />
     <Property Name="ID_Place" Type="Int32" />
     <Property Name="Start_Date" Type="DateTime" Precision="3" />
-    <Property Name="End_Date" Type="DateTime" Precision="3" />
     <Property Name="ID_Type" Type="Int32" />
     <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Activity_Type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_Type" />
@@ -18,6 +17,7 @@
     <Property Name="ID_Request" Type="Int32" />
     <NavigationProperty Name="Request" Relationship="LEISURE_KursachModel.FK_Activity_Request" FromRole="Activity" ToRole="Request" />
     <Property Name="Visits" Type="Int32" />
+    <Property Name="Time_Start" Type="Time" Precision="7" />
   </EntityType>
   <EntityType Name="Activity_Type">
     <Key>
@@ -61,7 +61,7 @@
     <Property Name="ID_Type" Type="Int32" />
     <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="ID_Owner" Type="Int32" />
-    <Property Name="Capacity" Type="String" />
+    <Property Name="Capacity" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="IsOpen" Type="Boolean" />
     <Property Name="Visits" Type="Int32" />
     <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -286,7 +286,6 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ID_Place" Type="Int32" />
     <Property Name="DateStart" Type="DateTime" Precision="3" />
-    <Property Name="DateEnd" Type="DateTime" Precision="3" />
     <Property Name="Price" Type="Double" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -299,6 +298,7 @@
     <Property Name="ID_Status" Type="Int32" />
     <NavigationProperty Name="Status_Request" Relationship="LEISURE_KursachModel.FK_Request_Status_Request" FromRole="Request" ToRole="Status_Request" />
     <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStart" Type="Time" Precision="7" />
   </EntityType>
   <Association Name="FK_Activity_Request">
     <End Type="LEISURE_KursachModel.Request" Role="Request" Multiplicity="0..1" />

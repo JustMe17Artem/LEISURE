@@ -13,7 +13,6 @@ namespace Core.Classes_Core
         private static ObservableCollection<User> users = new ObservableCollection<User>(DB_Connection.connection.User);
         private static ObservableCollection<Owner> managers = new ObservableCollection<Owner>(DB_Connection.connection.Owner);
         private static ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
-        private static ObservableCollection<Owner> owners = new ObservableCollection<Owner>(DB_Connection.connection.Owner);
         public static ObservableCollection<Role> GetRoles()
         {
             ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
@@ -36,21 +35,20 @@ namespace Core.Classes_Core
         }
         public static List<Role> GetRolesList() // для получения ролей, хорошо работает с апишкой
         {
-            List<Role> types = new List<Role>(DB_Connection.connection.Role);
-            List<Role> typess = new List<Role>();
-            foreach (var part in types)
+            List<Role> dbRoles = new List<Role>(DB_Connection.connection.Role);
+            List<Role> roles = new List<Role>(dbRoles);
+            foreach (var role in dbRoles)
             {
-                typess.Add(
+                roles.Add(
                     new Role
                     {
-                        Id = part.Id,
-                        Name = part.Name
+                        Id = role.Id,
+                        Name = role.Name
                     });
             }
-            return types;
+            return roles;
         }
 
-        
         public static IEnumerable<Place> GetPlacesList()
         {
             return (IEnumerable<Place>)DataAccess.GetPlaces().Where(p => p.IsOpen == true).ToList();
@@ -233,7 +231,7 @@ namespace Core.Classes_Core
             return client.Count == 1;
         }
 
-        public static bool EditPlace(Place place,  string name, int idType, string adress, string capacity, byte[] photo)
+        public static bool EditPlace(Place place,  string name, int idType, string adress, string capacity, byte[] photo, string description)
         {
             try
             {
@@ -244,6 +242,7 @@ namespace Core.Classes_Core
                 place.IsOpen = true;
                 place.Visits = 0;
                 place.Photo = photo;
+                place.Description = description;
                 DB_Connection.connection.SaveChanges();
                 return true;
             }
@@ -263,7 +262,7 @@ namespace Core.Classes_Core
                 activity.Price = request.Price;
                 activity.ID_Place = request.ID_Place;
                 activity.Start_Date = request.DateStart;
-                activity.End_Date = request.DateEnd;
+                activity.Time_Start = request.TimeStart;
                 activity.Photo = request.Photo;
                 activity.ID_Type = request.ID_Type;
                 activity.ID_Request = request.Id;
@@ -278,14 +277,14 @@ namespace Core.Classes_Core
             }
         }
 
-        public static bool AddNewRequest(Place place, DateTime start, DateTime end, Nullable<float> price, string description,  string name, Nullable<int> idType, string info, string comment, byte[] photo)
+        public static bool AddNewRequest(Place place, DateTime start, TimeSpan startTime, Nullable<float> price, string description,  string name, Nullable<int> idType, string info, string comment, byte[] photo)
         {
             try
             {
                 Request request = new Request();
                 request.ID_Place = place.Id;
                 request.DateStart = start;
-                request.DateEnd = end;
+                request.TimeStart = startTime;
                 request.Price = price;
                 request.Description = description;
                 request.Photo = photo;
@@ -304,20 +303,21 @@ namespace Core.Classes_Core
             }
         }
 
-        public static bool AddNewActivity(Place place, DateTime start, DateTime end, float price, string description, byte[] photo, string name, int idType, string info)
+        public static bool AddNewActivity(Place place, DateTime start, TimeSpan startTime, float price, string description, byte[] photo, string name, int idType)
         {
             try
             {
                 Activity activity = new Activity();
                 activity.ID_Place = place.Id;
                 activity.Start_Date = start;
-                activity.End_Date = end;
+                activity.Time_Start = startTime;
                 activity.Price = price;
                 activity.Description = description;
                 activity.Photo = photo;
                 activity.Name = name;
                 activity.Visits = 0;
                 activity.ID_Type = idType;
+                
                 DB_Connection.connection.Activity.Add(activity);
                 DB_Connection.connection.SaveChanges();
                 return true;

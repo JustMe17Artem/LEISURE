@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfLeisure.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="810" d:DesignWidth="1440"
       Title="ActivityPage">
@@ -25,7 +26,7 @@
                      Height="30"
                      FontSize="20"
                      Margin="0,0,0,10"
-                     HorizontalAlignment="Left"/>
+                      BorderThickness="1"/>
 
             <TextBlock Text="Цена:"
                        FontSize="20"
@@ -45,6 +46,7 @@
                      Height="30"
                      Margin="0,0,0,10"
                      FontSize="20"
+                     BorderThickness="1"
                      HorizontalAlignment="Left"/>
 
             <TextBlock Text="Тип:"
@@ -57,6 +59,7 @@
                       DisplayMemberPath="Name" 
                       x:Name="CBType"
                       Height="25"
+                        BorderThickness="1"
                       Width="200"
                   HorizontalAlignment="Left"
                       VerticalAlignment="Center"
@@ -69,9 +72,8 @@
                      Height="30"
                      Margin="0,-25,0,10"
                      FontSize="20"
+                      BorderThickness="1"
                      HorizontalAlignment="Left"/>
-
-
 
             <TextBlock Text="Дата начала:"
                        FontSize="20"
@@ -81,17 +83,9 @@
 
             <DatePicker x:Name="DPStart"
                         Margin="-10,0,0,10"
-                        Width="300"/>
-
-            <TextBlock Text="Дата конца:"
-                       FontSize="20"
-                       Margin="0,0,0,5"
-                       Width="130"
-                       HorizontalAlignment="Left"/>
-
-            <DatePicker x:Name="DPEnd"
                         Width="300"
-                        Margin="-10,0,0,10"/>
+                        BorderThickness="1"/>
+
 
             <TextBlock Text="Контактные данные (телефон, почта):"
                        FontSize="20"
@@ -106,6 +100,7 @@
                      Height="30"
                      Margin="0,0,0,10"
                      FontSize="20"
+                     BorderThickness="1"
                      HorizontalAlignment="Left"/>
 
             <TextBlock Text="Посещений:"
@@ -122,13 +117,27 @@
                      Margin="0,-0,10,10"
                      FontSize="20"
                      HorizontalAlignment="Left"/>
-        </StackPanel>
 
+            <TextBlock Text="Время начала:"
+                       FontSize="20"
+                       Margin="0,-60,0,0"
+                       Width="130"
+                       HorizontalAlignment="Left"/>
+
+            <materialDesign:TimePicker
+                x:Name="TPTime"
+                SelectedTime="{Binding Appointment.Time}"
+                HorizontalAlignment="Left"
+                 Margin="0,-30,0,0"
+                Width="150"
+               Style="{StaticResource MaterialDesignFloatingHintTimePicker}"/>
+
+        </StackPanel>
+        
         <Button 
                 x:Name="BtnAddActivity"
                 Click="BtnAddActivity_Click"
                 Content="Подать заявку"
-                 Width="100"
                 Height="50" Margin="60,630,1226,29"/>
 
         <Button Width="Auto"
@@ -168,20 +177,21 @@
                 VerticalAlignment="Bottom"
                 Margin="78,0,1242,151" RenderTransformOrigin="0.517,0.43"/>
 
-        <Button x:Name="BtnVisit" 
+        <!--<Button x:Name="BtnVisit" 
                 Click="BtnVisit_Click"
                 Content="Я пойду!"
                 Width="200"
                 FontSize="20"
                 Height="100"
                 VerticalAlignment="Bottom"
-                Margin="355,0,885,29"/>
+                Margin="355,0,885,29"/>-->
 
         <TextBox x:Name="TBDescription"
                  Width="380" 
                  Margin="879,-25,161,395"
                  TextWrapping="Wrap"
-                 Height="200"/>
+                 Height="200"
+                 BorderThickness="1"/>
 
 
         <TextBlock Text="Описание:"
@@ -204,6 +214,7 @@
         <TextBox x:Name="TBComment" 
                  Margin="885,295,62,295"
                  TextWrapping="Wrap"
-                 Height="30"/>
+                 Height="30"
+                  BorderThickness="1"/>
     </Grid>
 </Page>

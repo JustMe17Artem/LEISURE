@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.3.0" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.7-ci189" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
   </ItemGroup>
 

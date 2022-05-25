@@ -23,7 +23,6 @@ namespace Core.ado
         public int Id { get; set; }
         public Nullable<int> ID_Place { get; set; }
         public Nullable<System.DateTime> DateStart { get; set; }
-        public Nullable<System.DateTime> DateEnd { get; set; }
         public Nullable<double> Price { get; set; }
         public string Description { get; set; }
         public byte[] Photo { get; set; }
@@ -32,6 +31,7 @@ namespace Core.ado
         public string ContactInfo { get; set; }
         public Nullable<int> ID_Status { get; set; }
         public string Comment { get; set; }
+        public Nullable<System.TimeSpan> TimeStart { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activity { get; set; }
