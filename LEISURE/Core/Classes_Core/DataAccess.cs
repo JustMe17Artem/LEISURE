@@ -240,7 +240,6 @@ namespace Core.Classes_Core
                 place.Adress = adress;
                 place.Capacity = capacity;
                 place.IsOpen = true;
-                place.Visits = 0;
                 place.Photo = photo;
                 place.Description = description;
                 DB_Connection.connection.SaveChanges();

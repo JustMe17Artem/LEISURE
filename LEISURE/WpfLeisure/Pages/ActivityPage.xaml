@@ -126,7 +126,6 @@
 
             <materialDesign:TimePicker
                 x:Name="TPTime"
-                SelectedTime="{Binding Appointment.Time}"
                 HorizontalAlignment="Left"
                  Margin="0,-30,0,0"
                 Width="150"

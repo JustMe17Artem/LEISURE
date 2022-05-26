@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfLeisure", "WpfLeisure\Wp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{40A53275-D1C7-45AD-AE19-12C1390E86ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiLeisure", "ApiLeisure\ApiLeisure.csproj", "{0D68C460-CFAB-43B5-B1C9-29FF9E4FBF74}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{1108AB85-9F38-46B7-BC89-FA734C3B5F33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiLeisure", "ApiLeisure\ApiLeisure.csproj", "{0D68C460-CFAB-43B5-B1C9-29FF9E4FBF74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{0D68C460-CFAB-43B5-B1C9-29FF9E4FBF74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D68C460-CFAB-43B5-B1C9-29FF9E4FBF74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D68C460-CFAB-43B5-B1C9-29FF9E4FBF74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1108AB85-9F38-46B7-BC89-FA734C3B5F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1108AB85-9F38-46B7-BC89-FA734C3B5F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1108AB85-9F38-46B7-BC89-FA734C3B5F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1108AB85-9F38-46B7-BC89-FA734C3B5F33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

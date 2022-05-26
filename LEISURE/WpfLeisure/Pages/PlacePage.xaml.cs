@@ -39,11 +39,6 @@ namespace WpfLeisure.Pages
             TBType.IsReadOnly = true;
             TBDescription.IsReadOnly = true;
             currentPlace = place;
-            TBName.Text = place.Name;
-            TBType.Text = place.Place_Type.Name;
-            TBAdress.Text = place.Adress;
-            TBCapacity.Text = place.Capacity.ToString();
-            TBVisits.Text = place.Visits.ToString();
             BtnAddPhoto.Visibility = Visibility.Hidden;
             BtnNewActivity.Visibility = Visibility.Hidden;
             BtnAddPlace.Visibility = Visibility.Hidden;
@@ -63,7 +58,6 @@ namespace WpfLeisure.Pages
             BtnNewActivity.Visibility = Visibility.Hidden;
             TBReview.Visibility = Visibility.Hidden;
             BtnAddReview.Visibility = Visibility.Hidden;
-            //BtnVisit.Visibility = Visibility.Hidden;
             BtnAddReview.Visibility = Visibility.Hidden;
             LVReviews.Visibility = Visibility.Hidden;
             TBType.Visibility = Visibility.Hidden;
@@ -75,22 +69,16 @@ namespace WpfLeisure.Pages
             DataContext = this;
         }
 
-        public PlacePage(Place place, Owner owner)// место
+        public PlacePage(Place place, Owner owner)
         {
             InitializeComponent();
             currentPlace = place;
             BtnAddPlace.Visibility = Visibility.Hidden;
             BtnNewRequest.Visibility = Visibility.Hidden;
             currentOwner = owner;
-            TBName.Text = place.Name;
-            TBAdress.Text = place.Adress;
             TBType.Visibility = Visibility.Hidden;
-            TBCapacity.Text = place.Capacity.ToString();
-            CBType.SelectedItem = place.Place_Type;
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
-            TBVisits.Text = currentPlace.Visits.ToString();
             TBReview.Visibility = Visibility.Hidden;
-            //BtnVisit.Visibility = Visibility.Hidden;
             BtnAddReview.Visibility = Visibility.Hidden;
             LVReviews.ItemsSource = DataAccess.GetReviews(currentPlace.Id);
             DataContext = currentPlace;

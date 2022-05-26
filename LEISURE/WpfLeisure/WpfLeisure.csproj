@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Img\eye.png" />
+    <None Remove="Img\walk.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.3.0" />
     <PackageReference Include="MaterialDesignColors" Version="2.0.7-ci189" />
@@ -15,6 +20,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Img\eye.png" />
+    <Resource Include="Img\walk.png" />
   </ItemGroup>
 
   <ItemGroup>
