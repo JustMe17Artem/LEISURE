@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -52,6 +53,7 @@ namespace WpfLeisure.Pages
             if (DataAccess.CurrentUserIsClient(currentUser))
             {
                 NavigationService.Navigate(new PlacePage(currentClient, selectedPlace));
+                DataAccess.AddVisitToPlace(selectedPlace);
             }
             else
             {
@@ -73,6 +75,14 @@ namespace WpfLeisure.Pages
                 var type = CBType.SelectedItem as Place_Type;
                 filterPlace = DataAccess.GetPlacesByType(type.Id);
             }
+            if (CBPopularity.SelectedIndex == 0)
+            {
+                filterPlace = filterPlace.OrderByDescending(a => a.Visits);
+            }
+            else if (CBPopularity.SelectedIndex == 1)
+            {
+                filterPlace = filterPlace.OrderBy(a => a.Visits);
+            }
             LVPlaces.ItemsSource = filterPlace;
         }
 
@@ -84,6 +94,18 @@ namespace WpfLeisure.Pages
         private void BtnRequests_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new RequestsPage(currentOwner));
+        }
+
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void CBPopularity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = CBPopularity.SelectedItem as ComboBoxItem;
+            CBPopularity.DisplayMemberPath = item.Name;
+            Filter();
         }
     }
 }

@@ -8,7 +8,7 @@
       d:DesignHeight="810" d:DesignWidth="1440"
       Title="ActivitiesPage">
 
-    <Grid>
+    <Grid Background="#D9D9D9">
         <StackPanel x:Name="SearchPanel"
                     Margin="-280,80,0,0"
                     Width="550"
@@ -25,9 +25,29 @@
                       x:Name="CBType"
                       Height="30"
                       Width="150"
-                       Margin="0,-30,0,0"
+                       Margin="0,0,0,0"
                   HorizontalAlignment="Right"
-                      VerticalAlignment="Top" SelectionChanged="CBType_SelectionChanged"/>
+                      VerticalAlignment="Top" 
+                        BorderThickness="1"
+                      Background="#673Ab7"
+                       SelectionChanged="CBType_SelectionChanged"/>
+
+            <ComboBox  DisplayMemberPath="Name" 
+                      x:Name="CBPopularity"
+                      Height="30"
+                       Width="150"
+                       Text="Популярность"
+                       Margin="0,-30,300,0"
+                  HorizontalAlignment="Right"
+                      VerticalAlignment="Top" 
+                        BorderThickness="1"
+                      Background="#673Ab7"
+                       SelectionChanged="CBPopularity_SelectionChanged">
+                <ComboBoxItem Selected="ComboBoxItem_Selected">Более популярные</ComboBoxItem>
+                <ComboBoxItem Selected="ComboBoxItem_Selected">Менее популярные</ComboBoxItem>
+                <ComboBoxItem Selected="ComboBoxItem_Selected">Все</ComboBoxItem>
+            </ComboBox>
+            
         </StackPanel>
 
         <StackPanel Width="1200"
@@ -58,6 +78,18 @@
                                        Foreground="White"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap"/>
+                            <Image Source="/Img/walk.png" 
+                                   Height="20" 
+                                   HorizontalAlignment="Left"
+                                   Width="20"
+                                   Margin="5,0,0,0"/>
+
+                            <TextBlock Text="{Binding Visits}" 
+                                       FontSize="18"  
+                                       Foreground="White"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Left"
+                                       Margin="30,-22,0,0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -8,23 +8,24 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegPage">
 
-    <Grid>
-        <StackPanel Width="400" 
+    <Grid Background="#D9D9D9">
+        <StackPanel Width="300" 
                     Height="400"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    Background="Aqua">
+                    Background="#A3D216">
 
 
             <TextBlock Text="Имя:"
                        Margin="0,0,0,0"
-                       FontSize="20"/>
+                       FontSize="20"
+/>
 
             <TextBox x:Name="TBName"
                      Height="25"
                      Width="280"
                      Margin="0,0,0,10"
-                     HorizontalAlignment="Left"/>
+                     HorizontalAlignment="Center"/>
             
             <TextBlock Text="Фамилия:"
                        Margin="0,0,0,0"
@@ -34,7 +35,7 @@
                      Height="25"
                      Width="280"
                      Margin="0,0,0,10"
-                     HorizontalAlignment="Left"/>
+                     HorizontalAlignment="Center"/>
 
             <TextBlock Text="Логин:"
                        Margin="0,0,0,0"
@@ -43,8 +44,7 @@
             <TextBox x:Name="TBLogin"
                      Height="25"
                      Width="280"
-                     Margin="0,0,0,20"
-                     HorizontalAlignment="Left"
+                     HorizontalAlignment="Center"
                      TextChanged="TBLogin_TextChanged"/>
             
             <TextBlock x:Name="TBlInvalidName"
@@ -63,7 +63,7 @@
                      Height="25"
                      Width="280"
                      Margin="0,0,0,35"
-                     HorizontalAlignment="Left"/>
+                    HorizontalAlignment="Center"/>
 
            
 

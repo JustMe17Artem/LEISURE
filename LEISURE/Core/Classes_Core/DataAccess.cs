@@ -13,6 +13,17 @@ namespace Core.Classes_Core
         private static ObservableCollection<User> users = new ObservableCollection<User>(DB_Connection.connection.User);
         private static ObservableCollection<Owner> managers = new ObservableCollection<Owner>(DB_Connection.connection.Owner);
         private static ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
+
+        public static List<string> GetPopularities()
+        {
+            var popularity = new List<string>();
+            popularity.Insert(0, "Более популярные");
+            popularity.Insert(1, "Менее популярные");
+            popularity.Insert(2, "Все");
+            return popularity;
+        }
+
+        
         public static ObservableCollection<Role> GetRoles()
         {
             ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
@@ -24,9 +35,20 @@ namespace Core.Classes_Core
             return clients;
         }
 
-        public static ObservableCollection<Activity> GetActivities()
+        public static IEnumerable<Activity> GetActivitiesList()
         {
             ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity);
+            return activities;
+        }
+
+        public static ObservableCollection<Activity> GetPopularActivities()
+        {
+            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.OrderBy(a => a.Visits));
+            return activities;
+        }
+        public static ObservableCollection<Activity> GetLessPopularActivities()
+        {
+            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.OrderByDescending(a => a.Visits));
             return activities;
         }
         public static List<Role> Get() // метод миши. не работает
@@ -260,8 +282,8 @@ namespace Core.Classes_Core
                 activity.Description = request.Description;
                 activity.Price = request.Price;
                 activity.ID_Place = request.ID_Place;
-                activity.Start_Date = request.DateStart;
-                activity.Time_Start = request.TimeStart;
+                activity.DateStart = request.DateStart;
+                activity.TimeStart = request.TimeStart;
                 activity.Photo = request.Photo;
                 activity.ID_Type = request.ID_Type;
                 activity.ID_Request = request.Id;
@@ -308,8 +330,8 @@ namespace Core.Classes_Core
             {
                 Activity activity = new Activity();
                 activity.ID_Place = place.Id;
-                activity.Start_Date = start;
-                activity.Time_Start = startTime;
+                activity.DateStart = start;
+                activity.TimeStart = startTime;
                 activity.Price = price;
                 activity.Description = description;
                 activity.Photo = photo;
@@ -413,6 +435,7 @@ namespace Core.Classes_Core
                 return false;
             }
         }
+
 
         public static bool AcceptRequest(Request request)
         {

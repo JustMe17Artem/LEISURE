@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +26,7 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentUser = user;
-            LVActivities.ItemsSource = DataAccess.GetActivities();
+            LVActivities.ItemsSource = DataAccess.GetActivitiesList();
             var alltypes = DataAccess.GetActivityTypes();
             alltypes.Insert(0, new Activity_Type() { Id = -1, Name = "Все" });
             CBType.ItemsSource = alltypes;
@@ -48,15 +49,35 @@ namespace WpfLeisure.Pages
         }
         private void Filter()
         {
-            var filterActivities = DataAccess.GetActivities();
+            var filterActivities = (IEnumerable<Activity>)DB_Connection.connection.Activity.ToList();
+
 
             if (CBType.SelectedIndex > 0)
             {
                 var type = CBType.SelectedItem as Activity_Type;
-                filterActivities = DataAccess.GetActivitiesByType(type.Id);
+                filterActivities = filterActivities.Where(a => a.ID_Type == type.Id);
+            }
+            if(CBPopularity.SelectedIndex == 0)
+            {
+                filterActivities = filterActivities.OrderByDescending(a => a.Visits);
+            }
+            else if (CBPopularity.SelectedIndex == 1)
+            {
+                filterActivities = filterActivities.OrderBy(a => a.Visits);
             }
             LVActivities.ItemsSource = filterActivities;
         }
 
+        private void CBPopularity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = CBPopularity.SelectedItem as ComboBoxItem;
+            CBPopularity.DisplayMemberPath = item.Name;
+            Filter();
+        }
+
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+            Filter();
+        }
     }
 }

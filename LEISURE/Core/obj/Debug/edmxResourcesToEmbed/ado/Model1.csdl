@@ -9,7 +9,6 @@
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Double" />
     <Property Name="ID_Place" Type="Int32" />
-    <Property Name="Start_Date" Type="DateTime" Precision="3" />
     <Property Name="ID_Type" Type="Int32" />
     <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Activity_Type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_Type" />
@@ -17,7 +16,8 @@
     <Property Name="ID_Request" Type="Int32" />
     <NavigationProperty Name="Request" Relationship="LEISURE_KursachModel.FK_Activity_Request" FromRole="Activity" ToRole="Request" />
     <Property Name="Visits" Type="Int32" />
-    <Property Name="Time_Start" Type="Time" Precision="7" />
+    <Property Name="DateStart" Type="DateTime" Precision="3" />
+    <Property Name="TimeStart" Type="Time" Precision="7" />
   </EntityType>
   <EntityType Name="Activity_Type">
     <Key>

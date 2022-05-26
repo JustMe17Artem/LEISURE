@@ -4,7 +4,8 @@
     <EntitySetMapping Name="Activity">
       <EntityTypeMapping TypeName="LEISURE_KursachModel.Activity">
         <MappingFragment StoreEntitySet="Activity">
-          <ScalarProperty Name="Time_Start" ColumnName="Time_Start" />
+          <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
           <ScalarProperty Name="Visits" ColumnName="Visits" />
           <ScalarProperty Name="ID_Request" ColumnName="ID_Request" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -12,7 +13,6 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="ID_Place" ColumnName="ID_Place" />
-          <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
           <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
         </MappingFragment>

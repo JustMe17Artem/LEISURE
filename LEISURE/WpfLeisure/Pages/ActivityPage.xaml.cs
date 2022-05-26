@@ -37,7 +37,7 @@ namespace WpfLeisure.Pages
             TBVisits.Visibility = Visibility.Hidden;
             BtnAddNewActivity.Visibility = Visibility.Hidden;
             TBType.Visibility = Visibility.Hidden;
-            //BtnVisit.Visibility = Visibility.Hidden;
+            BtnVisit.Visibility = Visibility.Hidden;
             BtnAcceptRequest.Visibility = Visibility.Hidden;
             BtnDeclineRequest.Visibility = Visibility.Hidden;
             CBType.ItemsSource = DataAccess.GetActivityTypes();
@@ -49,7 +49,7 @@ namespace WpfLeisure.Pages
             currentOwner = owner;
             currentRequest = request;
             TblPrice.Visibility = Visibility.Hidden;
-            //BtnVisit.Visibility = Visibility.Hidden;
+            BtnVisit.Visibility = Visibility.Hidden;
             BtnAddActivity.Visibility = Visibility.Hidden;
             CBType.Visibility = Visibility.Hidden;
             TblVisits.Visibility = Visibility.Hidden;
@@ -80,7 +80,9 @@ namespace WpfLeisure.Pages
             if (DataAccess.CurrentUserIsClient(user))
             {
                 currentClient = DataAccess.GetCurrentClient(user);
-                //BtnVisit.Visibility = Visibility.Visible;
+                //TPTime.SelectedTime = Convert.ToDateTime(currentActivity.TimeStart).ToShortTimeString();
+                BtnVisit.Visibility = Visibility.Visible;
+                //TBDescription.Text = currentActivity.TimeStart.ToString(@""); нужно сделать не nullable
                 TblPrice.Visibility = Visibility.Hidden;
                 BtnAddPhoto.Visibility = Visibility.Hidden;
                 BtnAddActivity.Visibility = Visibility.Hidden;
@@ -92,11 +94,7 @@ namespace WpfLeisure.Pages
                 BtnAcceptRequest.Visibility = Visibility.Hidden;
                 TBContactInfo.Visibility = Visibility.Hidden;
                 BtnAddNewActivity.Visibility = Visibility.Hidden;
-                TBName.Text = currentActivity.Name;
-                TBPrice.Text = currentActivity.Price.ToString();
-                TBType.Text = currentActivity.Activity_Type.Name;
-                DPStart.SelectedDate = currentActivity.Start_Date;
-                TBDescription.Text = currentActivity.Description;
+                TPTime.IsEnabled = false;
                 TBContactInfo.IsReadOnly = true;
                 TBName.IsReadOnly = true;
                 TBPrice.IsReadOnly = true;
@@ -111,7 +109,7 @@ namespace WpfLeisure.Pages
             else
             {
                 currentPlace = place;
-                //BtnVisit.Visibility = Visibility.Hidden;
+                BtnVisit.Visibility = Visibility.Hidden;
                 TBContactInfo.Visibility = Visibility.Hidden;
                 TblInfo.Visibility = Visibility.Hidden;
                 TblVisits.Visibility = Visibility.Hidden;
@@ -151,7 +149,7 @@ namespace WpfLeisure.Pages
 
         public bool ActivityIsValid()
         {
-            if (TBName.Text.Length != 0 && TBPrice.Text.Length != 0 && CBType.SelectedItem != null && DPStart.SelectedDate != null)
+            if (TBName.Text.Length != 0 && TBPrice.Text.Length != 0 && CBType.SelectedItem != null && DPStart.SelectedDate != null && DPStart.SelectedDate >= DateTime.Now)
                 return true;
             else
                 return false;
@@ -173,7 +171,7 @@ namespace WpfLeisure.Pages
             }
             else
             {
-                MessageBox.Show("Поля : Название,\nСтоимость,\nТип мероприятия,\nа также даты начала и окончания - обязательны к заполнению");
+                MessageBox.Show("Мероприятие не может проходить в прошлом времени\nПоля : Название,\nСтоимость,\nТип мероприятия,\nа также даты начала и окончания - обязательны к заполнению");
             }
         }
 

@@ -14,8 +14,8 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Price" Type="float" />
           <Property Name="ID_Place" Type="int" />
-          <Property Name="Start_Date" Type="datetime" />
-          <Property Name="Time_Start" Type="time" Precision="7" />
+          <Property Name="DateStart" Type="datetime" />
+          <Property Name="TimeStart" Type="time" Precision="7" />
           <Property Name="ID_Type" Type="int" />
           <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="ID_Request" Type="int" />
@@ -350,7 +350,6 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Double" />
           <Property Name="ID_Place" Type="Int32" />
-          <Property Name="Start_Date" Type="DateTime" Precision="3" />
           <Property Name="ID_Type" Type="Int32" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Activity_Type" Relationship="Self.FK_Activity_Activity_Type" FromRole="Activity" ToRole="Activity_Type" />
@@ -358,7 +357,8 @@
           <Property Name="ID_Request" Type="Int32" />
           <NavigationProperty Name="Request" Relationship="LEISURE_KursachModel.FK_Activity_Request" FromRole="Activity" ToRole="Request" />
           <Property Name="Visits" Type="Int32" />
-          <Property Name="Time_Start" Type="Time" Precision="7" />
+          <Property Name="DateStart" Type="DateTime" Precision="3" />
+          <Property Name="TimeStart" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="Activity_Type">
           <Key>
@@ -706,7 +706,8 @@
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="LEISURE_KursachModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="Time_Start" ColumnName="Time_Start" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
                 <ScalarProperty Name="Visits" ColumnName="Visits" />
                 <ScalarProperty Name="ID_Request" ColumnName="ID_Request" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -714,7 +715,6 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ID_Place" ColumnName="ID_Place" />
-                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
                 <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
               </MappingFragment>

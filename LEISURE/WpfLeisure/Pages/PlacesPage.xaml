@@ -31,6 +31,22 @@
                       BorderThickness="1"
                       Background="#673Ab7"
                       SelectionChanged="CBType_SelectionChanged"/>
+            
+            <ComboBox  DisplayMemberPath="Name" 
+                      x:Name="CBPopularity"
+                      Height="30"
+                       Width="150"
+                       Text="Популярность"
+                       Margin="0,-30,300,0"
+                  HorizontalAlignment="Right"
+                      VerticalAlignment="Top" 
+                        BorderThickness="1"
+                      Background="#673Ab7"
+                       SelectionChanged="CBPopularity_SelectionChanged">
+                <ComboBoxItem Selected="ComboBoxItem_Selected">Более популярные</ComboBoxItem>
+                <ComboBoxItem Selected="ComboBoxItem_Selected">Менее популярные</ComboBoxItem>
+                <ComboBoxItem Selected="ComboBoxItem_Selected">Все</ComboBoxItem>
+            </ComboBox>
         </StackPanel>
 
        
@@ -68,7 +84,7 @@
                                        TextAlignment="Left"
                                        TextWrapping="Wrap"/>
                             
-                            <Image Source="/Img/walk.png" 
+                            <Image Source="/Img/eye.png" 
                                    Height="20" 
                                    HorizontalAlignment="Left"
                                    Width="20"

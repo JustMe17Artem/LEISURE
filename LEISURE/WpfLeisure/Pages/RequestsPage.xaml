@@ -8,8 +8,8 @@
       d:DesignHeight="810" d:DesignWidth="1440"
       Title="RequestsPage">
 
-    <Grid  Background="White">
-        <TextBlock Text="Мои заявки" 
+    <Grid  Background="#D9D9D9">
+        <TextBlock Text="Заявки" 
                    FontSize="45"
                    TextAlignment="Center"/>
 

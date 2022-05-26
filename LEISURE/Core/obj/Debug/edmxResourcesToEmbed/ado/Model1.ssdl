@@ -9,8 +9,8 @@
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="Price" Type="float" />
     <Property Name="ID_Place" Type="int" />
-    <Property Name="Start_Date" Type="datetime" />
-    <Property Name="Time_Start" Type="time" Precision="7" />
+    <Property Name="DateStart" Type="datetime" />
+    <Property Name="TimeStart" Type="time" Precision="7" />
     <Property Name="ID_Type" Type="int" />
     <Property Name="Photo" Type="varbinary(max)" />
     <Property Name="ID_Request" Type="int" />
