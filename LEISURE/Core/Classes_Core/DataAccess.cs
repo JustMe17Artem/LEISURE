@@ -24,11 +24,11 @@ namespace Core.Classes_Core
         }
 
         
-        public static ObservableCollection<Role> GetRoles()
-        {
-            ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
-            return roles;
-        }
+        //public static ObservableCollection<Role> GetRoles()
+        //{
+        //    ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
+        //    return roles;
+        //}
         public static ObservableCollection<Client> GetClients()
         {
             ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
@@ -99,11 +99,11 @@ namespace Core.Classes_Core
             return currentUser.Count == 1;
         }
         
-        public static bool IsOwner(User user)
-        {
-            var manger = managers.Where(m => m.ID_User == user.Id).FirstOrDefault();
-            return managers.Count == 1;
-        }
+        //public static bool IsOwner(User user)
+        //{
+        //    var manger = managers.Where(m => m.ID_User == user.Id).FirstOrDefault();
+        //    return managers.Count == 1;
+        //}
 
         public static User GetUser(string login, string password)
         {
