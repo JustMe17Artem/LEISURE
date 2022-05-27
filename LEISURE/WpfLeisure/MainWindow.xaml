@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="810" Width="1440">
     <Grid>
-        <Frame x:Name="Autho"/>
+        <Frame x:Name="Autho" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

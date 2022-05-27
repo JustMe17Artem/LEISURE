@@ -48,7 +48,23 @@ namespace WpfLeisure.Pages
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RegPage());
+            if (TBlInvalidName.Text == "")
+            {
+                DataAccess.AddNewUser(TBLogin.Text, TBPassword.Text);
+                DataAccess.AddNewClient(TBName.Text, TBLastName.Text);
+                MessageBox.Show("user added");
+            }
+
+            else
+                MessageBox.Show("Invalid user name");
+        }
+
+        private void TBRegLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (DataAccess.LoginExists(TBRegLogin.Text))
+                TBlInvalidName.Text = "Логин уже используется";
+            else
+                TBlInvalidName.Text = "";
         }
     }
 }

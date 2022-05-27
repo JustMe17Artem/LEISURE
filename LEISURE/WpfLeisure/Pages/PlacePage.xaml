@@ -9,12 +9,12 @@
       d:DesignHeight="810" d:DesignWidth="1440"
       Title="PlacePage">
 
-    <Grid  Background="#D9D9D9">
+    <Grid  Background="#B4E15E">
         <StackPanel Width="300"
                     Height="500"
                     HorizontalAlignment="Left"
                     Margin="10,0,0,270"
-                    Background="#D9D9D9">
+                    Background="#B4E15E">
 
 
 
@@ -121,8 +121,9 @@
             <Button x:Name="BtnSavePlace"
                     Click="BtnSavePlace_Click"
                     Content="Сохранить"
+                    Width="130"
                     HorizontalAlignment="Left"
-                    Margin="10,0,10,10"/>
+                    Margin="10,0,10,8"/>
 
             <Button x:Name="BtnClosePlace"
                     Click="BtnClosePlace_Click"
@@ -131,7 +132,7 @@
                     Margin="0,-40,10,10"/>
         </StackPanel>
         <ListView x:Name="LVReviews"
-                  Margin="355,350,86,167"
+                  Margin="355,420,86,167"
                   Height="200">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate >
@@ -177,9 +178,11 @@
         <Button x:Name="BtnAddPhoto" 
                 Click="BtnAddPhoto_Click"
                 Content="Добавить фото"
-                Width="Auto"
-                VerticalAlignment="Bottom"
-                Margin="76,0,1212,234"/>
+                 Width="220"
+                 Height="60"
+                 HorizontalContentAlignment="Center"
+                VerticalAlignment="Top"
+                 Margin="0,325,320,0"/>
 
         <!--<Button x:Name="BtnVisit" 
                 Click="BtnVisit_Click"
@@ -194,14 +197,16 @@
                 Click="BtnNewRequest_Click"
                 Content="Новая заявка"
                 Width="140"
+                HorizontalAlignment="Left"
                 Height="80"
-                Margin="-26,527,1085,103"/>
+                Margin="89,425,131,205"/>
 
         <Button x:Name="BtnNewActivity" 
                 Click="BtnNewActivity_Click"
                 Content="Новое мероприятие"
-                Width="180"
-                Height="80" Margin="-364,553,170,27"/>
+                Width="Auto"
+                HorizontalAlignment="Left"
+                Height="80" Margin="79,430,211,100"/>
 
         <TextBox x:Name="TBReview" 
                  Width="600"

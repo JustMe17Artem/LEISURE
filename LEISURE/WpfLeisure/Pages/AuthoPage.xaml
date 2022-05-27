@@ -8,45 +8,51 @@
       d:DesignHeight="810" d:DesignWidth="1440"
       Title="AuthoPage">
 
-    <Grid Background="#D9D9D9">
+    <Grid>
         <StackPanel Background="#D9D9D9">
-            <Image Source="C:\Users\ИМЕННО ОН\Desktop\картинки\entertainment-ideas-for-corporate-events-1.jpg"
+            <Image Source="\Img\ground.jpg"
                Height="810"
                 Margin="340,0,0,0"/>
         </StackPanel>
+
         <StackPanel Width="370"
                    Background="#D9D9D9"
                     HorizontalAlignment="Left"
                     Margin="0,0,0,10">
-            <StackPanel Width="300" 
+            <StackPanel Width="340" 
                     Height="280"
-                    Margin="10,200,0,30"
+                    Margin="10,60,0,30"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Background="#A3D216">
                 <TextBlock Text="Авторизация"
                             FontSize="23"
+                             Foreground="#673Ab7"
                            TextAlignment="Center"/>
                 
                 <TextBlock Text="Логин:"
-                       Margin="0,0,0,10"
-                       FontSize="20"/>
+                       Margin="30,0,0,10"
+                       FontSize="20"
+                           Foreground="#673Ab7"/>
 
                 <TextBox x:Name="TBLogin"
                      Height="25"
                      Width="280"
+                          BorderBrush="#673Ab7"
                      Margin="0,0,0,10"
-                     HorizontalAlignment="Left"/>
+                     HorizontalAlignment="Center"/>
 
                 <TextBlock Text="Пароль:"
                        FontSize="20"
-                       Margin="0,0,0,10"/>
+                             Foreground="#673Ab7"
+                       Margin="30,0,0,10"/>
 
                 <TextBox x:Name="TBPassword"
                      Height="25"
                      Width="280"
                      Margin="0,0,0,35"
-                     HorizontalAlignment="Left"/>
+                          BorderBrush="#673Ab7"
+                     HorizontalAlignment="Center"/>
 
                 <CheckBox x:Name="CBRememberMe"
                       Content="Запомнить меня"
@@ -63,7 +69,7 @@
 
             </StackPanel>
 
-            <StackPanel HorizontalAlignment="Left"
+            <!--<StackPanel HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
                     Width="300"
                     Height="100"
@@ -79,6 +85,85 @@
                     Width="120"
                     Height="30"
                     Content="Регистрация"/>
+
+            </StackPanel>-->
+            <StackPanel Width="340" 
+                    Height="400"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Background="#A3D216"
+                         Margin="10,0,0,10">
+                
+                <TextBlock Text="Нет аккаунта? - Зарегестрируйтесь"
+                       FontSize="20"
+                             Foreground="#673Ab7"
+                       Margin="10,0,0,0"/>
+
+                <TextBlock Text="Имя:"
+                       FontSize="20"
+                           Foreground="#673Ab7"
+                       Margin="30,0,0,0"/>
+
+                <TextBox x:Name="TBName"
+                     Height="25"
+                     Width="280"
+                          BorderBrush="#673Ab7"
+                     Margin="0,0,0,10"
+                     HorizontalAlignment="Center"/>
+
+                <TextBlock Text="Фамилия:"
+                           Foreground="#673Ab7"
+                           Margin="30,0,0,0"
+                       FontSize="20"/>
+
+                <TextBox x:Name="TBLastName"
+                     Height="25"
+                     Width="280"
+                     Margin="0,0,0,10"
+                          BorderBrush="#673Ab7"
+                     HorizontalAlignment="Center"/>
+
+                <TextBlock Text="Логин:"
+                       Margin="30,0,0,0"
+                           Foreground="#673Ab7"
+                       FontSize="20"/>
+
+                <TextBox x:Name="TBRegLogin"
+                     Height="25"
+                     Width="280"
+                          Margin="0,0,0,0"
+                          BorderBrush="#673Ab7"
+                     HorizontalAlignment="Center"
+                     TextChanged="TBRegLogin_TextChanged"/>
+
+                <TextBlock x:Name="TBlInvalidName"
+                       Margin="0,-17,0,-30"
+                       TextAlignment="Center"
+                       Width="300"
+                           Height="15"
+                       HorizontalAlignment="Center"
+                       FontSize="12"
+                       Foreground="Red"/>
+
+
+                <TextBlock Text="Пароль:"
+                       FontSize="20"
+                           Foreground="#673Ab7"
+                       Margin="30,14,0,0"/>
+
+                <TextBox x:Name="TBRegPassword"
+                     Height="25"
+                     Width="280"
+                     Margin="0,0,0,35"
+                          BorderBrush="#673Ab7"
+                    HorizontalAlignment="Center"/>
+
+
+
+                <Button x:Name="BtnReg"
+                    Content="Зарегестрироваться"
+                    Click="BtnReg_Click"
+                    Width="170"/>
 
             </StackPanel>
         </StackPanel>

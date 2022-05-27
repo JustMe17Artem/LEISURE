@@ -34,6 +34,11 @@ namespace Core.Classes_Core
             ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
             return clients;
         }
+        public static ObservableCollection<Activity> GetActivities()
+        {
+            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity);
+            return activities;
+        }
 
         public static IEnumerable<Activity> GetActivitiesList()
         {
@@ -41,16 +46,16 @@ namespace Core.Classes_Core
             return activities;
         }
 
-        public static ObservableCollection<Activity> GetPopularActivities()
-        {
-            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.OrderBy(a => a.Visits));
-            return activities;
-        }
-        public static ObservableCollection<Activity> GetLessPopularActivities()
-        {
-            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.OrderByDescending(a => a.Visits));
-            return activities;
-        }
+        //public static ObservableCollection<Activity> GetPopularActivities()
+        //{
+        //    ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.OrderBy(a => a.Visits));
+        //    return activities;
+        //}
+        //public static ObservableCollection<Activity> GetLessPopularActivities()
+        //{
+        //    ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.OrderByDescending(a => a.Visits));
+        //    return activities;
+        //}
         public static List<Role> Get() // метод миши. не работает
         {
             return DB_Connection.connection.Role.ToList();
@@ -392,10 +397,10 @@ namespace Core.Classes_Core
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Type == id || p.ID_Type == -1));
         }
-        public static ObservableCollection<Activity> GetActivitiesByType(int id)
-        {
-            return new ObservableCollection<Activity>(DB_Connection.connection.Activity.Where(p => p.ID_Type == id || p.ID_Type == -1));
-        }
+        //public static ObservableCollection<Activity> GetActivitiesByType(int id)
+        //{
+        //    return new ObservableCollection<Activity>(DB_Connection.connection.Activity.Where(p => p.ID_Type == id || p.ID_Type == -1));
+        //}
 
         public static ObservableCollection<Activity_Type> GetActivityTypes()
         {

@@ -8,7 +8,7 @@
       d:DesignHeight="810" d:DesignWidth="1440"
       Title="PlacesPage">
 
-    <Grid Background="#D9D9D9">
+    <Grid Background="#B4E15E">
         <StackPanel x:Name="SearchPanel"
                     Margin="-280,80,0,0"
                     Width="550"
@@ -30,6 +30,7 @@
                       VerticalAlignment="Top" 
                       BorderThickness="1"
                       Background="#673Ab7"
+                       BorderBrush="#673Ab7"
                       SelectionChanged="CBType_SelectionChanged"/>
             
             <ComboBox  DisplayMemberPath="Name" 
@@ -41,6 +42,7 @@
                   HorizontalAlignment="Right"
                       VerticalAlignment="Top" 
                         BorderThickness="1"
+                       BorderBrush="#673Ab7"
                       Background="#673Ab7"
                        SelectionChanged="CBPopularity_SelectionChanged">
                 <ComboBoxItem Selected="ComboBoxItem_Selected">Более популярные</ComboBoxItem>
@@ -56,15 +58,16 @@
                     Margin="20,120,0,0"
                     HorizontalAlignment="Center">
             <ListView x:Name="LVPlaces"  
-                      Background="White"
+                      Background="#B4E15E"
                   ItemsSource="{Binding Places}" 
                       Height="554"
-                      Width="1200"
-                      BorderBrush="White"
+                      Width="1300"
+                      BorderBrush="#B4E15E"
+                      HorizontalAlignment="Center"
                   SelectionChanged="LVPlaces_SelectionChanged">
                 <ListView.ItemsPanel  >
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="4" HorizontalAlignment="Center"/>
+                        <UniformGrid Columns="5" HorizontalAlignment="Center"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>

@@ -9,9 +9,9 @@
       d:DesignHeight="810" d:DesignWidth="1440"
       Title="ActivityPage">
 
-    <Grid Background="#D9D9D9">
+    <Grid Background="#B4E15E">
         <StackPanel Width="305"
-                    Background="#D9D9D9"
+                    Background="#B4E15E"
                     HorizontalAlignment="Left"
                     Margin="10,0,0,212">
 
@@ -198,8 +198,8 @@
                 Content="Добавить фото" 
                 Width="220"
                 HorizontalContentAlignment="Center"
-                Height="60"
                 VerticalAlignment="Top"
+                Height="60"
                 Margin="20,405,320,0"/>
 
         <Button x:Name="BtnVisit" 
