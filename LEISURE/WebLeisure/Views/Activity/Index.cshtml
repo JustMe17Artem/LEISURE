@@ -1,16 +1,15 @@
 ﻿@using System.Collections.ObjectModel;
 @using Core.ado;
+<body bgcolor="#B4E15E">
+    <h2>Матчи</h2>
+    <div class="row justify-content-end">
+        <a class="btn btn-primary" asp-controller="Projects"
+           asp-action="Add" role="button">Добавить</a>
+    </div>
+    <br />
 
-<h2>Матчи</h2>
 
-<div class="row justify-content-end">
-    <a class="btn btn-primary" asp-controller="Projects"
-       asp-action="Add" role="button">Добавить</a>
-</div>
-<br />
-
-
-@model ObservableCollection<Activity>
+    @model ObservableCollection<Activity>
     <h2>Матчи</h2>
     <div class="row">
         @foreach (var activity in Model)
@@ -29,8 +28,8 @@
                             <a href="@activity.Name" target=_blank>@activity.Name</a>
                         </h2>
                         <div class="text-center">
-                            <a class="btn btn-danger" asp-controller="Activity"
-                               asp-action="Remove" asp-route-name="@activity.Name"
+                            <a class="btn btn-primary" asp-controller="Activity"
+                               asp-action="WatchActivity" asp-route-id="@activity.Id"
                                role="button">
                                 Посмотреть
                             </a>
@@ -40,3 +39,4 @@
             </div>
         }
     </div>
+    </body>

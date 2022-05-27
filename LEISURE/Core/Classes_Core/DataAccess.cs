@@ -46,6 +46,13 @@ namespace Core.Classes_Core
             return activities;
         }
 
+        public static Activity GetActivity(int id)
+        {
+            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity);
+            return activities.Where(a => a.Id == id).FirstOrDefault();
+        }
+
+
         //public static ObservableCollection<Activity> GetPopularActivities()
         //{
         //    ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.OrderBy(a => a.Visits));
