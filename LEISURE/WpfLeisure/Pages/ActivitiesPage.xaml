@@ -40,7 +40,7 @@
         <StackPanel x:Name="SearchPanel"
                     Margin="-80,80,0,0"
                     Width="550"
-                    Height="30"
+                    Height="50"
                     VerticalAlignment="Top">
 
             <!--<TextBox x:Name="TBSearch"
@@ -48,6 +48,17 @@
                      Height="30"
                      Margin="-160,0,0,0"
                      TextChanged="TBSearch_TextChanged"/>-->
+
+            <TextBlock Text="По популярности"
+                       Margin="110,-10,30,-10"
+                       FontSize="15"/>
+
+
+            <TextBlock Text="По типу"
+                       Margin="450, -10,0,0"
+                       FontSize="15"/>
+
+
 
             <ComboBox  DisplayMemberPath="Name" 
                       x:Name="CBType"
@@ -59,6 +70,8 @@
                         BorderThickness="1"
                       Background="#673Ab7"
                        SelectionChanged="CBType_SelectionChanged"/>
+            
+           
 
             <ComboBox  DisplayMemberPath="Name" 
                       x:Name="CBPopularity"
@@ -75,7 +88,8 @@
                 <ComboBoxItem Selected="ComboBoxItem_Selected">Менее популярные</ComboBoxItem>
                 <ComboBoxItem Selected="ComboBoxItem_Selected">Все</ComboBoxItem>
             </ComboBox>
-            
+           
+
         </StackPanel>
 
         <StackPanel Width="1100"
@@ -97,7 +111,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="220" Height="200"
+                        <StackPanel Width="220" Height="230"
                                     Margin="0,0,0,10"
                                     Background="#673Ab7" 
                                     HorizontalAlignment="Center" >

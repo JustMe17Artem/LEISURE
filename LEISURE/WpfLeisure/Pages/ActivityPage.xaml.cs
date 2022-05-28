@@ -79,34 +79,33 @@ namespace WpfLeisure.Pages
             InitializeComponent();
             currentActivity = activity;
             currentUser = user;
+            TBlTime.Text = currentActivity.TimeStart.ToString(@"hh\:mm");
             TblComment.Visibility = Visibility.Hidden;
             TBComment.Visibility = Visibility.Hidden;
+            
             if (DataAccess.CurrentUserIsClient(user))
             {
                 currentClient = DataAccess.GetCurrentClient(user);
                 //TPTime.SelectedTime = Convert.ToDateTime(currentActivity.TimeStart).ToShortTimeString();
                 BtnVisit.Visibility = Visibility.Visible;
-                //TBDescription.Text = currentActivity.TimeStart.ToString(@""); нужно сделать не nullable
                 TblPrice.Visibility = Visibility.Hidden;
+                TPTime.Visibility = Visibility.Hidden;
                 BtnAddPhoto.Visibility = Visibility.Hidden;
                 BtnAddActivity.Visibility = Visibility.Hidden;
                 CBType.Visibility = Visibility.Hidden;
-                BtnAddActivity.Visibility = Visibility.Hidden;
-                BtnAddNewActivity.Visibility = Visibility.Hidden;
                 BtnDeclineRequest.Visibility = Visibility.Hidden;
                 TblInfo.Visibility = Visibility.Hidden;
                 BtnAcceptRequest.Visibility = Visibility.Hidden;
                 TBContactInfo.Visibility = Visibility.Hidden;
                 BtnAddNewActivity.Visibility = Visibility.Hidden;
-                TPTime.IsEnabled = false;
                 TBContactInfo.IsReadOnly = true;
-                TBName.IsReadOnly = true;
-                TBPrice.IsReadOnly = true;
-                TBType.IsReadOnly = true;
-                DPStart.IsEnabled = false;
-                TBDescription.IsReadOnly = true;
-                TBName.IsReadOnly = true;
-                TBPrice.IsReadOnly = true;
+                TBName.Visibility = Visibility.Hidden;
+                TBPrice.Visibility = Visibility.Hidden;
+                TBType.Visibility = Visibility.Hidden;
+                DPStart.IsEnabled= false;
+                TBDescription.Visibility = Visibility.Hidden;
+                TBName.Visibility = Visibility.Hidden;
+                //TBTime.IsReadOnly = true;
                 TBType.IsReadOnly = true;
                 DataContext = currentActivity;
             }
@@ -116,15 +115,23 @@ namespace WpfLeisure.Pages
                 BtnVisit.Visibility = Visibility.Hidden;
                 TBContactInfo.Visibility = Visibility.Hidden;
                 TblInfo.Visibility = Visibility.Hidden;
+                TblPrice.Visibility = Visibility.Hidden;
                 TblVisits.Visibility = Visibility.Hidden;
                 TBVisits.Visibility = Visibility.Hidden;
                 TBType.Visibility = Visibility.Hidden;
+                DPStart.Visibility = Visibility.Hidden;
                 BtnAcceptRequest.Visibility = Visibility.Hidden;
                 BtnAddActivity.Visibility = Visibility.Hidden;
                 BtnDeclineRequest.Visibility = Visibility.Hidden;
                 BtnAcceptRequest.Visibility = Visibility.Hidden;
+                TBlName.Visibility = Visibility.Hidden;
+                TBlPrice.Visibility = Visibility.Hidden;
+                TBlType.Visibility = Visibility.Hidden;
+                TBlName.Visibility = Visibility.Hidden;
+                TBlName.Visibility = Visibility.Hidden;
+                TBlDescription.Visibility = Visibility.Hidden;
                 CBType.ItemsSource = DataAccess.GetActivityTypes();
-                DataContext = this;
+                DataContext = currentActivity;
             }
             
         }

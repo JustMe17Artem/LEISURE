@@ -48,7 +48,7 @@ namespace Core.Classes_Core
 
         public static IEnumerable<Activity> GetActivitiesList()
         {
-            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity);
+            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.Where(a => a.DateStart >= DateTime.Now));
             return activities;
         }
 

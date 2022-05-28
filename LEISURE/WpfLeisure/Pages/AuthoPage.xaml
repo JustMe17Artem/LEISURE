@@ -94,7 +94,7 @@
                     Background="#A3D216"
                          Margin="10,0,0,10">
                 
-                <TextBlock Text="Нет аккаунта? - Зарегестрируйтесь"
+                <TextBlock Text="Нет аккаунта? - Зарегистрируйтесь"
                        FontSize="20"
                              Foreground="#673Ab7"
                        Margin="10,0,0,0"/>
@@ -161,7 +161,7 @@
 
 
                 <Button x:Name="BtnReg"
-                    Content="Зарегестрироваться"
+                    Content="Зарегистрироваться"
                     Click="BtnReg_Click"
                     Width="170"/>
 

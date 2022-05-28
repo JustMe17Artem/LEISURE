@@ -58,7 +58,7 @@ namespace WpfLeisure.Pages
         }
         private void Filter()
         {
-            var filterActivities = (IEnumerable<Activity>)DB_Connection.connection.Activity.ToList();
+            var filterActivities = (IEnumerable<Activity>)DataAccess.GetActivitiesList();
 
 
             if (CBType.SelectedIndex > 0)

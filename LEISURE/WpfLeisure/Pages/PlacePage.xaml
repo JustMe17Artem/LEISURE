@@ -11,7 +11,7 @@
 
     <Grid  Background="#B4E15E">
         <StackPanel Width="300"
-                    Height="500"
+                    Height="530"
                     HorizontalAlignment="Left"
                     Margin="10,0,0,270"
                     Background="#B4E15E">
@@ -28,10 +28,19 @@
             <TextBox x:Name="TBName"
                      Width="300"
                      Height="30"
+                       FontSize="20"
                      Text="{Binding Name}"
                      BorderThickness="1"
                      BorderBrush="#673Ab7"
                      Margin="0,0,0,10"
+                     HorizontalAlignment="Left"/>
+
+            <TextBlock x:Name="TBlName"
+                     Width="300"
+                     Height="30"
+                       FontSize="20"
+                     Text="{Binding Name}"
+                     Margin="0,-40,0,10"
                      HorizontalAlignment="Left"/>
 
             <TextBlock Text="Адрес:"
@@ -44,10 +53,19 @@
             <TextBox x:Name="TBAdress"
                      Width="300"
                      Height="30"
+                       FontSize="20"
                      Text="{Binding Adress}"
                      Margin="0,0,0,10"
                      BorderBrush="#673Ab7"
                      BorderThickness="1"
+                     HorizontalAlignment="Left"/>
+
+            <TextBlock x:Name="TBlAdress"
+                     Width="300"
+                     Height="30"
+                         FontSize="20"
+                     Text="{Binding Adress}"
+                     Margin="0,-40,0,10"
                      HorizontalAlignment="Left"/>
 
             <TextBlock Text="Вместительность:"
@@ -61,10 +79,19 @@
             <TextBox x:Name="TBCapacity"
                      Width="300"
                      Height="30"
+                       FontSize="20"
                      Text="{Binding Capacity}"
                       BorderBrush="#673Ab7"
                      Margin="0,0,0,10"
                      BorderThickness="1"
+                     HorizontalAlignment="Left"/>
+
+            <TextBlock x:Name="TBlCapacity"
+                     Width="300"
+                     Height="30"
+                         FontSize="20"
+                     Text="{Binding Capacity}"
+                     Margin="0,-40,0,10"
                      HorizontalAlignment="Left"/>
 
             <TextBlock Text="Тип:"
@@ -89,10 +116,19 @@
             <TextBox x:Name="TBType"
                      Width="300"
                      Height="30"
+                       FontSize="20"
                      Text="{Binding Place_Type.Name}"
                      BorderThickness="1"
                       BorderBrush="#673Ab7"
                      Margin="0,-25,0,10"
+                     HorizontalAlignment="Left"/>
+
+            <TextBlock x:Name="TBlType"
+                     Width="300"
+                     Height="30"
+                         FontSize="20"
+                     Text="{Binding Place_Type.Name}"
+                     Margin="0,-40,0,10"
                      HorizontalAlignment="Left"/>
 
             <TextBlock Text="Посещений:"
@@ -106,6 +142,7 @@
             <TextBox x:Name="TBVisits"
                      Width="300"
                      Height="30"
+                       FontSize="20"
                      Text="{Binding Visits}"
                       BorderBrush="#673Ab7"
                      IsReadOnly="True"
@@ -113,9 +150,19 @@
                      Margin="0,0,0,10"
                      HorizontalAlignment="Left"/>
 
+            <TextBlock x:Name="TBLVisits"
+                     Width="300"
+                     Height="30"
+                     Text="{Binding Visits}"
+                         FontSize="20"
+                     Margin="0,-40,0,10"
+                     HorizontalAlignment="Left"/>
+
             <Button x:Name="BtnAddPlace"
                     Click="BtnAddPlace_Click"
+                    Width="150"
                     Content="Создать"
+                    Height="60"
                     Margin="0,10,0,10"
                     HorizontalAlignment="Center"/>
 
@@ -233,7 +280,17 @@
                  BorderBrush="#673Ab7"
                  Margin="910,-47,110,383"
                  Grid.RowSpan="2"
+                   FontSize="20"
                  BorderThickness="1"
+                 TextWrapping="Wrap"
+                 Height="250"/>
+
+        <TextBlock x:Name="TBlDescription"
+                 Width="400" 
+                     FontSize="20"
+                 Text="{Binding Description}"
+                 Margin="910,-47,110,383"
+                 Grid.RowSpan="2"
                  TextWrapping="Wrap"
                  Height="250"/>
 
