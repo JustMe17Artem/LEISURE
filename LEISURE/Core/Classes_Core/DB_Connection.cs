@@ -7,8 +7,8 @@ using Core.ado;
 
 namespace Core.Classes_Core
 {
-    public class DB_Connection
+    public static class DB_Connection
     {
-        public static LEISURE_KursachEntities1 connection = new LEISURE_KursachEntities1();
+        public static LEISURE_KursachEntities2 connection = new LEISURE_KursachEntities2();
     }
 }

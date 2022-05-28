@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="LEISURE_KursachModelStoreContainer" CdmEntityContainer="LEISURE_KursachEntities1">
+  <EntityContainerMapping StorageEntityContainer="LEISURE_KursachModelStoreContainer" CdmEntityContainer="LEISURE_KursachEntities2">
     <EntitySetMapping Name="Activity">
       <EntityTypeMapping TypeName="LEISURE_KursachModel.Activity">
         <MappingFragment StoreEntitySet="Activity">
-          <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
-          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
-          <ScalarProperty Name="Visits" ColumnName="Visits" />
-          <ScalarProperty Name="ID_Request" ColumnName="ID_Request" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="ID_Place" ColumnName="ID_Place" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+          <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
           <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ID_Request" ColumnName="ID_Request" />
+          <ScalarProperty Name="Visits" ColumnName="Visits" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -52,7 +52,6 @@
     <EntitySetMapping Name="Place">
       <EntityTypeMapping TypeName="LEISURE_KursachModel.Place">
         <MappingFragment StoreEntitySet="Place">
-          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
@@ -62,6 +61,7 @@
           <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
           <ScalarProperty Name="Visits" ColumnName="Visits" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -73,20 +73,46 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Request">
+      <EntityTypeMapping TypeName="LEISURE_KursachModel.Request">
+        <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ID_Place" ColumnName="ID_Place" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+          <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+          <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
+          <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Review">
       <EntityTypeMapping TypeName="LEISURE_KursachModel.Review">
         <MappingFragment StoreEntitySet="Review">
-          <ScalarProperty Name="Review_Message" ColumnName="Review_Message" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
           <ScalarProperty Name="ID_Place" ColumnName="ID_Place" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Review_Message" ColumnName="Review_Message" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Role">
       <EntityTypeMapping TypeName="LEISURE_KursachModel.Role">
         <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status_Request">
+      <EntityTypeMapping TypeName="LEISURE_KursachModel.Status_Request">
+        <MappingFragment StoreEntitySet="Status_Request">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
@@ -110,32 +136,6 @@
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Request">
-      <EntityTypeMapping TypeName="LEISURE_KursachModel.Request">
-        <MappingFragment StoreEntitySet="Request">
-          <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
-          <ScalarProperty Name="Comment" ColumnName="Comment" />
-          <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
-          <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
-          <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Photo" ColumnName="Photo" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
-          <ScalarProperty Name="ID_Place" ColumnName="ID_Place" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Status_Request">
-      <EntityTypeMapping TypeName="LEISURE_KursachModel.Status_Request">
-        <MappingFragment StoreEntitySet="Status_Request">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
