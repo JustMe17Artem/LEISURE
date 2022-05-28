@@ -23,6 +23,7 @@ namespace WpfLeisure.Pages
     public partial class ActivityPage : Page
     {
         private static Owner currentOwner;
+        private static User currentUser;
         private static Client currentClient;
         private static Place currentPlace;
         private static Activity currentActivity;
@@ -31,6 +32,7 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentClient = client;
+            currentUser = DataAccess.GetUserFromClient(currentClient);
             currentPlace = place;
             currentRequest = request;
             TblVisits.Visibility = Visibility.Hidden;
@@ -47,6 +49,7 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentOwner = owner;
+            currentUser = DataAccess.GetUserFromOwner(currentOwner);
             currentRequest = request;
             TblPrice.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
@@ -75,6 +78,7 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentActivity = activity;
+            currentUser = user;
             TblComment.Visibility = Visibility.Hidden;
             TBComment.Visibility = Visibility.Hidden;
             if (DataAccess.CurrentUserIsClient(user))
@@ -214,6 +218,11 @@ namespace WpfLeisure.Pages
             {
                 MessageBox.Show("Поля : Название,\nСтоимость,\nТип мероприятия,\nа также даты начала и окончания - обязательны к заполнению");
             }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ActivitiesPage(currentUser));
         }
     }
 }

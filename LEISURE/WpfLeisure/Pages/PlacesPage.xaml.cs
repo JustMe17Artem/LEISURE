@@ -28,8 +28,8 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentUser = user;
-            currentOwner = DataAccess.GetCurrentOwner(user);
-            currentClient = DataAccess.GetCurrentClient(user);
+            currentOwner = DataAccess.GetCurrentOwner(currentUser);
+            currentClient = DataAccess.GetCurrentClient(currentUser);
             
             if(DataAccess.CurrentUserIsClient(currentUser))
             {
@@ -106,6 +106,16 @@ namespace WpfLeisure.Pages
             var item = CBPopularity.SelectedItem as ComboBoxItem;
             CBPopularity.DisplayMemberPath = item.Name;
             Filter();
+        }
+
+        private void BtnWatchActivities_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ActivitiesPage(currentUser));
+        }
+
+        private void BtnUserInfo_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new UserPage(currentUser));
         }
     }
 }

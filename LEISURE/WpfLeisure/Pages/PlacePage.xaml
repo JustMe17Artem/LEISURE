@@ -79,6 +79,7 @@
                       x:Name="CBType"
                       Height="25"
                       Width="200"
+                       Background="#673Ab7"
                        BorderThickness="1"
                   HorizontalAlignment="Left"
                       VerticalAlignment="Center"
@@ -245,8 +246,15 @@
                        Width="100"
                        HorizontalAlignment="Left"/>
 
+        <Button 
+                x:Name="BtnBack"
+                Click="BtnBack_Click"
+                Content="Назад"
+                HorizontalAlignment="Left"
+            Width="150"
+                Height="60" 
+            Margin="85,609,326,51"/>
 
-        
 
     </Grid>
 </Page>

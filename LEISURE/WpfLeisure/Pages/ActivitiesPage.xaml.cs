@@ -26,10 +26,19 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentUser = user;
-            LVActivities.ItemsSource = DataAccess.GetActivitiesList();
-            var alltypes = DataAccess.GetActivityTypes();
-            alltypes.Insert(0, new Activity_Type() { Id = -1, Name = "Все" });
-            CBType.ItemsSource = alltypes;
+            if (DataAccess.CurrentUserIsClient(currentUser))
+            {
+                LVActivities.ItemsSource = DataAccess.GetActivitiesList();
+                var alltypes = DataAccess.GetActivityTypes();
+                alltypes.Insert(0, new Activity_Type() { Id = -1, Name = "Все" });
+                CBType.ItemsSource = alltypes;
+            }
+            else
+            {
+                SearchPanel.Visibility = Visibility.Hidden;
+                LVActivities.ItemsSource = DataAccess.GetActivitiesForOwner(DataAccess.GetCurrentOwner(currentUser));
+            }
+            
         }
 
         private void BtnWatchPlaces_Click(object sender, RoutedEventArgs e)
@@ -78,6 +87,11 @@ namespace WpfLeisure.Pages
         private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
         {
             Filter();
+        }
+
+        private void BtnUserInfo_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new UserPage(currentUser));
         }
     }
 }

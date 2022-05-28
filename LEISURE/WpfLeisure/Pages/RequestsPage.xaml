@@ -14,7 +14,7 @@
                    TextAlignment="Center"/>
 
         <ListView x:Name="LVRequests" 
-                  Width="800"
+                  Width="900"
                   Height="400">
             <ListView.View>
                 <GridView>
@@ -46,5 +46,17 @@
                 Content="Посмотреть заявку" 
                 Click="BtnWatchRequest_Click" 
                 VerticalAlignment="Top" Margin="560,622,560,0"/>
+
+        <Button 
+                x:Name="BtnBack"
+                Click="BtnBack_Click"
+                Content="Назад"
+                HorizontalAlignment="Left"
+            Width="150"
+                Height="60" 
+            Margin="85,609,326,51"/>
+
+
     </Grid>
+    
 </Page>

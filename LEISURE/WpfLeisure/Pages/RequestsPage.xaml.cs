@@ -39,5 +39,10 @@ namespace WpfLeisure.Pages
             var selectedRequest = LVRequests.SelectedItem as Request;
             NavigationService.Navigate(new ActivityPage(currentOwner, selectedRequest));
         }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PlacesPage(currentOwner.User));
+        }
     }
 }

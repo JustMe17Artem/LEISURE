@@ -40,6 +40,12 @@ namespace Core.Classes_Core
             return activities;
         }
 
+        public static ObservableCollection<Activity> GetActivitiesForOwner(Owner owner)
+        {
+            ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.Where(a => a.Place.ID_Owner == owner.Id));
+            return activities;
+        }
+
         public static IEnumerable<Activity> GetActivitiesList()
         {
             ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity);
@@ -120,6 +126,12 @@ namespace Core.Classes_Core
         public static User GetUserFromOwner(Owner owner)
         {
             User user = users.Where(u => u.Id == owner.ID_User).FirstOrDefault();
+            return user;
+        }
+
+        public static User GetUserFromClient(Client client)
+        {
+            User user = users.Where(u => u.Id == client.ID_User).FirstOrDefault();
             return user;
         }
         public static Client GetCurrentClient(User user)

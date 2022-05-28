@@ -98,3 +98,5 @@ C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\net
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\netcoreapp3.1\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\netcoreapp3.1\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\netcoreapp3.1\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\UserPage.g.cs
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\UserPage.baml

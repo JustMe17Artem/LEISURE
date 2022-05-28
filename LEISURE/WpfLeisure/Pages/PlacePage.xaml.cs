@@ -32,6 +32,7 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentClient = client;
+            currentUser = DataAccess.GetUserFromClient(currentClient);
             CBType.ItemsSource = DataAccess.GetPlaceTypes();
             TBName.IsReadOnly = true;
             TBAdress.IsReadOnly = true;
@@ -53,6 +54,7 @@ namespace WpfLeisure.Pages
             InitializeComponent();
             currentPlace = place;
             currentOwner = owner;
+            currentUser = DataAccess.GetUserFromOwner(currentOwner);
             BtnClosePlace.Visibility = Visibility.Hidden;
             BtnSavePlace.Visibility = Visibility.Hidden;
             BtnNewActivity.Visibility = Visibility.Hidden;
@@ -73,6 +75,8 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentPlace = place;
+            currentOwner = owner;
+            currentUser = DataAccess.GetUserFromOwner(currentOwner);
             BtnAddPlace.Visibility = Visibility.Hidden;
             BtnNewRequest.Visibility = Visibility.Hidden;
             currentOwner = owner;
@@ -177,6 +181,11 @@ namespace WpfLeisure.Pages
         {
             currentUser = DataAccess.GetUserFromOwner(currentOwner);
             NavigationService.Navigate(new ActivityPage(currentUser, new Activity(), currentPlace));
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PlacesPage(currentUser));
         }
     }
 }

@@ -66,6 +66,7 @@
                       DisplayMemberPath="Name" 
                       x:Name="CBType"
                       Height="25"
+                       Background="#673Ab7"
                         BorderThickness="1"
                       Width="200"
                   HorizontalAlignment="Left"
@@ -161,6 +162,15 @@
                 Content="Подать заявку"
                 HorizontalAlignment="Left"
                 Height="50" Margin="85,309,326,51"/>
+
+        <Button 
+                x:Name="BtnBack"
+                Click="BtnBack_Click"
+                Content="Назад"
+                HorizontalAlignment="Left"
+            Width="150"
+                Height="60" 
+            Margin="85,609,326,51"/>
 
         <Button Width="Auto"
                 x:Name="BtnAcceptRequest"

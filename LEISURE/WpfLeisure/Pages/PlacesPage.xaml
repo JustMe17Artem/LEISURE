@@ -15,6 +15,7 @@
                     Height="30"
                     VerticalAlignment="Top">
 
+
             <!--<TextBox x:Name="TBSearch"
                      Width="370"
                      Height="30"
@@ -32,7 +33,7 @@
                       Background="#673Ab7"
                        BorderBrush="#673Ab7"
                       SelectionChanged="CBType_SelectionChanged"/>
-            
+
             <ComboBox  DisplayMemberPath="Name" 
                       x:Name="CBPopularity"
                       Height="30"
@@ -51,23 +52,68 @@
             </ComboBox>
         </StackPanel>
 
-       
+        <StackPanel HorizontalAlignment="Left"
+                    Width="250"
+                     Background="#A3D216"
+                    Margin="20,0,0,0"
+                    Height="500">
 
-        <StackPanel Width="1200"
+            <Button x:Name="BtnWatchActivities"
+                    Click="BtnWatchActivities_Click"
+                    Content="Мероприятия" 
+                    HorizontalAlignment="Center"
+                    Width="150"
+                    Height="60"
+                    VerticalAlignment="Bottom"
+                    Margin="0,60,0,0"/>
+
+            <Button x:Name="BtnUserInfo"
+                    Click="BtnUserInfo_Click"
+                    Content="Пользователь" 
+                    HorizontalAlignment="Center"
+                    Width="150"
+                    Height="60"
+                    VerticalAlignment="Bottom"
+                    Margin="0,60,0,0"/>
+
+            <Button x:Name="BtnNewPlace"
+                    Click="BtnNewPlace_Click"
+                    Content="Новый объект" 
+                HorizontalAlignment="Center"
+                     Width="150"
+                    Height="60"
+                VerticalAlignment="Bottom"
+                Margin="0,60,0,0"/>
+
+            <Button x:Name="BtnRequests"
+                    Click="BtnRequests_Click"
+                    Content="Заявки" 
+                      Width="150"
+                    Height="60"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,60,0,0"/>
+
+        </StackPanel>
+
+
+
+
+        <StackPanel Width="1100"
                     Height="600"
                     Margin="20,120,0,0"
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="Right">
             <ListView x:Name="LVPlaces"  
                       Background="#B4E15E"
                   ItemsSource="{Binding Places}" 
-                      Height="554"
-                      Width="1300"
+                      Height="600"
+                      Width="1100"
                       BorderBrush="#B4E15E"
-                      HorizontalAlignment="Center"
+                      HorizontalAlignment="Right"
                   SelectionChanged="LVPlaces_SelectionChanged">
                 <ListView.ItemsPanel  >
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="5" HorizontalAlignment="Center"/>
+                        <UniformGrid Columns="4" HorizontalAlignment="Center"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
@@ -80,43 +126,33 @@
                             <Image Source="{Binding Photo}"
                                    Height="150" 
                                    Width="300"/>
-                            
+
                             <TextBlock Text="{Binding Name}" 
                                        FontSize="15"  
                                        Foreground="White"
                                        TextAlignment="Left"
                                        TextWrapping="Wrap"/>
-                            
+
                             <Image Source="/Img/eye.png" 
                                    Height="20" 
                                    HorizontalAlignment="Left"
                                    Width="20"
                                    Margin="5,0,0,0"/>
-                            
+
                             <TextBlock Text="{Binding Visits}" 
                                        FontSize="18"  
                                        Foreground="White"
                                        TextWrapping="Wrap"
                                        HorizontalAlignment="Left"
                                        Margin="30,-22,0,0"/>
-                            
+
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <Button x:Name="BtnNewPlace"
-                    Click="BtnNewPlace_Click"
-                    Content="Новый объект" 
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                Margin="0,0,398,700"/>
+        
 
-        <Button x:Name="BtnRequests"
-                    Click="BtnRequests_Click"
-                    Content="Заявки" 
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                Margin="0,0,221,700"/> 
+       
     </Grid>
 </Page>
