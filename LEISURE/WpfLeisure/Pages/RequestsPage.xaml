@@ -27,16 +27,16 @@
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
                 <GridViewColumn Header="Название" 
-                                        Width="80"
+                                        Width="130"
                                         DisplayMemberBinding="{Binding Name}"/>
                 <GridViewColumn Header="Описание" 
                                         DisplayMemberBinding="{Binding Description}"
                                         Width="130"/>
                 <GridViewColumn Header="Дата начала" 
                                         Width="170"
-                                        DisplayMemberBinding="{Binding DateStart}"/>
-                <GridViewColumn Header="Дата конца" Width="170"
-                                        DisplayMemberBinding="{Binding DateEnd}"/>
+                                        DisplayMemberBinding="{Binding DateStart, StringFormat=d}"/>
+                <GridViewColumn Header="Время начала" Width="170"
+                                        DisplayMemberBinding="{Binding TimeStart}"/>
                     <GridViewColumn Header="Статус" Width="170"
                                         DisplayMemberBinding="{Binding Status_Request.Name}"/>
                 </GridView>

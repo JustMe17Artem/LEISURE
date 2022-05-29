@@ -55,20 +55,20 @@
                        HorizontalAlignment="Left"/>
 
             <TextBox x:Name="TBPrice"
-                     Width="300"
+                     Width="200"
                      Height="30"
                        Text="{Binding Price}"
-                     Margin="0,0,0,10"
+                     Margin="60,-40,0,10"
                      FontSize="20"
                      BorderThickness="1"
                      BorderBrush="#673Ab7"
                      HorizontalAlignment="Left"/>
 
             <TextBlock x:Name="TBlPrice"
-                     Width="300"
+                     Width="200"
                      Height="30"
                        Text="{Binding Price}"
-                     Margin="0,-40,0,10"
+                     Margin="60,-50,0,10"
                      FontSize="20"
                      HorizontalAlignment="Left"/>
 
@@ -82,10 +82,12 @@
             <ComboBox  SelectedItem="{Binding Activity_Type}" 
                       DisplayMemberPath="Name" 
                       x:Name="CBType"
-                      Height="25"
+                      Height="35"
+                       Margin="60,-30,0,0"
                        Background="#673Ab7"
                         BorderThickness="1"
                       Width="200"
+                       FontSize="16"
                   HorizontalAlignment="Left"
                       VerticalAlignment="Center"
                   Grid.Column="1"
@@ -105,7 +107,7 @@
             <TextBlock x:Name="TBlType"
                      Width="300"
                      Height="30"
-                     Margin="0,-45,0,10"
+                     Margin="45,-60,0,10"
                      FontSize="20"
                        Text="{Binding Activity_Type.Name}"
                      HorizontalAlignment="Left"/>
@@ -118,8 +120,9 @@
                        HorizontalAlignment="Left"/>
 
             <DatePicker x:Name="DPStart"
-                        Margin="0,0,0,10"
+                        Margin="120,-35,0,10"
                         Width="150"
+                        FontSize="20"
                         HorizontalAlignment="Left"
                         SelectedDate="{Binding DateStart}"
                         BorderThickness="1"/>
@@ -133,17 +136,19 @@
                        HorizontalAlignment="Left"/>
 
             <TextBlock x:Name="TBlTime"
-                     Width="300"
+                     Width="140"
                      Height="30"
-                     Margin="0,0,0,10"
+                     Margin="140,-25,0,10"
                      FontSize="20"
                      HorizontalAlignment="Left"/>
 
             <materialDesign:TimePicker
                 x:Name="TPTime"
-                SelectedTime="{Binding StartTime, StringFormat=t}"
+                SelectedTimeFormat="Short"
+                DataContext="{Binding StartTime}"
+                SelectedTime="{Binding StartTime, Mode=TwoWay}"
                 HorizontalAlignment="Left"
-                 Margin="0,-35,0,0"
+                Margin="140,-70,0,0"
                 Width="150"
                Style="{StaticResource MaterialDesignFloatingHintTimePicker}"/>
 
@@ -175,10 +180,10 @@
                        Width="130"
                        HorizontalAlignment="Left"/>
 
-            <TextBlock x:Name="TBVisits"
+            <TextBlock x:Name="TBlVisits"
                      Width="300"
                      Height="30"
-                     Margin="0,0,0,10"
+                     Margin="130,-25,0,10"
                        Text="{Binding Visits}"
                      FontSize="20"
                      HorizontalAlignment="Left"/>
@@ -208,7 +213,9 @@
                 Click="BtnAcceptRequest_Click_1"
                 Content="Принять заявку"
                 Height="70"
-                Margin="850,592,455,48"/>
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,80"/>
 
         <Button Width="180"
                 x:Name="BtnAddNewActivity"
@@ -224,7 +231,9 @@
                 Click="BtnDeclinerequest_Click"
                 Content="Отклонить заявку"
                  Height="70"
-                Margin="660,642,624,98" />
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                Margin="500,0,0,80" />
 
 
         <Image Source="{Binding Photo}" 
@@ -254,7 +263,10 @@
 
         <TextBox x:Name="TBDescription"
                  Width="380" 
-                 Margin="879,-25,161,395"
+                 FontSize="15"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Top"
+                 Margin="0,70,160,0"
                  TextWrapping="Wrap"
                   
                   BorderBrush="#673Ab7"
@@ -262,9 +274,11 @@
 
         <TextBlock x:Name="TBlDescription"
                  Width="380" 
-                 Margin="879,-25,161,395"
+                    HorizontalAlignment="Right"
+                 VerticalAlignment="Top"
+                 Margin="0,70,160,0"
                  TextWrapping="Wrap"
-                   FontSize="20"
+                   FontSize="15"
                    Text="{Binding Description}"
                  Height="200"/>
         <!--Text="{Binding Description}"-->

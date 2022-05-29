@@ -194,7 +194,7 @@ namespace WpfLeisure.Pages
         private void BtnNewActivity_Click(object sender, RoutedEventArgs e)
         {
             currentUser = DataAccess.GetUserFromOwner(currentOwner);
-            NavigationService.Navigate(new ActivityPage(currentUser, new Activity(), currentPlace));
+            NavigationService.Navigate(new ActivityPage(currentPlace, new Activity(), currentUser));
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

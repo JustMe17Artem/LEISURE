@@ -4,7 +4,7 @@ using Core.ado;
 using Core.Classes_Core;
 
 
-namespace Test
+namespace Test 
 {
     [TestClass]
     public class UnitTest1
