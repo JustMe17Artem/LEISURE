@@ -1,7 +1,6 @@
 ﻿@using System.Collections.ObjectModel;
 @using Core.ado;
 <body bgcolor="#B4E15E">
-    <h2>Места</h2>
 
     <br />
 
@@ -29,6 +28,11 @@
                                asp-action="WatchPlace" asp-route-id="@place.Id"
                                role="button">
                                 Посмотреть
+                            </a>
+                            <a class="btn btn-primary" asp-controller="Request"
+                               asp-action="Index" asp-route-id="@place.Id"
+                               role="button">
+                                Подать заявку
                             </a>
                         </div>
                     </div>

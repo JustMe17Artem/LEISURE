@@ -59,3 +59,4 @@ C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\obj\Debug\net
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\obj\Debug\net5.0\Razor\Views\Activity\WatchActivity.cshtml.g.cs
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\obj\Debug\net5.0\Razor\Views\Place\Index.cshtml.g.cs
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\obj\Debug\net5.0\Razor\Views\Place\WatchPlace.cshtml.g.cs
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\obj\Debug\net5.0\Razor\Views\Request\Index.cshtml.g.cs

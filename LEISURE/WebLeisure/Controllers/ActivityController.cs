@@ -12,7 +12,7 @@ namespace WebLeisure.Controllers
     {
         public IActionResult Index()
         {
-            var activites = DataAccess.GetActivities();
+            var activites = DataAccess.GetActivitiesList();
             return View(activites);
         }
         //[HttpGet]

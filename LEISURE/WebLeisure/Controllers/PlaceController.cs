@@ -16,10 +16,12 @@ namespace WebLeisure.Controllers
             return View(activites);
         }
         [HttpGet]
-        public IActionResult WatchActivity(int id)
+        public IActionResult WatchPlace(int id)
         {
             Place place = DataAccess.GetPlace(id);
             return View(place);
         }
+        
+       
     }
 }

@@ -1,0 +1,51 @@
+﻿@model Core.ado.Request
+@using Core.Classes_Core;
+
+<div class="row justify-content-lg-center">
+    <h1>Add new competition</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddNewRequest">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Name</label>
+                <input asp-for="Name" class=" form-control" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ID_Type" class="control-label">Type</label>
+                <select asp-for="ID_Type" class=" form-control">
+                    <option selected="selected">  </option>
+                    @foreach (var type in DataAccess.GetActivityTypes())
+                    {
+                        <option value="@type.Id">@type.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Price</label>
+                <input asp-for="Price" class=" form-control" />
+                <span asp-validation-for="Price"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description</label>
+                <input asp-for="Description" class=" form-control" />
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateStart" class="control-label">DateStart</label>
+                <input asp-for="DateStart" class=" form-control" />
+                <span asp-validation-for="DateStart"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class=" btn btn-primary" asp-action="Add" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to competitions list</a>
+</div>
