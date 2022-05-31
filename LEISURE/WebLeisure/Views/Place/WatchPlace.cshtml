@@ -1,0 +1,35 @@
+﻿@using Core.ado;
+@using Core.Classes_Core;
+@{ 
+    ViewData["Title"] = "Activity";
+}
+@model Place
+
+@*<div class="row justify-content-lg-cehter">
+    <h1>Мероприятие</h1>
+</div>*@    
+
+
+@using (Html.BeginForm("WatchActivity", "Activity", FormMethod.Post))
+{
+<fieldset>
+    @Html.HiddenFor(a => a.Id)
+    <p>
+        @Html.LabelFor(a => a.Name, "Название")
+        <br>
+        @Html.EditorFor(a => a.Name)
+    </p>
+    <p>
+    </p>
+    <p>
+
+        
+
+    </p>
+   
+</fieldset>
+}
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>

@@ -57,3 +57,5 @@ C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\bin\Debug\net
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\bin\Debug\net5.0\Core.dll.config
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\obj\Debug\net5.0\Razor\Views\Activity\Index.cshtml.g.cs
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\obj\Debug\net5.0\Razor\Views\Activity\WatchActivity.cshtml.g.cs
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\obj\Debug\net5.0\Razor\Views\Place\Index.cshtml.g.cs
+C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WebLeisure\obj\Debug\net5.0\Razor\Views\Place\WatchPlace.cshtml.g.cs

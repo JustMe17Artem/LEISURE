@@ -89,9 +89,10 @@ namespace Core.Classes_Core
             return roles;
         }
 
-        public static IEnumerable<Place> GetPlacesList()
+       
+        public static ObservableCollection<Place> GetPlacesList()
         {
-            return (IEnumerable<Place>)DataAccess.GetPlaces().Where(p => p.IsOpen == true).ToList();
+            return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.IsOpen == true));
         }
         public static ObservableCollection<Place_Type> GetPlaceTypes()  
         {
@@ -361,6 +362,7 @@ namespace Core.Classes_Core
                 activity.Photo = photo;
                 activity.Name = name;
                 activity.Visits = 0;
+                activity.IsEnabled = true;
                 activity.ID_Type = idType;
                 
                 DB_Connection.connection.Activity.Add(activity);

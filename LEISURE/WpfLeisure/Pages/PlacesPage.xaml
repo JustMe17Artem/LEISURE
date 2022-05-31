@@ -9,6 +9,9 @@
       Title="PlacesPage">
 
     <Grid Background="#B4E15E">
+        <TextBlock Text="Мои объекты" 
+                   HorizontalAlignment="Center"
+                   FontSize="30"/>
         <StackPanel x:Name="SearchPanel"
                     Margin="-280,80,0,0"
                     Width="550"
@@ -67,14 +70,14 @@
                     VerticalAlignment="Bottom"
                     Margin="0,60,0,0"/>
 
-            <Button x:Name="BtnUserInfo"
+            <!--<Button x:Name="BtnUserInfo"
                     Click="BtnUserInfo_Click"
                     Content="Пользователь" 
                     HorizontalAlignment="Center"
                     Width="150"
                     Height="60"
                     VerticalAlignment="Bottom"
-                    Margin="0,60,0,0"/>
+                    Margin="0,60,0,0"/>-->
 
             <Button x:Name="BtnNewPlace"
                     Click="BtnNewPlace_Click"
@@ -118,7 +121,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="220" Height="200"
+                        <StackPanel Width="220" Height="270"
                                     Margin="0,0,0,10"
                                     Background="#673Ab7" 
                                     HorizontalAlignment="Center"
@@ -129,6 +132,7 @@
 
                             <TextBlock Text="{Binding Name}" 
                                        FontSize="15"  
+                                       Height="30"
                                        Foreground="White"
                                        TextAlignment="Left"
                                        TextWrapping="Wrap"/>

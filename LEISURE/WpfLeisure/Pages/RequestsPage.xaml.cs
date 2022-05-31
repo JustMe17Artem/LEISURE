@@ -37,7 +37,15 @@ namespace WpfLeisure.Pages
         private void BtnWatchRequest_Click(object sender, RoutedEventArgs e)
         {
             var selectedRequest = LVRequests.SelectedItem as Request;
-            NavigationService.Navigate(new ActivityPage(currentOwner, selectedRequest));
+            if(selectedRequest != null)
+            {
+                NavigationService.Navigate(new ActivityPage(currentOwner, selectedRequest));
+            }
+            else
+            {
+                MessageBox.Show("Выберите заявку");
+            }
+            
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

@@ -89,6 +89,7 @@ namespace WpfLeisure.Pages
             currentActivity = activity;
             currentUser = user;
             TBlName.Visibility = Visibility.Hidden;
+            BtnAddActivity.Visibility = Visibility.Hidden;
             TBlPrice.Visibility = Visibility.Hidden;
             TBContactInfo.Visibility = Visibility.Hidden;
             TblInfo.Visibility = Visibility.Hidden;
@@ -280,7 +281,7 @@ namespace WpfLeisure.Pages
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            if(currentRequest != null)
+            if(currentRequest != null && currentOwner !=null)
             {
                 NavigationService.Navigate(new RequestsPage(currentOwner));
             }

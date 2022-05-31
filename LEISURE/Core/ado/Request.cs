@@ -23,7 +23,7 @@ namespace Core.ado
         public int Id { get; set; }
         public Nullable<int> ID_Place { get; set; }
         public Nullable<System.DateTime> DateStart { get; set; }
-        public System.TimeSpan TimeStart { get; set; }
+        public Nullable<System.TimeSpan> TimeStart { get; set; }
         public Nullable<double> Price { get; set; }
         public string Description { get; set; }
         public byte[] Photo { get; set; }

@@ -151,11 +151,11 @@
                      HorizontalAlignment="Left"/>
 
             <TextBlock x:Name="TBLVisits"
-                     Width="300"
+                     Width="150"
                      Height="30"
                      Text="{Binding Visits}"
                          FontSize="20"
-                     Margin="0,-40,0,10"
+                     Margin="130,-110,0,10"
                      HorizontalAlignment="Left"/>
 
             <Button x:Name="BtnAddPlace"
@@ -243,11 +243,11 @@
 
         <Button x:Name="BtnNewRequest" 
                 Click="BtnNewRequest_Click"
-                Content="Новая заявка"
-                Width="140"
+                Content="Оставить заявку на мероприятие"
+                Width="Auto"
                 HorizontalAlignment="Left"
                 Height="80"
-                Margin="89,425,131,205"/>
+                Margin="59,425,131,205"/>
 
         <Button x:Name="BtnNewActivity" 
                 Click="BtnNewActivity_Click"

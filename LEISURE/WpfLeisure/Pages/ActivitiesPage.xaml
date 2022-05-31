@@ -25,16 +25,27 @@
                     VerticalAlignment="Bottom"
                     Margin="0,60,0,0"/>
 
-            <Button x:Name="BtnUserInfo"
+            <Button x:Name="BtnExit"
+                    Click="BtnExit_Click"
+                    Content="Выход" 
+                    HorizontalAlignment="Center"
+                    Width="150"
+                    Height="60"
+                    VerticalAlignment="Bottom"
+                    Margin="0,60,0,0"/>
+            
+        </StackPanel>
+
+        <!--Button x:Name="BtnUserInfo"
                     Click="BtnUserInfo_Click"
                     Content="Пользователь" 
                     HorizontalAlignment="Center"
                     Width="150"
                     Height="60"
                     VerticalAlignment="Bottom"
-                    Margin="0,60,0,0"/>
+                    Margin="0,60,0,0"/>-->
 
-        </StackPanel>
+        
 
 
         <StackPanel x:Name="SearchPanel"
@@ -111,7 +122,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="220" Height="230"
+                        <StackPanel Width="220" Height="270"
                                     Margin="0,0,0,10"
                                     Background="#673Ab7" 
                                     HorizontalAlignment="Center" >
@@ -133,6 +144,14 @@
                                        TextWrapping="Wrap"
                                        HorizontalAlignment="Left"
                                        Margin="30,-22,0,0"/>
+
+                            <TextBlock Text="{Binding DateStart, StringFormat={}{0:dd.MM.yy}}" 
+                                       FontSize="18"  
+                                       
+                                       Foreground="White"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Left"
+                                       />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

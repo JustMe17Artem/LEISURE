@@ -83,6 +83,7 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentPlace = place;
+            TBVisits.Visibility = Visibility.Hidden;
             currentOwner = owner;
             currentUser = DataAccess.GetUserFromOwner(currentOwner);
             BtnAddPlace.Visibility = Visibility.Hidden;
@@ -91,7 +92,6 @@ namespace WpfLeisure.Pages
             TBlAdress.Visibility = Visibility.Hidden;
             TBlCapacity.Visibility = Visibility.Hidden;
             TBlType.Visibility = Visibility.Hidden;
-            TBLVisits.Visibility = Visibility.Hidden;
             TBlDescription.Visibility = Visibility.Hidden;
             currentOwner = owner;
             TBType.Visibility = Visibility.Hidden;

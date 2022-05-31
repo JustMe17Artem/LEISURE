@@ -44,6 +44,10 @@ namespace WpfLeisure.Pages
                     NavigationService.Navigate(new PlacesPage(currentUser));
 
             }
+            else
+            {
+                MessageBox.Show("Пользователь не найден");
+            }
         }
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)

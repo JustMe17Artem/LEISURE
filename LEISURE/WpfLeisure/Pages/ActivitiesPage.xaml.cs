@@ -93,5 +93,10 @@ namespace WpfLeisure.Pages
         {
             NavigationService.Navigate(new UserPage(currentUser));
         }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthoPage());
+        }
     }
 }

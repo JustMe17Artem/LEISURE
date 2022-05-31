@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Activity">
       <EntityTypeMapping TypeName="LEISURE_KursachModel.Activity">
         <MappingFragment StoreEntitySet="Activity">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />

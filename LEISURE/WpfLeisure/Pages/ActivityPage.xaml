@@ -145,8 +145,7 @@
             <materialDesign:TimePicker
                 x:Name="TPTime"
                 SelectedTimeFormat="Short"
-                DataContext="{Binding StartTime}"
-                SelectedTime="{Binding StartTime, Mode=TwoWay}"
+                SelectedTime="{Binding StartTime, Mode=TwoWay,StringFormat={}{0:HH:mm}}"
                 HorizontalAlignment="Left"
                 Margin="140,-70,0,0"
                 Width="150"
@@ -260,6 +259,15 @@
                 Height="100"
                 VerticalAlignment="Bottom"
                 Margin="355,0,885,78"/>
+
+        <Button x:Name="BtnCloseActivity" 
+                Click="BtnVisit_Click"
+                Content="Закрыть мероприятие"
+                Width="250"
+                FontSize="20"
+                Height="100"
+                VerticalAlignment="Bottom"
+                Margin="255,0,885,78"/>
 
         <TextBox x:Name="TBDescription"
                  Width="380" 
