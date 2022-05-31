@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Core.Classes_Core;
 using Core.ado;
 using Microsoft.Win32;
@@ -69,7 +62,7 @@ namespace WpfLeisure.Pages
             TblPrice.Visibility = Visibility.Hidden;
             TBlPrice.Visibility = Visibility.Hidden;
             BtnVisit.Visibility = Visibility.Hidden;
-            BtnAddActivity.Visibility = Visibility.Hidden;
+            BtnAddRequest.Visibility = Visibility.Hidden;
             TblVisits.Visibility = Visibility.Hidden;
             TBlVisits.Visibility = Visibility.Hidden;
             BtnAddNewActivity.Visibility = Visibility.Hidden;
@@ -94,7 +87,7 @@ namespace WpfLeisure.Pages
             TBlTime.Visibility = Visibility.Hidden;
             BtnCloseActivity.Visibility = Visibility.Hidden;
             TBlName.Visibility = Visibility.Hidden;
-            BtnAddActivity.Visibility = Visibility.Hidden;
+            BtnAddRequest.Visibility = Visibility.Hidden;
             TBlPrice.Visibility = Visibility.Hidden;
             TBContactInfo.Visibility = Visibility.Hidden;
             TblInfo.Visibility = Visibility.Hidden;
@@ -124,7 +117,7 @@ namespace WpfLeisure.Pages
             TPTime.Visibility = Visibility.Hidden;
             BtnAddPhoto.Visibility = Visibility.Hidden;
             CBType.Visibility = Visibility.Hidden;
-            BtnAddActivity.Visibility = Visibility.Hidden;
+            BtnAddRequest.Visibility = Visibility.Hidden;
             BtnDeclineRequest.Visibility = Visibility.Hidden;
             BtnAcceptRequest.Visibility = Visibility.Hidden;
             TBContactInfo.Visibility = Visibility.Hidden;
@@ -147,9 +140,7 @@ namespace WpfLeisure.Pages
                 DPStart.IsEnabled = false;
                 DataContext = currentActivity;
             }
-            
         }
-
 
         private void BtnAddPhoto_Click(object sender, RoutedEventArgs e)
         {
@@ -179,28 +170,6 @@ namespace WpfLeisure.Pages
             else
                 return false;
         }
-        private void BtnAddActivity_Click(object sender, RoutedEventArgs e)
-        {
-            Activity_Type type = CBType.SelectedItem as Activity_Type;
-            if(ActivityIsValid())
-            {
-                try
-                {
-                    DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, TPTime.SelectedTime.Value.TimeOfDay, float.Parse(TBPrice.Text), TBDescription.Text,  TBName.Text, type.Id, TBContactInfo.Text, TBComment.Text, currentRequest.Photo);
-                    MessageBox.Show("Заявка отправлена");
-                    NavigationService.Navigate(new PlacePage(currentClient, currentPlace));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Мероприятие не может проходить в прошлом времени\nПоля : Название,\nСтоимость,\nТип мероприятия,\nа также дата и время начала - обязательны к заполнению");
-            }
-        }
-
         private void BtnDeclinerequest_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.DeclineRequest(currentRequest);
@@ -231,7 +200,6 @@ namespace WpfLeisure.Pages
                 MessageBox.Show("Мероприятие не может проходить в прошлом времени\nПоля : Название,\nСтоимость,\nТип мероприятия,\nа также дата и время начала - обязательны к заполнению");
             }
         }
-
         private void BtnVisit_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.AddVisitToActivity(currentActivity);
@@ -264,20 +232,37 @@ namespace WpfLeisure.Pages
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             if(currentRequest != null && currentOwner !=null)
-            {
                 NavigationService.Navigate(new RequestsPage(currentOwner));
-            }
             else
-            {
                 NavigationService.Navigate(new ActivitiesPage(currentUser));
-            }
-            
         }
 
         private void BtnCloseActivity_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.CloseActivity(currentActivity);
             MessageBox.Show("Мероприятие приостановлено");
+        }
+
+        private void BtnAddRequest_Click(object sender, RoutedEventArgs e)
+        {
+            Activity_Type type = CBType.SelectedItem as Activity_Type;
+            if (ActivityIsValid())
+            {
+                try
+                {
+                    DataAccess.AddNewRequest(currentPlace, DPStart.SelectedDate.Value, TPTime.SelectedTime.Value.TimeOfDay, float.Parse(TBPrice.Text), TBDescription.Text, TBName.Text, type.Id, TBContactInfo.Text, TBComment.Text, currentRequest.Photo);
+                    MessageBox.Show("Заявка отправлена");
+                    NavigationService.Navigate(new PlacePage(currentClient, currentPlace));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Мероприятие не может проходить в прошлом времени\nПоля : Название,\nСтоимость,\nТип мероприятия,\nа также дата и время начала - обязательны к заполнению");
+            }
         }
     }
 }

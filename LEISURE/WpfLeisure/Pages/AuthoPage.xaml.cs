@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Core.Classes_Core;
 using Core.ado;
 
@@ -57,7 +48,6 @@ namespace WpfLeisure.Pages
                 DataAccess.AddNewClient(TBName.Text, TBLastName.Text);
                 MessageBox.Show("Пользователь создан!");
             }
-
             else
                 MessageBox.Show("Логин занят. Придумайте другой логин");
         }

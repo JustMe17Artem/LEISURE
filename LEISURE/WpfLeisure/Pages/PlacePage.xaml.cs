@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Core.ado;
-using System.Linq;
 using Core.Classes_Core;
-using System.Collections.ObjectModel;
 using Microsoft.Win32;
 using System.IO;
 
@@ -100,7 +91,6 @@ namespace WpfLeisure.Pages
             LVReviews.ItemsSource = DataAccess.GetReviews(currentPlace.Id);
             DataContext = currentPlace;
         }
-
         public bool PlaceIsValid()
         {
             if (TBName.Text.Length != 0 && TBAdress.Text.Length !=0 && TBDescription.Text.Length != 0 &&  CBType.SelectedItem != null && PlacePhoto.Source != null)
@@ -129,9 +119,7 @@ namespace WpfLeisure.Pages
             {
                 MessageBox.Show("Поля: Название,\nОписание,\nТип объекта,\nа также фото - обязательны к заполнению");
             }
-           
         }
-
         private void BtnSavePlace_Click(object sender, RoutedEventArgs e)
         {
             Place_Type type = CBType.SelectedItem as Place_Type;
@@ -153,14 +141,12 @@ namespace WpfLeisure.Pages
                 MessageBox.Show("Поля: Название,\nОписание,\nТип объекта,\nа также фото - обязательны к заполнению");
             }
         }
-
         private void BtnClosePlace_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.ClosePlace(currentPlace);
             MessageBox.Show("Объект закрыт");
             NavigationService.Navigate(new PlacesPage(currentOwner.User));
         }
-
         private void BtnAddPhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog()
@@ -173,24 +159,20 @@ namespace WpfLeisure.Pages
                 PlacePhoto.Source = new BitmapImage(new Uri(openFile.FileName));
             }
         }
-
         private void BtnAddReview_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.AddNewReview(currentClient.Id, currentPlace.Id, TBReview.Text);
             MessageBox.Show("Отзыв добавлен");
         }
-
         private void BtnNewRequest_Click(object sender, RoutedEventArgs e)
         {
              NavigationService.Navigate(new ActivityPage(currentClient, currentPlace, new Request()));
         }
-
         private void BtnNewActivity_Click(object sender, RoutedEventArgs e)
         {
             currentUser = DataAccess.GetUserFromOwner(currentOwner);
             NavigationService.Navigate(new ActivityPage(currentPlace, new Activity(), currentUser));
         }
-
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new PlacesPage(currentUser));
