@@ -1,12 +1,9 @@
 ﻿@using Core.ado;
-@using Core.Classes_Core;
 @{
     ViewData["Title"] = "Activity";
 }
 @model Activity
-@*<div class="row justify-content-lg-cehter">
-        <h1>Мероприятие</h1>
-    </div>*@
+
 
 
 @using (Html.BeginForm("WatchActivity", "Activity", FormMethod.Post))
@@ -45,7 +42,7 @@
                         @Html.LabelFor(a => a.DateStart, "Дата начала:")
                     </td>
                     <td width="50px">
-                        <label for="Name">@String.Format("{0:yy.MM.dd}", Model.DateStart)</label>
+                        <label for="Name">@String.Format("{0:dd.MM.yy}", Model.DateStart)</label>
                     </td>
                 </tr>
                 <tr>
@@ -58,7 +55,7 @@
                 </tr>
                 <tr>
                     <td width="100px">
-                        @Html.LabelFor(a => a.Visits, "Посещений:")
+                        @Html.LabelFor(a => a.Visits, "Просмотров:")
                     </td>
                     <td width="400px">
                         <label for="Name">@Model.Visits</label>

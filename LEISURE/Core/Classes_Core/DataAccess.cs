@@ -13,6 +13,43 @@ namespace Core.Classes_Core
         private static ObservableCollection<User> users = new ObservableCollection<User>(DB_Connection.connection.User);
         private static ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
 
+
+        public static Request GetRequest(int id)
+        {
+            ObservableCollection<Request> requests = new ObservableCollection<Request>(DB_Connection.connection.Request);
+            return requests.Where(r => r.Id == id).FirstOrDefault();
+        }
+        public static ObservableCollection<Request> GetRequests()
+        {
+            ObservableCollection<Request> requests = new ObservableCollection<Request>(DB_Connection.connection.Request);
+            return requests;
+        }
+        public static ObservableCollection<Role> GetRoles()
+        {
+            ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
+            return roles;
+        }
+
+        public static Role GetRole(int id) 
+        {
+            ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
+            return roles.Where(r => r.Id == id).FirstOrDefault();
+        }
+
+        public static Status_Request GetRequestStatus(int id)
+        {
+            ObservableCollection<Status_Request> requestStatuses = new ObservableCollection<Status_Request>(DB_Connection.connection.Status_Request);
+            return requestStatuses.Where(r => r.Id == id).FirstOrDefault();
+        }
+
+
+        public static Activity_Type GetActivityType(int id)
+        {
+            ObservableCollection<Activity_Type> activityTypes = new ObservableCollection<Activity_Type>(DB_Connection.connection.Activity_Type);
+            return activityTypes.Where(r => r.Id == id).FirstOrDefault();
+        }
+
+
         public static ObservableCollection<Client> GetClients()
         {
             ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
@@ -293,7 +330,6 @@ namespace Core.Classes_Core
                 activity.Visits = 0;
                 activity.IsEnabled = true;
                 activity.ID_Type = idType;
-                
                 DB_Connection.connection.Activity.Add(activity);
                 DB_Connection.connection.SaveChanges();
                 return true;
@@ -313,6 +349,20 @@ namespace Core.Classes_Core
                 review.ID_Place = idPlace;
                 review.Date = DateTime.Now.Date;
                 review.Review_Message = message;
+                DB_Connection.connection.Review.Add(review);
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewReview(Review review)
+        {
+            try
+            {
                 DB_Connection.connection.Review.Add(review);
                 DB_Connection.connection.SaveChanges();
                 return true;

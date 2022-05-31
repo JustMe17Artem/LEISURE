@@ -129,7 +129,7 @@
             <TextBlock x:Name="TBlDate"
                      Width="148"
                      Height="30"
-                       Text="{Binding DateStart, StringFormat={}{0:d.MM.yyyy}}"
+                       Text="{Binding DateStart, StringFormat={}{0:dd.MM.yyyy}}"
                      Margin="120,-95,0,10"
                      FontSize="20"
                      HorizontalAlignment="Left"/>
