@@ -1,9 +1,25 @@
 ﻿@using System.Collections.ObjectModel;
 @using Core.ado;
 <body bgcolor="#B4E15E">
-    <h2>События</h2>
+    <h1>События</h1>
     
-    <br />
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Радиус</title>
+        <style>
+            #is {
+                color: #fff;
+                border-radius: 15px;
+            }
+
+            h2 {
+                font-size: 20px;
+                color: #673Ab7;
+            }
+        </style>
+    </head>
+    </html>
 
 
     @model ObservableCollection<Activity>
@@ -11,7 +27,7 @@
         @foreach (var activity in Model)
         {
             <div class="col-md-4 mb-5">
-                <div class="card h-100">
+                <div class="card h-100" id="is">
                     <div class="card-body">
                         <div>
                             @if (activity.Photo != null)
@@ -21,7 +37,7 @@
                             }
                         </div>
                         <h2 class="card-title text-center">
-                            <a href="@activity.Name" target=_blank>@activity.Name</a>
+                            <label ="@activity.Name" target=_blank>@activity.Name</label>
                         </h2>
                         <div class="text-center">
                             <a class="btn btn-primary" asp-controller="Activity"

@@ -1,36 +1,84 @@
 ﻿@using Core.ado;
 @using Core.Classes_Core;
-@{ 
+@{
     ViewData["Title"] = "Activity";
 }
 @model Activity
-
 @*<div class="row justify-content-lg-cehter">
-    <h1>Мероприятие</h1>
-</div>*@    
+        <h1>Мероприятие</h1>
+    </div>*@
 
 
 @using (Html.BeginForm("WatchActivity", "Activity", FormMethod.Post))
 {
-<fieldset>
-    @Html.HiddenFor(a => a.Id)
-    <p>
-        @Html.LabelFor(a => a.Name, "Название")
-        <br>
-        @Html.EditorFor(a => a.Name)
-    </p>
-    <p>
-        @Html.LabelFor(a => a.Price, "Цена")
-        <br>
-        @Html.EditorFor(a => a.Price)
-    </p>
-    <p>
+    <fieldset>
 
-        
+        @Html.HiddenFor(a => a.Id)
+        <p>
+            <table width="700px">
+                <tr>
+                    <td width="100px">
+                        @Html.LabelFor(a => a.Name, "Название:")
+                    </td>
+                    <td width="400px">
+                        <label for="Name">@Model.Name</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100px">
+                        @Html.LabelFor(a => a.Description, "Описание:")
+                    </td>
+                    <td width="400px">
+                        <label for="Name">@Model.Description</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100px">
+                        @Html.LabelFor(a => a.Price, "Цена:")
+                    </td>
+                    <td width="400px">
+                        <label for="Name">@Model.Price</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100px">
+                        @Html.LabelFor(a => a.DateStart, "Дата начала:")
+                    </td>
+                    <td width="50px">
+                        <label for="Name">@String.Format("{0:yy.MM.dd}", Model.DateStart)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100px">
+                        @Html.LabelFor(a => a.DateStart, "Время начала:")
+                    </td>
+                    <td width="50px">
+                        <label for="Name">@String.Format("{0:HH:mm}", Model.DateStart)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100px">
+                        @Html.LabelFor(a => a.Visits, "Посещений:")
+                    </td>
+                    <td width="400px">
+                        <label for="Name">@Model.Visits</label>
+                    </td>
+                </tr>
+            </table>
 
-    </p>
-   
-</fieldset>
+
+
+
+
+        </p>
+        <p>
+            @Html.Raw("<img style='width:500px; height:300px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Photo) + "\" />")
+        </p>
+
+
+
+    </fieldset>
 }
 
 <div>

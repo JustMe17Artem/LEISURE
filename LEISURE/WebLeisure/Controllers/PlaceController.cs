@@ -19,6 +19,7 @@ namespace WebLeisure.Controllers
         public IActionResult WatchPlace(int id)
         {
             Place place = DataAccess.GetPlace(id);
+            DataAccess.AddVisitToPlace(place);
             return View(place);
         }
         

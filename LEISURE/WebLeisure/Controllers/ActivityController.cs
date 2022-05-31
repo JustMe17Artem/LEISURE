@@ -20,7 +20,9 @@ namespace WebLeisure.Controllers
         public IActionResult WatchActivity(int id)
         {
             Activity activity = DataAccess.GetActivity(id);
+            DataAccess.AddVisitToActivity(activity);
             return View(activity);
         }
+
     }
 }

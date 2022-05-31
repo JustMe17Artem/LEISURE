@@ -24,10 +24,6 @@
                     }
                 </select>
             </div>
-            @*<div class="form-group">
-                <label asp-for="ID_Place" class="control-label">ID места</label>
-                <input asp-for="ID_Place" class=" form-control"/>
-            </div>*@
             <div class="form-group">
                 <label asp-for="Price" class="control-label">Цена (указывать цифрах)</label>
                 <input asp-for="Price" class=" form-control" />
@@ -64,5 +60,5 @@
 </div>
 
 <div>
-    <a asp-action="Index">Назад</a>
+    <a asp-controller="Place" asp-action="Index" class=" btn btn-primary">Назад</a>
 </div>
