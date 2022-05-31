@@ -42,7 +42,6 @@ namespace WpfLeisure.Pages
                     NavigationService.Navigate(new ActivitiesPage(currentUser));
                 else
                     NavigationService.Navigate(new PlacesPage(currentUser));
-
             }
             else
             {
@@ -56,11 +55,11 @@ namespace WpfLeisure.Pages
             {
                 DataAccess.AddNewUser(TBLogin.Text, TBPassword.Text);
                 DataAccess.AddNewClient(TBName.Text, TBLastName.Text);
-                MessageBox.Show("user added");
+                MessageBox.Show("Пользователь создан!");
             }
 
             else
-                MessageBox.Show("Invalid user name");
+                MessageBox.Show("Логин занят. Придумайте другой логин");
         }
 
         private void TBRegLogin_TextChanged(object sender, TextChangedEventArgs e)

@@ -68,10 +68,8 @@ C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\net
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\AuthoPage.baml
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\ActivitiesPage.g.cs
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\PlacePage.g.cs
-C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\RegPage.g.cs
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\ActivitiesPage.baml
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\PlacePage.baml
-C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\RegPage.baml
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\PlacesPage.g.cs
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\PlacesPage.baml
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\App.baml
@@ -98,5 +96,3 @@ C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\net
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\netcoreapp3.1\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\netcoreapp3.1\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\bin\Debug\netcoreapp3.1\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\UserPage.g.cs
-C:\Users\ИМЕННО ОН\Desktop\крусач\LEISURE\WpfLeisure\obj\Debug\netcoreapp3.1\Pages\UserPage.baml

@@ -14,6 +14,12 @@ namespace Core.ado
     
     public partial class Owner
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Owner()
+        {
+            this.Place = new HashSet<Place>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -22,5 +28,7 @@ namespace Core.ado
         public string Email { get; set; }
     
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Place> Place { get; set; }
     }
 }

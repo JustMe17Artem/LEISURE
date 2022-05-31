@@ -29,14 +29,9 @@ namespace WpfLeisure.Pages
             DataContext = this;
         }
 
-        private void LVRequests_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void BtnWatchRequest_Click(object sender, RoutedEventArgs e)
         {
-            var selectedRequest = LVRequests.SelectedItem as Request;
+            Request selectedRequest = LVRequests.SelectedItem as Request;
             if(selectedRequest != null)
             {
                 NavigationService.Navigate(new ActivityPage(currentOwner, selectedRequest));
@@ -45,7 +40,6 @@ namespace WpfLeisure.Pages
             {
                 MessageBox.Show("Выберите заявку");
             }
-            
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

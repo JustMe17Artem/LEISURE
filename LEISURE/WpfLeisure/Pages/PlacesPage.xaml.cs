@@ -30,26 +30,28 @@ namespace WpfLeisure.Pages
             currentUser = user;
             currentOwner = DataAccess.GetCurrentOwner(currentUser);
             currentClient = DataAccess.GetCurrentClient(currentUser);
-            
-            if(DataAccess.CurrentUserIsClient(currentUser))
+            var alltypes = DataAccess.GetPlaceTypes();
+            alltypes.Insert(0, new Place_Type() { Id = -1, Name = "Все" });
+            CBType.ItemsSource = alltypes;
+
+            if (DataAccess.CurrentUserIsClient(currentUser))
             {
                 BtnNewPlace.Visibility = Visibility.Hidden;
                 LVPlaces.ItemsSource = DataAccess.GetPlacesList();
                 BtnRequests.Visibility = Visibility.Hidden;
-                var alltypes = DataAccess.GetPlaceTypes();
-                alltypes.Insert(0, new Place_Type() { Id = -1, Name = "Все" });
-                CBType.ItemsSource = alltypes;
+                CBOpen.Visibility = Visibility.Hidden;
+                TblOpen.Visibility = Visibility.Hidden;
             }
             else
             {
-                SearchPanel.Visibility = Visibility.Hidden;
+                Title.Text = "Мои объекты";
                 LVPlaces.ItemsSource = DataAccess.GetPlacesByOwner(currentOwner);
             }
         }
 
         private void LVPlaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedPlace = LVPlaces.SelectedItem as Place;
+            Place selectedPlace = LVPlaces.SelectedItem as Place;
             if (DataAccess.CurrentUserIsClient(currentUser))
             {
                 NavigationService.Navigate(new PlacePage(currentClient, selectedPlace));
@@ -68,11 +70,23 @@ namespace WpfLeisure.Pages
 
         private void Filter()
         {
+            if (DataAccess.CurrentUserIsClient(currentUser))
+            {
+                FilterForClient();
+            }
+            else
+            {
+                FilterForOwner();
+            }
+        }
+
+        private void FilterForClient()
+        {
             var filterPlace = DataAccess.GetPlacesList();
 
             if (CBType.SelectedIndex > 0)
             {
-                var type = CBType.SelectedItem as Place_Type;
+                Place_Type type = CBType.SelectedItem as Place_Type;
                 filterPlace = DataAccess.GetPlacesByType(type.Id);
             }
             if (CBPopularity.SelectedIndex == 0)
@@ -82,6 +96,36 @@ namespace WpfLeisure.Pages
             else if (CBPopularity.SelectedIndex == 1)
             {
                 filterPlace = filterPlace.OrderBy(a => a.Visits);
+            }
+            LVPlaces.ItemsSource = filterPlace;
+        }
+
+
+
+        private void FilterForOwner()
+        {
+            var filterPlace = DataAccess.GetPlacesByOwner(currentOwner);
+
+            if (CBType.SelectedIndex > 0)
+            {
+                Place_Type type = CBType.SelectedItem as Place_Type;
+                filterPlace = DataAccess.GetPlacesByType(type.Id);
+            }
+            if (CBPopularity.SelectedIndex == 0)
+            {
+                filterPlace = filterPlace.OrderByDescending(a => a.Visits);
+            }
+            else if (CBPopularity.SelectedIndex == 1)
+            {
+                filterPlace = filterPlace.OrderBy(a => a.Visits);
+            }
+            if(CBOpen.SelectedIndex == 0)
+            {
+                filterPlace = filterPlace.Where(p => p.IsOpen == true);
+            }
+            else if (CBOpen.SelectedIndex == 1)
+            {
+                filterPlace = filterPlace.Where(p => p.IsOpen == true);
             }
             LVPlaces.ItemsSource = filterPlace;
         }
@@ -113,9 +157,9 @@ namespace WpfLeisure.Pages
             NavigationService.Navigate(new ActivitiesPage(currentUser));
         }
 
-        private void BtnUserInfo_Click(object sender, RoutedEventArgs e)
+        private void CBOpen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NavigationService.Navigate(new UserPage(currentUser));
+            Filter();
         }
     }
 }

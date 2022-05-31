@@ -190,6 +190,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Place_Owner">
+          <End Role="Owner" Type="Self.Owner" Multiplicity="0..1" />
+          <End Role="Place" Type="Self.Place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Place">
+              <PropertyRef Name="ID_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Place_Place_Type">
           <End Role="Place_Type" Type="Self.Place_Type" Multiplicity="0..1" />
           <End Role="Place" Type="Self.Place" Multiplicity="*" />
@@ -307,6 +319,10 @@
             <End Role="User" EntitySet="User" />
             <End Role="Owner" EntitySet="Owner" />
           </AssociationSet>
+          <AssociationSet Name="FK_Place_Owner" Association="Self.FK_Place_Owner">
+            <End Role="Owner" EntitySet="Owner" />
+            <End Role="Place" EntitySet="Place" />
+          </AssociationSet>
           <AssociationSet Name="FK_Place_Place_Type" Association="Self.FK_Place_Place_Type">
             <End Role="Place_Type" EntitySet="Place_Type" />
             <End Role="Place" EntitySet="Place" />
@@ -391,6 +407,7 @@
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="Self.FK_Owner_User" FromRole="Owner" ToRole="User" />
+          <NavigationProperty Name="Place" Relationship="LEISURE_KursachModel.FK_Place_Owner" FromRole="Owner" ToRole="Place" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -410,6 +427,7 @@
           <NavigationProperty Name="Place_Type" Relationship="Self.FK_Place_Place_Type" FromRole="Place" ToRole="Place_Type" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Request_Place" FromRole="Place" ToRole="Request" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Review_Place" FromRole="Place" ToRole="Review" />
+          <NavigationProperty Name="Owner" Relationship="LEISURE_KursachModel.FK_Place_Owner" FromRole="Place" ToRole="Owner" />
         </EntityType>
         <EntityType Name="Place_Type">
           <Key>
@@ -694,7 +712,23 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <AssociationSet Name="FK_Place_Owner" Association="LEISURE_KursachModel.FK_Place_Owner">
+            <End Role="Owner" EntitySet="Owner" />
+            <End Role="Place" EntitySet="Place" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Place_Owner">
+          <End Type="LEISURE_KursachModel.Owner" Role="Owner" Multiplicity="0..1" />
+          <End Type="LEISURE_KursachModel.Place" Role="Place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Place">
+              <PropertyRef Name="ID_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

@@ -32,8 +32,8 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentClient = client;
+            currentPlace = place;
             currentUser = DataAccess.GetUserFromClient(currentClient);
-            //CBType.ItemsSource = DataAccess.GetPlaceTypes();
             TBName.Visibility = Visibility.Hidden;
             TBAdress.Visibility = Visibility.Hidden;
             TBCapacity.Visibility = Visibility.Hidden;
@@ -41,7 +41,6 @@ namespace WpfLeisure.Pages
             TBVisits.Visibility = Visibility.Hidden;
             TBDescription.Visibility = Visibility.Hidden;
             CBType.Visibility = Visibility.Hidden;
-            currentPlace = place;
             BtnAddPhoto.Visibility = Visibility.Hidden;
             BtnNewActivity.Visibility = Visibility.Hidden;
             BtnAddPlace.Visibility = Visibility.Hidden;
@@ -112,7 +111,7 @@ namespace WpfLeisure.Pages
 
         private void BtnAddPlace_Click(object sender, RoutedEventArgs e)
         {
-            var type = CBType.SelectedItem as Place_Type;
+            Place_Type type = CBType.SelectedItem as Place_Type;
             if (PlaceIsValid())
             {
                 try
@@ -135,7 +134,7 @@ namespace WpfLeisure.Pages
 
         private void BtnSavePlace_Click(object sender, RoutedEventArgs e)
         {
-            var type = CBType.SelectedItem as Place_Type;
+            Place_Type type = CBType.SelectedItem as Place_Type;
             if (PlaceIsValid())
             {
                 try
@@ -173,11 +172,6 @@ namespace WpfLeisure.Pages
                 currentPlace.Photo = File.ReadAllBytes(openFile.FileName);
                 PlacePhoto.Source = new BitmapImage(new Uri(openFile.FileName));
             }
-        }
-
-        private void BtnVisit_Click(object sender, RoutedEventArgs e)
-        {
-            DataAccess.AddVisitToPlace(currentPlace);
         }
 
         private void BtnAddReview_Click(object sender, RoutedEventArgs e)

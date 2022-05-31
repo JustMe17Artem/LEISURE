@@ -26,19 +26,17 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentUser = user;
+            var alltypes = DataAccess.GetActivityTypes();
+            alltypes.Insert(0, new Activity_Type() { Id = -1, Name = "Все" });
+            CBType.ItemsSource = alltypes;
             if (DataAccess.CurrentUserIsClient(currentUser))
             {
                 LVActivities.ItemsSource = DataAccess.GetActivitiesList();
-                var alltypes = DataAccess.GetActivityTypes();
-                alltypes.Insert(0, new Activity_Type() { Id = -1, Name = "Все" });
-                CBType.ItemsSource = alltypes;
             }
             else
             {
-                SearchPanel.Visibility = Visibility.Hidden;
                 LVActivities.ItemsSource = DataAccess.GetActivitiesForOwner(DataAccess.GetCurrentOwner(currentUser));
             }
-            
         }
 
         private void BtnWatchPlaces_Click(object sender, RoutedEventArgs e)
@@ -48,22 +46,34 @@ namespace WpfLeisure.Pages
 
         private void LVActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedActivity = LVActivities.SelectedItem as Activity;
+            Activity selectedActivity = LVActivities.SelectedItem as Activity;
             NavigationService.Navigate(new ActivityPage(currentUser,selectedActivity, selectedActivity.Place));
+        }
+
+        private void Filter()
+        {
+            if (DataAccess.CurrentUserIsClient(currentUser))
+            {
+                FilterForClient();
+            }
+            else
+            {
+                FilterForOwner();
+            }
         }
 
         private void CBType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Filter();
         }
-        private void Filter()
+        private void FilterForClient()
         {
-            var filterActivities = (IEnumerable<Activity>)DataAccess.GetActivitiesList();
+            var filterActivities = DataAccess.GetActivitiesList();
 
 
             if (CBType.SelectedIndex > 0)
             {
-                var type = CBType.SelectedItem as Activity_Type;
+                Activity_Type type = CBType.SelectedItem as Activity_Type;
                 filterActivities = filterActivities.Where(a => a.ID_Type == type.Id);
             }
             if(CBPopularity.SelectedIndex == 0)
@@ -74,6 +84,43 @@ namespace WpfLeisure.Pages
             {
                 filterActivities = filterActivities.OrderBy(a => a.Visits);
             }
+            if(CBDate.SelectedIndex == 1)
+            {
+                filterActivities = filterActivities.OrderBy(a => a.DateStart);
+            }
+            else if (CBDate.SelectedIndex == 0)
+            {
+                filterActivities = filterActivities.OrderByDescending(a => a.DateStart);
+            }
+            LVActivities.ItemsSource = filterActivities;
+        }
+
+        private void FilterForOwner()
+        {
+            var filterActivities = DataAccess.GetActivitiesForOwner(DataAccess.GetCurrentOwner(currentUser));
+
+
+            if (CBType.SelectedIndex > 0)
+            {
+                Activity_Type type = CBType.SelectedItem as Activity_Type;
+                filterActivities = filterActivities.Where(a => a.ID_Type == type.Id);
+            }
+            if (CBPopularity.SelectedIndex == 0)
+            {
+                filterActivities = filterActivities.OrderByDescending(a => a.Visits);
+            }
+            else if (CBPopularity.SelectedIndex == 1)
+            {
+                filterActivities = filterActivities.OrderBy(a => a.Visits);
+            }
+            if (CBDate.SelectedIndex == 1)
+            {
+                filterActivities = filterActivities.OrderBy(a => a.DateStart);
+            }
+            else if (CBDate.SelectedIndex == 0)
+            {
+                filterActivities = filterActivities.OrderByDescending(a => a.DateStart);
+            }
             LVActivities.ItemsSource = filterActivities;
         }
 
@@ -82,21 +129,22 @@ namespace WpfLeisure.Pages
             var item = CBPopularity.SelectedItem as ComboBoxItem;
             CBPopularity.DisplayMemberPath = item.Name;
             Filter();
+           
         }
 
         private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
         {
             Filter();
-        }
 
-        private void BtnUserInfo_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new UserPage(currentUser));
         }
-
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AuthoPage());
+        }
+
+        private void CBDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter();
         }
     }
 }

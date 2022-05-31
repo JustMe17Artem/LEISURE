@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fc459ec145ae4662a4c7dc388a3e32b6" Name="Diagram1">
+      <Diagram DiagramId="fc459ec145ae4662a4c7dc388a3e32b6" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="LEISURE_KursachModel.Activity" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LEISURE_KursachModel.Activity_Type" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LEISURE_KursachModel.Client" Width="1.5" PointX="13.25" PointY="2.375" IsExpanded="true" />
@@ -29,6 +29,7 @@
         <AssociationConnector Association="LEISURE_KursachModel.FK_Review_Place" ManuallyRouted="false" />
         <AssociationConnector Association="LEISURE_KursachModel.FK_Request_Status_Request" ManuallyRouted="false" />
         <AssociationConnector Association="LEISURE_KursachModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="LEISURE_KursachModel.FK_Place_Owner" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

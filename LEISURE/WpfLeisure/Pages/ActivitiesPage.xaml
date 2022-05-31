@@ -61,12 +61,18 @@
                      TextChanged="TBSearch_TextChanged"/>-->
 
             <TextBlock Text="По популярности"
-                       Margin="110,-10,30,-10"
-                       FontSize="15"/>
+                       Margin="0,-10,30,-10"
+                       FontSize="15"
+                       HorizontalAlignment="Left"/>
 
 
             <TextBlock Text="По типу"
-                       Margin="450, -10,0,0"
+                       Margin="200, -10,0,0"
+                       HorizontalAlignment="Left"
+                       FontSize="15"/>
+
+            <TextBlock Text="По дате"
+                       Margin="400, -20,0,0"
                        FontSize="15"/>
 
 
@@ -75,14 +81,28 @@
                       x:Name="CBType"
                       Height="30"
                       Width="150"
-                       Margin="0,0,0,0"
-                  HorizontalAlignment="Right"
+                       Margin="200,0,0,0"
+                  HorizontalAlignment="Left"
                       VerticalAlignment="Top" 
                         BorderThickness="1"
                       Background="#673Ab7"
                        SelectionChanged="CBType_SelectionChanged"/>
-            
-           
+
+            <ComboBox  x:Name="CBDate"
+                      Height="30"
+                      Width="150"
+                       Margin="200,-30,0,0"
+                  HorizontalAlignment="Right"
+                      VerticalAlignment="Center" 
+                        BorderThickness="1"
+                      Background="#673Ab7"
+                       SelectionChanged="CBDate_SelectionChanged">
+                <ComboBoxItem Selected="ComboBoxItem_Selected">От новых к старым</ComboBoxItem>
+                <ComboBoxItem Selected="ComboBoxItem_Selected">От старых к новым</ComboBoxItem>
+                <ComboBoxItem Selected="ComboBoxItem_Selected">Все</ComboBoxItem>
+            </ComboBox>
+
+
 
             <ComboBox  DisplayMemberPath="Name" 
                       x:Name="CBPopularity"
@@ -90,7 +110,7 @@
                        Width="150"
                        Text="Популярность"
                        Margin="0,-30,300,0"
-                  HorizontalAlignment="Right"
+                  HorizontalAlignment="Left"
                       VerticalAlignment="Top" 
                         BorderThickness="1"
                       Background="#673Ab7"

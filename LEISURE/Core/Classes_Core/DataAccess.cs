@@ -11,24 +11,8 @@ namespace Core.Classes_Core
     public class DataAccess
     {
         private static ObservableCollection<User> users = new ObservableCollection<User>(DB_Connection.connection.User);
-        private static ObservableCollection<Owner> managers = new ObservableCollection<Owner>(DB_Connection.connection.Owner);
         private static ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
 
-        public static List<string> GetPopularities()
-        {
-            var popularity = new List<string>();
-            popularity.Insert(0, "Более популярные");
-            popularity.Insert(1, "Менее популярные");
-            popularity.Insert(2, "Все");
-            return popularity;
-        }
-
-        
-        //public static ObservableCollection<Role> GetRoles()
-        //{
-        //    ObservableCollection<Role> roles = new ObservableCollection<Role>(DB_Connection.connection.Role);
-        //    return roles;
-        //}
         public static ObservableCollection<Client> GetClients()
         {
             ObservableCollection<Client> clients = new ObservableCollection<Client>(DB_Connection.connection.Client);
@@ -40,7 +24,7 @@ namespace Core.Classes_Core
             return activities;
         }
 
-        public static ObservableCollection<Activity> GetActivitiesForOwner(Owner owner)
+        public static IEnumerable<Activity> GetActivitiesForOwner(Owner owner)
         {
             ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.Where(a => a.Place.ID_Owner == owner.Id));
             return activities;
@@ -58,38 +42,6 @@ namespace Core.Classes_Core
             return activities.Where(a => a.Id == id).FirstOrDefault();
         }
 
-
-        //public static ObservableCollection<Activity> GetPopularActivities()
-        //{
-        //    ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.OrderBy(a => a.Visits));
-        //    return activities;
-        //}
-        //public static ObservableCollection<Activity> GetLessPopularActivities()
-        //{
-        //    ObservableCollection<Activity> activities = new ObservableCollection<Activity>(DB_Connection.connection.Activity.OrderByDescending(a => a.Visits));
-        //    return activities;
-        //}
-        public static List<Role> Get() // метод миши. не работает
-        {
-            return DB_Connection.connection.Role.ToList();
-        }
-        public static List<Role> GetRolesList() // для получения ролей, хорошо работает с апишкой
-        {
-            List<Role> dbRoles = new List<Role>(DB_Connection.connection.Role);
-            List<Role> roles = new List<Role>(dbRoles);
-            foreach (var role in dbRoles)
-            {
-                roles.Add(
-                    new Role
-                    {
-                        Id = role.Id,
-                        Name = role.Name
-                    });
-            }
-            return roles;
-        }
-
-       
         public static IEnumerable<Place> GetPlacesList()
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.IsOpen == true));
@@ -105,12 +57,6 @@ namespace Core.Classes_Core
             var currentUser = users.Where(u => u.Login == login && u.Password == password).ToList();
             return currentUser.Count == 1;
         }
-        
-        //public static bool IsOwner(User user)
-        //{
-        //    var manger = managers.Where(m => m.ID_User == user.Id).FirstOrDefault();
-        //    return managers.Count == 1;
-        //}
 
         public static User GetUser(string login, string password)
         {
@@ -227,7 +173,7 @@ namespace Core.Classes_Core
 
         public static bool UpdatePlaceType(Place_Type type)
         {
-            var place = DataAccess.GetPlaceType(type.Id);
+            var place = GetPlaceType(type.Id);
             place.Name = type.Name;
             try
             {
@@ -242,7 +188,7 @@ namespace Core.Classes_Core
 
         }
 
-        public static ObservableCollection<Place> GetPlacesByOwner(Owner owner)
+        public static IEnumerable<Place> GetPlacesByOwner(Owner owner)
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Owner == owner.Id));
         }
@@ -258,11 +204,6 @@ namespace Core.Classes_Core
             return clients.Where(c => c.Id == id).FirstOrDefault();
         }
 
-
-        public static ObservableCollection<Place> GetPlacesByNameOrAdress(string content)
-        {
-            return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(place => (place.Name.Contains(content) || place.Adress.Contains(content)) && place.IsOpen == true));
-        }
         public static ObservableCollection<Place> GetPlaces()
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place);
@@ -297,30 +238,6 @@ namespace Core.Classes_Core
                 return false;
             }
         }
-
-        //public static bool AddActivityByRequest(Request request)
-        //{
-        //    try
-        //    {
-        //        Activity activity = new Activity();
-        //        activity.Name = request.Name;
-        //        activity.Description = request.Description;
-        //        activity.Price = request.Price;
-        //        activity.ID_Place = request.ID_Place;
-        //        activity.DateStart = request.DateStart + request.TimeStart;
-        //        activity.Photo = request.Photo;
-        //        activity.ID_Type = request.ID_Type;
-        //        activity.ID_Request = request.Id;
-        //        activity.Visits = 0;
-        //        DB_Connection.connection.Activity.Add(activity);
-        //        DB_Connection.connection.SaveChanges();
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
 
         public static bool AddNewRequest(Place place, DateTime start, TimeSpan startTime, Nullable<float> price, string description,  string name, Nullable<int> idType, string info, string comment, byte[] photo)
         {
@@ -425,15 +342,24 @@ namespace Core.Classes_Core
                 return false;
             }
         }
+        public static bool CloseActivity(Activity activity)
+        {
+            try
+            {
+                activity.IsEnabled = false;
+                DB_Connection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public static ObservableCollection<Place> GetPlacesByType(int id)
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.ID_Type == id || p.ID_Type == -1));
         }
-        //public static ObservableCollection<Activity> GetActivitiesByType(int id)
-        //{
-        //    return new ObservableCollection<Activity>(DB_Connection.connection.Activity.Where(p => p.ID_Type == id || p.ID_Type == -1));
-        //}
 
         public static ObservableCollection<Activity_Type> GetActivityTypes()
         {
@@ -444,7 +370,6 @@ namespace Core.Classes_Core
         {
             return new ObservableCollection<Review>(DB_Connection.connection.Review.Where(r => r.ID_Place == idPlace));
         }
-
 
         public static bool AddVisitToPlace(Place place)
         {
@@ -502,7 +427,6 @@ namespace Core.Classes_Core
                 return false;
             }
         }
-
 
     }
 }

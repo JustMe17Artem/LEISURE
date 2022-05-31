@@ -185,6 +185,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Place_Owner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="ID_Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Place_Place_Type">
     <End Role="Place_Type" Type="Self.Place_Type" Multiplicity="0..1" />
     <End Role="Place" Type="Self.Place" Multiplicity="*" />
@@ -301,6 +313,10 @@
     <AssociationSet Name="FK_Owner_User" Association="Self.FK_Owner_User">
       <End Role="User" EntitySet="User" />
       <End Role="Owner" EntitySet="Owner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Owner" Association="Self.FK_Place_Owner">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="Place" EntitySet="Place" />
     </AssociationSet>
     <AssociationSet Name="FK_Place_Place_Type" Association="Self.FK_Place_Place_Type">
       <End Role="Place_Type" EntitySet="Place_Type" />

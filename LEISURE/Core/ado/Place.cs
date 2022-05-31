@@ -40,5 +40,6 @@ namespace Core.ado
         public virtual ICollection<Request> Request { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Review { get; set; }
+        public virtual Owner Owner { get; set; }
     }
 }

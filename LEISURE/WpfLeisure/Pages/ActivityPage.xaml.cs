@@ -32,6 +32,7 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentClient = client;
+            TBInfo.Text = $"{place.Owner.Email} \n {place.Owner.Phone}";
             TBlDate.Visibility = Visibility.Hidden;
             TBlTime.Visibility = Visibility.Hidden;
             currentUser = DataAccess.GetUserFromClient(currentClient);
@@ -55,6 +56,8 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentOwner = owner;
+            TBlInfo.Visibility = Visibility.Hidden;
+            TBInfo.Visibility = Visibility.Hidden;
             TBlTime.Visibility = Visibility.Hidden;
             TBlDate.Visibility = Visibility.Hidden;
             BtnCloseActivity.Visibility = Visibility.Hidden;
@@ -85,6 +88,8 @@ namespace WpfLeisure.Pages
             currentPlace = place;
             currentActivity = activity;
             currentUser = user;
+            TBlInfo.Visibility = Visibility.Hidden;
+            TBInfo.Visibility = Visibility.Hidden;
             TBlDate.Visibility = Visibility.Hidden;
             TBlTime.Visibility = Visibility.Hidden;
             BtnCloseActivity.Visibility = Visibility.Hidden;
@@ -108,7 +113,9 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentActivity = activity;
+            TBInfo.Visibility = Visibility.Hidden;
             currentUser = user;
+            TBlInfo.Visibility = Visibility.Hidden;
             TblComment.Visibility = Visibility.Hidden;
             DPStart.Visibility = Visibility.Hidden;
             TBComment.Visibility = Visibility.Hidden;
@@ -125,8 +132,6 @@ namespace WpfLeisure.Pages
             TBName.Visibility = Visibility.Hidden;
             TBDescription.Visibility = Visibility.Hidden;
             TBPrice.Visibility = Visibility.Hidden;
-
-
             if (DataAccess.CurrentUserIsClient(user))
             {
                 currentClient = DataAccess.GetCurrentClient(user);
@@ -176,7 +181,7 @@ namespace WpfLeisure.Pages
         }
         private void BtnAddActivity_Click(object sender, RoutedEventArgs e)
         {
-            var type = CBType.SelectedItem as Activity_Type;
+            Activity_Type type = CBType.SelectedItem as Activity_Type;
             if(ActivityIsValid())
             {
                 try
@@ -205,7 +210,7 @@ namespace WpfLeisure.Pages
 
         private void BtnAcceptRequest_Click_1(object sender, RoutedEventArgs e)
         {
-            var type = CBType.SelectedItem as Activity_Type;
+            Activity_Type type = CBType.SelectedItem as Activity_Type;
 
             if (ActivityIsValid())
             {
@@ -235,7 +240,7 @@ namespace WpfLeisure.Pages
 
         private void BtnAddNewActivity_Click(object sender, RoutedEventArgs e)
         {
-            var type = CBType.SelectedItem as Activity_Type;
+            Activity_Type type = CBType.SelectedItem as Activity_Type;
 
             if (ActivityIsValid())
             {
@@ -267,6 +272,12 @@ namespace WpfLeisure.Pages
                 NavigationService.Navigate(new ActivitiesPage(currentUser));
             }
             
+        }
+
+        private void BtnCloseActivity_Click(object sender, RoutedEventArgs e)
+        {
+            DataAccess.CloseActivity(currentActivity);
+            MessageBox.Show("Мероприятие приостановлено");
         }
     }
 }

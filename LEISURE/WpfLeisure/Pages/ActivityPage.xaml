@@ -97,7 +97,7 @@
             <TextBlock x:Name="TBlType"
                      Width="300"
                      Height="30"
-                     Margin="45,-60,0,10"
+                     Margin="45,-35,0,10"
                      FontSize="20"
                        Text="{Binding Activity_Type.Name}"
                      HorizontalAlignment="Left"/>
@@ -129,7 +129,7 @@
             <TextBlock x:Name="TBlDate"
                      Width="148"
                      Height="30"
-                       Text="{Binding DateStart, StringFormat={}{0:d.MM.yyyy HH:mm}}"
+                       Text="{Binding DateStart, StringFormat={}{0:d.MM.yyyy}}"
                      Margin="120,-95,0,10"
                      FontSize="20"
                      HorizontalAlignment="Left"/>
@@ -260,13 +260,14 @@
                 Margin="355,0,885,78"/>
 
         <Button x:Name="BtnCloseActivity" 
-                Click="BtnVisit_Click"
-                Content="Закрыть мероприятие"
-                Width="250"
+                Click="BtnCloseActivity_Click"
+                Content="Приостановить мероприятие"
+                Width="Auto"
                 FontSize="20"
+                HorizontalAlignment="Center"
                 Height="100"
                 VerticalAlignment="Bottom"
-                Margin="255,0,885,78"/>
+                Margin="0,0,0,78"/>
 
         <TextBox x:Name="TBDescription"
                  Width="380" 
@@ -320,5 +321,26 @@
                   BorderBrush="#673Ab7"
                   BorderThickness="1"
                    Text="{Binding Comment}"/>
+
+        <TextBlock Text="Контактные данные владельца:"
+                       FontSize="20"
+                       Height="30"     
+                       Foreground="#673Ab7"
+                       x:Name="TBlInfo"
+                       Margin="885,220,0,80"
+                       Width="290"
+                       HorizontalAlignment="Left"/>
+
+        <TextBox x:Name="TBInfo" 
+                 TextWrapping="Wrap"
+                 HorizontalAlignment="Right"
+                 Margin="-100,260,155,0"
+                 Height="80"
+                 Width="400"
+                  BorderBrush="#673Ab7"
+                  BorderThickness="1"/>
+
+
+
     </Grid>
 </Page>
