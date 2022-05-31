@@ -34,6 +34,7 @@ namespace WpfLeisure.Pages
             currentClient = client;
             currentUser = DataAccess.GetUserFromClient(currentClient);
             currentPlace = place;
+            BtnCloseActivity.Visibility = Visibility.Hidden;
             currentRequest = request;
             TBlName.Visibility = Visibility.Hidden;
             TBlPrice.Visibility = Visibility.Hidden;
@@ -53,9 +54,9 @@ namespace WpfLeisure.Pages
         {
             InitializeComponent();
             currentOwner = owner;
+            BtnCloseActivity.Visibility = Visibility.Hidden;
             currentUser = DataAccess.GetUserFromOwner(currentOwner);
             TBlType.Visibility = Visibility.Hidden;
-            //TPTime.SelectedTime = Convert.ToDateTime(currentActivity.TimeStart);
             currentRequest = request;
             TBlName.Visibility = Visibility.Hidden;
             TBlDescription.Visibility = Visibility.Hidden;
@@ -88,6 +89,7 @@ namespace WpfLeisure.Pages
             currentPlace = place;
             currentActivity = activity;
             currentUser = user;
+            BtnCloseActivity.Visibility = Visibility.Hidden;
             TBlName.Visibility = Visibility.Hidden;
             BtnAddActivity.Visibility = Visibility.Hidden;
             TBlPrice.Visibility = Visibility.Hidden;
@@ -109,10 +111,12 @@ namespace WpfLeisure.Pages
         public ActivityPage(User user, Activity activity, Place place)// просмотр + закрытие активити. для создания - отдельнеый конструктор
         {
             InitializeComponent();
+            tblTime.Visibility = Visibility.Hidden;
             currentActivity = activity;
             currentUser = user;
-            TBlTime.Text = currentActivity.TimeStart.ToString(@"hh\:mm");
+            TBlTime.Text = String.Format("{0:d.MM.yyyy hh:mm}", currentActivity.DateStart.ToString());
             TblComment.Visibility = Visibility.Hidden;
+            DPStart.Visibility = Visibility.Hidden;
             TBComment.Visibility = Visibility.Hidden;
             
             if (DataAccess.CurrentUserIsClient(user))
@@ -123,6 +127,7 @@ namespace WpfLeisure.Pages
                 BtnAddPhoto.Visibility = Visibility.Hidden;
                 BtnAddActivity.Visibility = Visibility.Hidden;
                 CBType.Visibility = Visibility.Hidden;
+                BtnCloseActivity.Visibility = Visibility.Hidden;
                 BtnDeclineRequest.Visibility = Visibility.Hidden;
                 TblInfo.Visibility = Visibility.Hidden;
                 BtnAcceptRequest.Visibility = Visibility.Hidden;
@@ -142,6 +147,7 @@ namespace WpfLeisure.Pages
             {
                 currentPlace = place;
                 BtnVisit.Visibility = Visibility.Hidden;
+
                 TBContactInfo.Visibility = Visibility.Hidden;
                 TblPrice.Visibility = Visibility.Hidden;
                 CBType.Visibility = Visibility.Hidden;
@@ -254,6 +260,7 @@ namespace WpfLeisure.Pages
         private void BtnVisit_Click(object sender, RoutedEventArgs e)
         {
             DataAccess.AddVisitToActivity(currentActivity);
+            MessageBox.Show("Ура! мероприятие стало популярнее");
         }
 
         private void BtnAddNewActivity_Click(object sender, RoutedEventArgs e)

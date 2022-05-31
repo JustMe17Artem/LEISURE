@@ -1,38 +1,37 @@
 ﻿@using Core.ado;
 @using Core.Classes_Core;
-@{ 
+@{
     ViewData["Title"] = "Activity";
 }
 @model Place
 
-@*<div class="row justify-content-lg-cehter">
-    <h1>Мероприятие</h1>
-</div>*@    
 
 
 @using (Html.BeginForm("WatchActivity", "Activity", FormMethod.Post))
 {
-<fieldset>
-    @Html.HiddenFor(a => a.Id)
-    <p>
-        @Html.LabelFor(a => a.Name, "Название")
-        <br>
-        @Html.EditorFor(a => a.Name)
-    </p>
-    <p>
-    </p>
-    <p>
+    <fieldset>
+        @Html.HiddenFor(a => a.Id)
+        <p>
+            @Html.LabelFor(a => a.Name, "Название")
+            <br>
+            @Html.LabelFor(a => a.Name)
+        </p>
+        <p>
+            @Html.Raw("<img style='width:300px; height:300px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Photo) + "\" />")
+        </p>
+        <p>
 
-        
 
-    </p>
-   
-</fieldset>
+
+        </p>
+
+    </fieldset>
 }
 
 <div>
     <a asp-action="Index"
-        class="btn btn-primary"
+       class="btn btn-primary"
        role="button">Назад</a>
 
     

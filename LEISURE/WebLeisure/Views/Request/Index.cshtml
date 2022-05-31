@@ -2,20 +2,20 @@
 @using Core.Classes_Core;
 
 <div class="row justify-content-lg-center">
-    <h1>Add new competition</h1>
+    <h1>Новая заявка</h1>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddNewRequest">
+        <form asp-action="Add">
             <div asp-validation-summary="ModelOnly"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label">Name</label>
+                <label asp-for="Name" class="control-label">Название мероприятия</label>
                 <input asp-for="Name" class=" form-control" />
                 <span asp-validation-for="Name"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ID_Type" class="control-label">Type</label>
+                <label asp-for="ID_Type" class="control-label">Тип мероприятия</label>
                 <select asp-for="ID_Type" class=" form-control">
                     <option selected="selected">  </option>
                     @foreach (var type in DataAccess.GetActivityTypes())
@@ -24,13 +24,17 @@
                     }
                 </select>
             </div>
+            @*<div class="form-group">
+                <label asp-for="ID_Place" class="control-label">ID места</label>
+                <input asp-for="ID_Place" class=" form-control"/>
+            </div>*@
             <div class="form-group">
-                <label asp-for="Price" class="control-label">Price</label>
+                <label asp-for="Price" class="control-label">Цена (указывать цифрах)</label>
                 <input asp-for="Price" class=" form-control" />
                 <span asp-validation-for="Price"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label">Description</label>
+                <label asp-for="Description" class="control-label">Описание</label>
                 <input asp-for="Description" class=" form-control" />
                 <span asp-validation-for="Description"></span>
             </div>
@@ -39,13 +43,26 @@
                 <input asp-for="DateStart" class=" form-control" />
                 <span asp-validation-for="DateStart"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Add" class=" btn btn-primary" asp-action="Add" />
+                <label asp-for="Comment" class="control-label">Комментарий</label>
+                <input asp-for="Comment" class=" form-control" />
+                <span asp-validation-for="Comment"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactInfo" class="control-label">Контактная информация (эл. почта, телефон)</label>
+                <input asp-for="ContactInfo" class=" form-control" />
+                <span asp-validation-for="ContactInfo"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Создать" class=" btn btn-primary" asp-controller="Request" asp-action="Add" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to competitions list</a>
+    <a asp-action="Index">Назад</a>
 </div>

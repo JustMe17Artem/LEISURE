@@ -128,6 +128,7 @@
                         BorderThickness="1"/>
 
             <TextBlock Text="Время начала:"
+                       x:Name="tblTime"
                        FontSize="20"
                        Foreground="#673Ab7"
                        Margin="0,0,0,0"
@@ -136,16 +137,16 @@
                        HorizontalAlignment="Left"/>
 
             <TextBlock x:Name="TBlTime"
-                     Width="140"
+                     Width="148"
                      Height="30"
-                     Margin="140,-25,0,10"
+                     Margin="120,-95,0,10"
                      FontSize="20"
                      HorizontalAlignment="Left"/>
 
             <materialDesign:TimePicker
                 x:Name="TPTime"
                 SelectedTimeFormat="Short"
-                SelectedTime="{Binding StartTime, Mode=TwoWay,StringFormat={}{0:HH:mm}}"
+                SelectedTime="{Binding StartTime, Mode=TwoWay}"
                 HorizontalAlignment="Left"
                 Margin="140,-70,0,0"
                 Width="150"

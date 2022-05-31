@@ -90,7 +90,7 @@ namespace Core.Classes_Core
         }
 
        
-        public static ObservableCollection<Place> GetPlacesList()
+        public static IEnumerable<Place> GetPlacesList()
         {
             return new ObservableCollection<Place>(DB_Connection.connection.Place.Where(p => p.IsOpen == true));
         }
@@ -298,30 +298,29 @@ namespace Core.Classes_Core
             }
         }
 
-        public static bool AddActivityByRequest(Request request)
-        {
-            try
-            {
-                Activity activity = new Activity();
-                activity.Name = request.Name;
-                activity.Description = request.Description;
-                activity.Price = request.Price;
-                activity.ID_Place = request.ID_Place;
-                activity.DateStart = request.DateStart;
-                activity.TimeStart = request.TimeStart;
-                activity.Photo = request.Photo;
-                activity.ID_Type = request.ID_Type;
-                activity.ID_Request = request.Id;
-                activity.Visits = 0;
-                DB_Connection.connection.Activity.Add(activity);
-                DB_Connection.connection.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        //public static bool AddActivityByRequest(Request request)
+        //{
+        //    try
+        //    {
+        //        Activity activity = new Activity();
+        //        activity.Name = request.Name;
+        //        activity.Description = request.Description;
+        //        activity.Price = request.Price;
+        //        activity.ID_Place = request.ID_Place;
+        //        activity.DateStart = request.DateStart + request.TimeStart;
+        //        activity.Photo = request.Photo;
+        //        activity.ID_Type = request.ID_Type;
+        //        activity.ID_Request = request.Id;
+        //        activity.Visits = 0;
+        //        DB_Connection.connection.Activity.Add(activity);
+        //        DB_Connection.connection.SaveChanges();
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
 
         public static bool AddNewRequest(Place place, DateTime start, TimeSpan startTime, Nullable<float> price, string description,  string name, Nullable<int> idType, string info, string comment, byte[] photo)
         {
@@ -329,8 +328,7 @@ namespace Core.Classes_Core
             {
                 Request request = new Request();
                 request.ID_Place = place.Id;
-                request.DateStart = start;
-                request.TimeStart = startTime;
+                request.DateStart = start + startTime;
                 request.Price = price;
                 request.Description = description;
                 request.Photo = photo;
@@ -348,10 +346,12 @@ namespace Core.Classes_Core
                 return false;
             }
         }
-        public static bool AddNewRequest(Request request)
+        public static bool AddNewRequest(Request request, int id)
         {
             try
             {
+                request.ID_Status = 1;
+                request.ID_Place = id;
                 DB_Connection.connection.Request.Add(request);
                 DB_Connection.connection.SaveChanges();
                 return true;
@@ -368,8 +368,7 @@ namespace Core.Classes_Core
             {
                 Activity activity = new Activity();
                 activity.ID_Place = place.Id;
-                activity.DateStart = start;
-                activity.TimeStart = startTime;
+                activity.DateStart = start + startTime;
                 activity.Price = price;
                 activity.Description = description;
                 activity.Photo = photo;

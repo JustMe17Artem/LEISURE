@@ -15,25 +15,6 @@ namespace WebLeisure.Controllers
             var activites = DataAccess.GetActivitiesList();
             return View(activites);
         }
-        //[HttpGet]
-        //public ActionResult<Activity> Get(string name)
-        //{
-        //    var activity = DataAccess.GetActivity(name);
-        //    if (activity == null)
-        //        return NotFound();
-        //    return activity;
-        //}
-
-        //public IActionResult WatchActivity(string name)
-        //{
-        //    var activity = DataAccess.GetActivity(name);
-        //    DataAccess.AddVisitToActivity(activity);
-        //    return RedirectToAction("WatchActivity");
-        //}
-        //public IActionResult WatchActivity()// View нужно назвать WatchActivity
-        //{
-        //    return View();
-        //}
 
         [HttpGet]
         public IActionResult WatchActivity(int id)

@@ -34,13 +34,12 @@
                                         DisplayMemberBinding="{Binding Name}"/>
                 <GridViewColumn Header="Описание" 
                                         DisplayMemberBinding="{Binding Description}"
-                                        Width="130"/>
-                <GridViewColumn Header="Дата начала" 
+                                        Width="230"/>
+                        <GridViewColumn Header="Дата начала" 
                                         Width="170"
-                                        DisplayMemberBinding="{Binding DateStart, StringFormat=d}"/>
-                <GridViewColumn Header="Время начала" Width="170"
-                                        DisplayMemberBinding="{Binding TimeStart}"/>
-                    <GridViewColumn Header="Статус" Width="170"
+                                        DisplayMemberBinding="{Binding DateStart, StringFormat={}{0:d.MM.yyyy hh:mm}}"/>
+
+                        <GridViewColumn Header="Статус" Width="170"
                                         DisplayMemberBinding="{Binding Status_Request.Name}"/>
                 </GridView>
             </ListView.View>

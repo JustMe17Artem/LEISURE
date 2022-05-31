@@ -10,7 +10,6 @@
     <Property Name="Price" Type="Double" />
     <Property Name="ID_Place" Type="Int32" />
     <Property Name="DateStart" Type="DateTime" Precision="3" />
-    <Property Name="TimeStart" Type="Time" Precision="7" />
     <Property Name="ID_Type" Type="Int32" />
     <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="ID_Request" Type="Int32" />
@@ -87,7 +86,6 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ID_Place" Type="Int32" />
     <Property Name="DateStart" Type="DateTime" Precision="3" />
-    <Property Name="TimeStart" Type="Time" Precision="7" />
     <Property Name="Price" Type="Double" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />

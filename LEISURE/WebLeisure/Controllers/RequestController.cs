@@ -10,15 +10,23 @@ namespace WebLeisure.Controllers
 {
     public class RequestController : Controller
     {
+        private static Place place;
         public IActionResult Index()
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Add(int id)
+        {
+            place = DataAccess.GetPlace(id);
+            return View("Index");
+        }
+        [HttpPost]
         public IActionResult Add(Request request)
         {
             if (ModelState.IsValid)
             {
-                DataAccess.AddNewRequest(request);
+                DataAccess.AddNewRequest(request, place.Id);
                 return RedirectToAction("Index");
             }
             else
@@ -26,5 +34,7 @@ namespace WebLeisure.Controllers
                 return View(request);
             }
         }
+
+
     }
 }
